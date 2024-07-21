@@ -1,0 +1,47 @@
+body {
+      background-image: linear-gradient(green,red);
+}
+h1 {
+     color: lawngreen;
+     text-align: center;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+
+}
+p {
+   font-family: sans-serif;
+   font-size: medium;
+
+}
+h3 {
+   font-family: unset;
+      font: bold;
+      color: mediumslateblue;
+}
+.topnav {
+      background-color: 333;
+      overflow: hidden;
+}
+topnav a{
+      float: left;
+      color: blanchedalmond;
+      text-align: center;
+      padding: 14px 16px;
+      text-decoration: none;
+      font-size: 17px;
+}
+.topnav a:hover {
+      background-color: darkgoldenrod;
+      color: black;
+}
+.topnav a.active {
+      background-color: 04AA6D;
+      color: white;
+}
+h2 {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      color: darkorange;
+}
+hr {
+      text-align: right;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
