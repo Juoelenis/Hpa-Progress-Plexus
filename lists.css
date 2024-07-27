@@ -1,0 +1,14 @@
+body {
+    background-image: linear-gradient(rgb(14, 120, 241),white); height: 1000px; width: 1000px;
+}
+h1 {
+    color: darkturquoise;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    text-align: center;
+}
+h2 {
+    background-color: dodgerblue;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    text-align: center;
+    font-style: normal;
+}
