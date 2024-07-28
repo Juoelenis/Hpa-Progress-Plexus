@@ -4,3 +4,5 @@ It is open source and free and has no cost.
 If you want to contribute to the project send me an email (juogelenis@gmail.com) 
 Thanks :D
 Download link (zip): https://mega.nz/file/BnV3nazT#2RegQ8_jizrAP9UAUORsD8eDQHxo-eYcAs-rR0LZvgQ 
+
+Web Version: https://www.hpaprogressplexus.neocities.org
