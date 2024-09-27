@@ -7,4 +7,3 @@ Download link (zip): https://mega.nz/file/BnV3nazT#2RegQ8_jizrAP9UAUORsD8eDQHxo-
 
 Web Version: https://hpaprogressplexus.neocities.org
 
-IMPORTANT: Hpa Progress Plexus IS NOW AN ABANDONED PROJECT AND WONT GET BUG FIXES!!! IM NOW WORKING ON A SEQUEL THAT WILL HAVE JS EMBEDED, THANKS FOR READING THIS.  
