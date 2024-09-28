@@ -1,0 +1,71 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Background Remover</title>
+  <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@tensorflow-models/body-pix"></script>
+  <style>
+    canvas {
+      position: absolute;
+      top: 0;
+      left: 0;
+    }
+  </style>
+</head>
+<body>
+  <input type="file" id="uploadImage" accept="image/*">
+  <canvas id="canvas"></canvas>
+
+  <script>
+    let model;
+    const canvas = document.getElementById('canvas');
+    const ctx = canvas.getContext('2d');
+
+    // Load the BodyPix model
+    async function loadModel() {
+      model = await bodyPix.load();
+      console.log('BodyPix model loaded');
+    }
+
+    // Function to handle image upload and processing
+    document.getElementById('uploadImage').addEventListener('change', async function (e) {
+      const img = new Image();
+      img.src = URL.createObjectURL(e.target.files[0]);
+
+      img.onload = async function () {
+        // Set canvas dimensions to match the uploaded image
+        canvas.width = img.width;
+        canvas.height = img.height;
+        
+        // Draw the image on the canvas
+        ctx.drawImage(img, 0, 0);
+
+        // Segment the person from the image
+        const segmentation = await model.segmentPerson(canvas);
+
+        // Get image data from canvas
+        const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
+        const data = imageData.data;
+
+        // Loop through all the pixels and remove the background
+        for (let i = 0; i < data.length; i += 4) {
+          // Check the segmentation data for background
+          if (segmentation.data[i / 4] === 0) {
+            // Set background pixels to transparent
+            data[i + 3] = 0;
+          }
+        }
+
+        // Put the updated image data back to the canvas
+        ctx.putImageData(imageData, 0, 0);
+      }
+    });
+
+    // Load the model when the page loads
+    loadModel();
+  </script>
+</body>
+</html>
