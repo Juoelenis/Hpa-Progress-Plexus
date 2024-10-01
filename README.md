@@ -9,3 +9,6 @@ Download link (zip, Legacy old version): https://mega.nz/file/BnV3nazT#2RegQ8_ji
 
 Web Version: https://hpaprogressplexus.neocities.org
 
+![elephpant-running-78x48](https://github.com/user-attachments/assets/e411b51e-91c3-4ecf-ba98-bbbb491b231b)
+# Now Supports Php 
+Hpp now supports php better than ever! Even tho, php cant be added in the web version of hpp, it is available in the source Edition and the Entertainment edition. 
