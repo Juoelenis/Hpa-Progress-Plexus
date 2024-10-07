@@ -1,8 +1,8 @@
 body {
-      background-image: linear-gradient(green,red);
+      background-image: radial-gradient(rgb(244, 247, 21),rgb(13, 192, 58)); height: 1000px; width: 1000px;
 }
 h1 {
-     color: lawngreen;
+     color: rgb(61, 117, 5);
      text-align: center;
     font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
 
@@ -13,7 +13,7 @@ p {
 
 }
 h3 {
-   font-family: unset;
+   font-family: cursive;
       font: bold;
       color: mediumslateblue;
 }
@@ -23,19 +23,19 @@ h3 {
 }
 topnav a{
       float: left;
-      color: blanchedalmond;
+      color: rgb(73, 209, 10);
       text-align: center;
       padding: 14px 16px;
       text-decoration: none;
       font-size: 17px;
 }
 .topnav a:hover {
-      background-color: darkgoldenrod;
+      background-color: rgb(2, 155, 160);
       color: black;
 }
 .topnav a.active {
       background-color: 04AA6D;
-      color: white;
+      color: rgb(0, 255, 255);
 }
 h2 {
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -43,5 +43,22 @@ h2 {
 }
 hr {
       text-align: right;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+h4 {
+  text-align: center;
+
+}
+h5 {
+  text-align: center;
+  font-family: cursive;
+}
+.center {
+      display: block;
+      margin-right: auto;
+      margin-left: auto;
+      width: 10%;
+}
+a {
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
