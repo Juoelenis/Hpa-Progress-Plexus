@@ -1,0 +1,15 @@
+body {
+    background-image: radial-gradient(blue,yellow);
+}
+h1 {
+    font-size: 100px;
+    font-family: cursive;
+}
+h2 {
+    font-family: cursive;
+    color: teal;
+}
+h3 {
+    font-family: cursive;
+    color: rgb(19, 131, 75);
+}

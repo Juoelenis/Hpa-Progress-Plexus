@@ -1,0 +1,15 @@
+body {
+    background-image: radial-gradient(yellow,orange); height: 1000px; width: 1000px;
+}
+h1 {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 4em;
+    text-align: center;
+}
+h2 {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    text-align: center;
+}
+topnav {
+    color: lawngreen;
+}

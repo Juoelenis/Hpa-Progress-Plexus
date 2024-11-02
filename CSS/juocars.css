@@ -1,0 +1,8 @@
+body {
+    background-image: cross-fade(cyan,white);
+}
+H1 {
+    font-family: cursive;
+    font-style: normal;
+    text-align: center;
+}
