@@ -26,4 +26,16 @@ Since HPP is open source, you can extend it to ur liking, mabye make a functiona
 ![Vimlogo svg](https://github.com/user-attachments/assets/522d078c-d26d-4cea-a74c-b1d579dc4b96)
 # Made with Vim
 I made this in vim, it took forever... 
-Soooo what are u waiting for? Get the latest relase and have fun experimenting! 
+Soooo what are u waiting for? Get the latest relase and have fun experimenting!
+
+# Installation:
+HPA Progress plexus is EZ 2 Install. 
+Just install the latest Stable (or nightly release if ur a dev) release and extract it, then hace fun! 
+
+Another method is Getting the HPP EXEcutable foe windows(also for mac and linux with wine) the steps are sumple, just download then run the installer. 
+Then you can use HPP, More info is gonna be on the wiki! 
+
+# Awesome community
+HPP is backed up by a large community of pasionate virginz that know how to fix ur problems with HPP. Just ask someone or Just check the wiki. 
+
+
