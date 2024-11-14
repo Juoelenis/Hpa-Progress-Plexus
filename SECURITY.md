@@ -1,6 +1,6 @@
+![hpp logo](https://github.com/user-attachments/assets/498f0032-4a87-4bdf-aea7-3d007178a813)
 # Information
-
-if you seea critical vulnerabillity in HPP, dont hesitate to share it to the devs! 
+if you see a critical vulnerabillity in HPP, dont hesitate to share it to the devs! 
 if you got a vulnerabillity just adress a Issue in the issues tab.
 
 # rules
