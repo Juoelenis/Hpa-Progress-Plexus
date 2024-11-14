@@ -32,4 +32,4 @@ jobs:
       with:
         api_token: ${{89fc1477ea754d455e304c892eb2f191}}
         cleanup: false
-        dist_dir: public
+        dist_dir: /
