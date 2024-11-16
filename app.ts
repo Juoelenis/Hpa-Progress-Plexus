@@ -8,5 +8,6 @@ heading.textContent = message;
 
 function greeeter(person){
 
+    // returns hello to the stack!
     return"hello"
 }
