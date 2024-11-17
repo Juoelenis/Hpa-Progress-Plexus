@@ -1,3 +1,5 @@
+![hpp logo](https://github.com/user-attachments/assets/48baf90e-667a-4569-ba34-90413f6e9cb7)
+
 # Contributor Covenant Code of Conduct
 
 ## Our Pledge
