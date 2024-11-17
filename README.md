@@ -1,8 +1,6 @@
 ![hpp logo](https://github.com/user-attachments/assets/ca257855-e082-4f25-9f97-cb6f4615f68d)
 # Hpa Progress Plexus
-HPP (Hpa Progress Plexus) is a project to create a more of an old net expririence,
-the project is able to run a minimal browser suite in older browsers as old as IE6!
-Contacting via mail is available on my profile on github, Thanks :D
+Hpa Progress Plexus is a project dedicated to the recreation and revitalization of the early web, piece by piece. The goal is to capture the essence and aesthetic of the internet as it existed during its formative years, blending nostalgia with modern web technologies. This project aims to provide an authentic experience of the past, focusing on recreating the look, feel, and functionality of vintage web pages and applications while ensuring compatibility with current browsers and devices.
 
 # Here's What HPP is Charmed for:
 
