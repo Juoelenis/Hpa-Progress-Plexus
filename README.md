@@ -2,26 +2,16 @@
 # Hpa Progress Plexus
 Hpa Progress Plexus is a project dedicated to the recreation and revitalization of the early web, piece by piece. The goal is to capture the essence and aesthetic of the internet as it existed during its formative years, blending nostalgia with modern web technologies. This project aims to provide an authentic experience of the past, focusing on recreating the look, feel, and functionality of vintage web pages and applications while ensuring compatibility with current browsers and devices.
 
-# Here's What HPP is Charmed for:
+# Hpa Progress Plexus
+### Hpa Progress Plexus is a project dedicated to the recreation and revitalization of the early web, piece by piece. The goal is to capture the essence and aesthetic of the internet as it existed during its formative years, blending nostalgia with modern web technologies. This project aims to provide an authentic experience of the past, focusing on recreating the look, feel, and functionality of vintage web pages and applications while ensuring compatibility with current browsers and devices.
 
-![elephpant-running-78x48](https://github.com/user-attachments/assets/e411b51e-91c3-4ecf-ba98-bbbb491b231b)
-# Now Supports Php 
-Hpp now supports php better than ever! Even tho, php cant be added in the web version of hpp, it is available in the source Edition and the Entertainment edition. 
-
-![images__5_-removebg-preview](https://github.com/user-attachments/assets/1f281803-ef34-4157-8adb-95e908eddc4d)
-![HTML5_logo_and_wordmark svg-removebg-preview](https://github.com/user-attachments/assets/1d78f76c-d8ef-4605-b71d-888bfc495be3)
-# Build Anything, Make Anything! 
-With html5 and Css3 you can build any page you wish no mater What! 
-There is JS and TS suppoet but its your choice if you wanna embed it, or not. 
-
-![1200px-Open_Source_Initiative svg](https://github.com/user-attachments/assets/32127d29-82d5-495d-a0bb-9e92a917bc4d)
-# Open Source, Has potential! 
-Since HPP is open source, you can extend it to ur liking, mabye make a functional social media or, a Basic app, nothing stops you! 
-
-![Vimlogo svg](https://github.com/user-attachments/assets/522d078c-d26d-4cea-a74c-b1d579dc4b96)
-# Made with Vim
-I made this in vim, it took forever... 
-Soooo what are u waiting for? Get the latest relase and have fun experimenting!
+# Key Features:
+### Piece-by-Piece Recreation: Each component of the project focuses on replicating specific aspects of early web design, from static HTML pages to the simpler interactivity and graphics of the '90s and early 2000s.
+### Retro Aesthetics: Emulating early internet layouts, styles, and color schemes with pixelated fonts, simple CSS, and iconic design choices that define the web's early years.
+### Modern Compatibility: While the project seeks to recreate the old web, it ensures full functionality in modern browsers, offering a nostalgic experience that works seamlessly today.
+### Open Source: The repository is open for contributions, allowing developers to participate in bringing the past back to life. Anyone can help by recreating new pieces of the web, fixing bugs, or improving the user experience.
+### Purpose & Vision:
+The purpose of Hpa Progress Plexus is to provide an educational and immersive experience of the early web. By revisiting and rebuilding classic web components, the project invites both nostalgic internet users and modern web developers to appreciate the evolution of online spaces. The project also serves as a platform for learning, experimentation, and exploration of how the web has progressed over time.
 
 # Installation:
 HPA Progress plexus is EZ 2 Install. 
