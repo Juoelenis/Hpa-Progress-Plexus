@@ -63,7 +63,7 @@ via email (juog2558@gmail.com).
 All complaints will be reviewed and investigated promptly and fairly.
 
 All community leaders are obligated to respect the privacy and security of the
-reporter of any incident.
+reporter of any incident, except for LGBTQ+, it's not welcome here.
 
 ## Enforcement Guidelines
 
