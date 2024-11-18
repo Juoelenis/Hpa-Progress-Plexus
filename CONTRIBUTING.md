@@ -1,5 +1,5 @@
 ![hpp logo](https://github.com/user-attachments/assets/25889a79-344c-4b2a-a46c-34734f430d36)
-# Contributing Stanbdards and Association Pocily
+# Contributing Standards and Association Pocily
 ### HPA Progress Plexus Contribution Policy
 
 Welcome to **HPA Progress Plexus**, a community-driven project focused on reviving the spirit, aesthetics, and technologies of the early internet. We are excited to have you contribute to the project and help us restore the digital landscapes of the past while fostering a collaborative, inclusive, and respectful environment for all contributors.
