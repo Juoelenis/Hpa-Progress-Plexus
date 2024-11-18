@@ -1,9 +1,6 @@
 ![hpp logo](https://github.com/user-attachments/assets/498f0032-4a87-4bdf-aea7-3d007178a813)
-Sure! Here's a draft for a **Security Policy** for your project, **Hpa Progress Plexus**, which seems to focus on reviving old internet technologies. This policy will address key security aspects for maintaining the integrity, confidentiality, and availability of your platform.
 
----
-
-**HPA Progress Plexus Security Policy**
+# HPA Progress Plexus Security Policy
 
 **1. Purpose**
 
