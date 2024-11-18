@@ -1,7 +1,13 @@
 body{
-    background-color: deepskyblue;
+    background-image: radial-gradient(rgb(244, 247, 221),rgb(117, 255, 4)); height: 1000px; width: 1000px;
 }
 h1{
     text-align: center;
-    color: rgb(20, 110, 139);
+    color: rgb(4, 136, 70);
+}
+.center {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 40%;
 }
