@@ -115,5 +115,7 @@ the community.
 
 This code of conduct is signed and Accepted by anyone who uses or contributes to HPP.
 
+for contributing policy visitthis link: https://github.com/Juoelenis/Hpa-Progress-Plexus/blob/main/CONTRIBUTING.md
 
+Thank you for reading!
 
