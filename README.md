@@ -9,15 +9,3 @@
 ### Open Source: The repository is open for contributions, allowing developers to participate in bringing the past back to life. Anyone can help by recreating new pieces of the web, fixing bugs, or improving the user experience.
 ### Purpose & Vision:
 The purpose of Hpa Progress Plexus is to provide an educational and immersive experience of the early web. By revisiting and rebuilding classic web components, the project invites both nostalgic internet users and modern web developers to appreciate the evolution of online spaces. The project also serves as a platform for learning, experimentation, and exploration of how the web has progressed over time.
-
-# Installation:
-HPA Progress plexus is EZ 2 Install. 
-Just install the latest Stable (or nightly release if ur a dev) release and extract it, then hace fun! 
-
-Another method is Getting the HPP EXEcutable foe windows(also for mac and linux with wine) the steps are sumple, just download then run the installer. 
-Then you can use HPP, More info is gonna be on the wiki! 
-
-# Awesome community
-HPP is backed up by a large community of pasionate virginz that know how to fix ur problems with HPP. Just ask someone or Just check the wiki. 
-
-
