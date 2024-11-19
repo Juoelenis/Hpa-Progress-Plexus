@@ -83,6 +83,7 @@ We welcome contributions in all forms—whether you’re a coder, designer, cont
 ### 10. **Acknowledgment**
 When your contributions are accepted, they will be recognized publicly in the project repository and documentation. We value every contribution and ensure that all contributors are acknowledged in line with their contributions.
 
+This document APPLIES TO EVERY PROJECT UNDER THE NAME HPP!
 ---
 
 Thank you for being part of the **HPA Progress Plexus** project. We’re excited to see what you bring to the table, and we’re looking forward to building a unique, historical, and vibrant corner of the internet with you!
