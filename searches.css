@@ -1,0 +1,14 @@
+body {
+ background-image: linear-gradient(rgb(50, 161, 78),rgb(149, 202, 50)); height: 1000px; width: 1000px;
+}
+h1 {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    text-align: center;
+    color: rgb(44, 97, 23);
+}
+
+h2 {
+    font-style: normal;
+    font-family: monospace;
+    text-align: left;
+}
