@@ -1,5 +1,8 @@
 ![hpp_logo-removebg-preview](https://github.com/user-attachments/assets/6264cda0-1c42-49c8-a37a-ddc140425099)
+![yey](https://github.com/user-attachments/assets/8c522fd1-e59e-47fb-8dfb-0edc5cf02e12)
 
+
+# HPP Beta Testing Policy
 ## **Introduction**
 Thank you for your interest in becoming a beta tester for the **HPA Progress Plexus** project! This platform aims to revive and modernize key aspects of early internet culture, communities, and technologies. As part of our beta testing process, we value your feedback to help us ensure a smooth launch and refine our features before the public release.
 
