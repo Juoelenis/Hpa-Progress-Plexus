@@ -76,5 +76,3 @@ For questions or concerns, please contact our support team at [support@hpaprogre
 We deeply appreciate your help in testing HPA Progress Plexus. Your feedback and insights are invaluable in ensuring the success of this project and its place in the digital world.
 
 ---
-
-Feel free to modify this template further depending on the specific needs or requirements of your project!
