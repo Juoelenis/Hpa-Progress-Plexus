@@ -1,4 +1,5 @@
-![hpp_logo-removebg-preview](https://github.com/user-attachments/assets/6264cda0-1c42-49c8-a37a-ddc140425099)
+![hpp_logo-removebg-preview](https://github.com/user-attachments/assets/6264cda0-1c42-49c8-a37a-ddc140425099) ![yey](https://github.com/user-attachments/assets/40c5e4d2-02c3-4078-b744-0ac8ad69e7e7)
+
 
 # HPA Progress Plexus Beta Testing Policy
 
