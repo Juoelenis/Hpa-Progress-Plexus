@@ -11,3 +11,5 @@
 The purpose of Hpa Progress Plexus is to provide an educational and immersive experience of the early web. By revisiting and rebuilding classic web components, the project invites both nostalgic internet users and modern web developers to appreciate the evolution of online spaces. The project also serves as a platform for learning, experimentation, and exploration of how the web has progressed over time.
 
 For the Swift version visit: https://github.com/Juoelenis/HPP-Swift-App
+
+![sketch-1738443485937.png](https://github.com/user-attachments/assets/b848a244-bf4c-4e4c-b6f7-a89dc973ff55)
