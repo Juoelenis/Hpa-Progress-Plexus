@@ -12,6 +12,3 @@ The purpose of Hpa Progress Plexus is to provide an educational and immersive ex
 
 For the Swift version visit: https://github.com/Juoelenis/HPP-Swift-App
 
-![sketch-1738443485937.png](https://github.com/user-attachments/assets/b848a244-bf4c-4e4c-b6f7-a89dc973ff55)
-
-![17372137428923068959649281596832.jpg](https://github.com/user-attachments/assets/bd36cc84-81f8-423c-9102-4b64fb5be1f5)
