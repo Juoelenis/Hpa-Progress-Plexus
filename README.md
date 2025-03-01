@@ -1,4 +1,3 @@
-![20250212_155838.jpg](https://github.com/user-attachments/assets/8e2f3897-b624-4dc7-b812-c1944b7057fc)
 
 
 ![hpp logo](https://github.com/user-attachments/assets/ca257855-e082-4f25-9f97-cb6f4615f68d)
