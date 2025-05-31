@@ -30,8 +30,38 @@
             text-decoration: underline;
         }
     </style>
-
-
+    <!-- ...existing code... -->
+    <style>
+        body {
+            font-family: 'Inter', 'Roboto', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(120deg, #1d5ed8, #4afff6, #3063a9, #2193b0);
+            background-size: 300% 300%;
+            animation: gradientMove 18s ease-in-out infinite;
+        }
+        @keyframes gradientMove {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        footer {
+            margin-top: 40px;
+            padding: 20px 0;
+            background: rgba(33,147,176,0.08);
+            text-align: center;
+        }
+        footer h4, footer h5 {
+            margin: 6px 0;
+        }
+        footer a {
+            color: #2193b0;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        footer a:hover {
+            text-decoration: underline;
+        }
+    </style>
+    <!-- ...existing code... -->
 
 </head>
 <body>

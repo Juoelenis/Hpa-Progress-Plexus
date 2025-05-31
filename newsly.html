@@ -6,11 +6,105 @@
     <title>Newsly</title>
     <link rel="icon" href="cripper.jpg">
     <link rel="stylesheet" href="newsly.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', Arial, sans-serif;
+            background: linear-gradient(120deg, #e53935 0%, #43e97b 100%);
+            min-height: 100vh;
+            margin: 0;
+            padding: 0;
+            color: #232946;
+        }
+        .topnav {
+            background: #232946;
+            overflow: hidden;
+            padding: 0 10px;
+            display: flex;
+            align-items: center;
+            box-shadow: 0 2px 12px #e5393522;
+        }
+        .topnav a {
+            color: #fff;
+            text-align: center;
+            padding: 16px 18px;
+            text-decoration: none;
+            font-size: 17px;
+            font-weight: 600;
+            transition: background 0.2s;
+        }
+        .topnav a.active, .topnav a:hover {
+            background: #e53935;
+            color: #fff;
+        }
+        .container {
+            max-width: 700px;
+            margin: 48px auto;
+            background: #fff;
+            border-radius: 16px;
+            box-shadow: 0 4px 24px rgba(229,57,53,0.10);
+            padding: 36px 28px;
+            text-align: center;
+        }
+        h1 {
+            color: #e53935;
+            font-size: 2.2rem;
+            margin-bottom: 18px;
+        }
+        .news-card {
+            background: linear-gradient(90deg, #ffeaea 0%, #eaffea 100%);
+            border-radius: 12px;
+            box-shadow: 0 2px 8px #43e97b22;
+            padding: 22px 18px;
+            margin-bottom: 24px;
+            text-align: left;
+            display: flex;
+            align-items: flex-start;
+            gap: 18px;
+        }
+        .news-card img {
+            border-radius: 10px;
+            width: 90px;
+            height: 90px;
+            object-fit: cover;
+            box-shadow: 0 2px 8px #e5393522;
+        }
+        .news-content {
+            flex: 1;
+        }
+        .news-title {
+            color: #219150;
+            font-size: 1.15rem;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+        .news-source {
+            color: #888;
+            font-size: 0.98rem;
+            margin-top: 8px;
+        }
+        @media (max-width: 700px) {
+            .container {
+                padding: 14px 2vw;
+            }
+            h1 {
+                font-size: 1.3rem;
+            }
+            .news-card {
+                flex-direction: column;
+                align-items: center;
+                padding: 14px 8px;
+            }
+            .news-card img {
+                width: 60px;
+                height: 60px;
+            }
+        }
+    </style>
 </head>
 <body>
     <div class="topnav">
-        <a class="active"
-        href="index.html">Home</a>
+        <a class="active" href="index.html">Home</a>
         <a href="buba.html">VidTube</a>
         <a href="cashaplay.html">Cashapp On Google Play</a>
         <a href="about.html">about HPP</a>
@@ -22,11 +116,22 @@
         <a href="the iframe page.html">The iFrame Page</a>
         <a href="lists.html">HPP Page List</a>
     </div>
-    <h1>Newsly, Top New News</h1>
-
-    <h2>Intel 13/14 gen cpus are dying, even intel ain't knowing wtf is happenming</h2>
-    <img src="cripper.jpg" height="150px" width="150px">
-    <h2>Crowdstrike update kills millions of pcs around the globe</h2>
-    <a href="https://aka.ms">Source: microsoft</a>
+    <div class="container">
+        <h1>Newsly, Top New News</h1>
+        <div class="news-card">
+            <img src="cripper.jpg" alt="Intel CPU News">
+            <div class="news-content">
+                <div class="news-title">Intel 13/14 gen CPUs are dying, even Intel ain't knowing wtf is happening</div>
+                <div class="news-source">Source: <span style="color:#e53935;">Newsly</span></div>
+            </div>
+        </div>
+        <div class="news-card">
+            <img src="cripper.jpg" alt="Crowdstrike News">
+            <div class="news-content">
+                <div class="news-title">Crowdstrike update kills millions of PCs around the globe</div>
+                <div class="news-source">Source: <a href="https://aka.ms" style="color:#219150;">Microsoft</a></div>
+            </div>
+        </div>
+    </div>
 </body>
 </html>
