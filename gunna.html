@@ -6,16 +6,136 @@
     <title>Fukumean gunna - Musicaly</title>
     <link rel="icon" href="lol 104.png">
     <link rel="stylesheet" href="gunna.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@600&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', Arial, sans-serif;
+            background: linear-gradient(120deg, #1e3c72, #2a5298, #fbc2eb, #a6c1ee, #fbc2eb, #1e3c72);
+            background-size: 400% 400%;
+            animation: ps3wave 18s ease-in-out infinite;
+            min-height: 100vh;
+            margin: 0;
+            padding: 0;
+            color: #232946;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        @keyframes ps3wave {
+            0% { background-position: 0% 50%; }
+            25% { background-position: 50% 100%; }
+            50% { background-position: 100% 50%; }
+            75% { background-position: 50% 0%; }
+            100% { background-position: 0% 50%; }
+        }
+        .topnav {
+            background: #232946cc;
+            backdrop-filter: blur(4px);
+            width: 100vw;
+            max-width: 100%;
+            overflow: hidden;
+            padding: 0 10px;
+            display: flex;
+            align-items: center;
+            box-shadow: 0 2px 12px #1e3c7222;
+            margin-bottom: 32px;
+        }
+        .topnav a {
+            color: #fff;
+            text-align: center;
+            padding: 16px 18px;
+            text-decoration: none;
+            font-size: 17px;
+            font-weight: 600;
+            transition: background 0.2s, color 0.2s;
+            border-radius: 6px;
+            margin-right: 4px;
+        }
+        .topnav a.active, .topnav a:hover {
+            background: #fbc2eb;
+            color: #232946;
+        }
+        .music-container {
+            background: #fff;
+            border-radius: 18px;
+            box-shadow: 0 4px 24px rgba(30,60,114,0.10);
+            padding: 36px 32px 28px 32px;
+            max-width: 400px;
+            width: 100%;
+            text-align: center;
+            margin-top: 32px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .song-cover {
+            width: 160px;
+            height: 160px;
+            object-fit: cover;
+            border-radius: 14px;
+            box-shadow: 0 2px 12px #2a529822;
+            margin-bottom: 18px;
+            background: #fbc2eb22;
+        }
+        h1 {
+            color: #2a5298;
+            font-size: 2rem;
+            margin-bottom: 10px;
+            font-weight: 700;
+            letter-spacing: 1px;
+        }
+        h2 {
+            color: #fbc2eb;
+            font-size: 1.2rem;
+            margin-bottom: 18px;
+            font-weight: 600;
+            text-shadow: 0 2px 8px #2a529822;
+        }
+        audio {
+            width: 100%;
+            margin-top: 18px;
+            outline: none;
+            border-radius: 8px;
+            background: #fbc2eb22;
+            box-shadow: 0 2px 8px #2a529822;
+        }
+        .back-link {
+            display: inline-block;
+            margin-top: 18px;
+            color: #2a5298;
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.2s;
+        }
+        .back-link:hover {
+            color: #fbc2eb;
+        }
+        @media (max-width: 600px) {
+            .music-container {
+                padding: 18px 4vw;
+                margin-top: 18px;
+            }
+            h1 {
+                font-size: 1.2rem;
+            }
+            .song-cover {
+                width: 100px;
+                height: 100px;
+            }
+        }
+    </style>
 </head>
 <body>
     <div class="topnav">
-        <a class="active"
-        href="index.html">Home</a>
-        <a href="musicaly.html">Musically</a>
-        </div>
-    <h1>Musicaly</h1>
-    <h2>Fukumean Gunna</h2>
-    <audio src="fukumean.mp3" controls autoplay></audio>
-    
+        <a class="active" href="index.html">Home</a>
+        <a href="musicaly.html">Musicaly</a>
+    </div>
+    <div class="music-container">
+        <img src="gunna.png" alt="Fukumean Cover" class="song-cover">
+        <h1>Musicaly</h1>
+        <h2>Fukumean - Gunna</h2>
+        <audio src="fukumean.mp3" controls autoplay></audio>
+        <a class="back-link" href="musicaly.html">&larr; Back to Musicaly</a>
+    </div>
 </body>
 </html>
