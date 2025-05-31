@@ -3,18 +3,99 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Alan walker Force - Musicaly</title>
+    <title>Alan Walker - Force | Musicaly</title>
     <link rel="icon" href="lol 104.png">
     <link rel="stylesheet" href="force.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', Arial, sans-serif;
+            background: linear-gradient(120deg, #232946 0%, #16161a 80%);
+            margin: 0;
+            padding: 0;
+            color: #f4f4f4;
+        }
+        .topnav {
+            background: #232946;
+            overflow: hidden;
+            padding: 0 10px;
+            display: flex;
+            align-items: center;
+            box-shadow: 0 2px 12px rgba(35,41,70,0.12);
+        }
+        .topnav a {
+            color: #f4f4f4;
+            text-align: center;
+            padding: 16px 18px;
+            text-decoration: none;
+            font-size: 17px;
+            transition: background 0.2s, color 0.2s;
+        }
+        .topnav a.active, .topnav a:hover {
+            background: #e53935;
+            color: #fff;
+        }
+        .container {
+            max-width: 500px;
+            margin: 48px auto 0 auto;
+            background: #232946;
+            border-radius: 16px;
+            box-shadow: 0 4px 24px rgba(35,41,70,0.18);
+            padding: 32px 24px;
+            text-align: center;
+        }
+        h1 {
+            color: #6dd5ed;
+            margin-bottom: 18px;
+            font-size: 2rem;
+        }
+        audio {
+            width: 100%;
+            margin: 24px 0 16px 0;
+            outline: none;
+            border-radius: 8px;
+            background: #16161a;
+        }
+        .download-link {
+            display: inline-block;
+            margin-top: 10px;
+            color: #6dd5ed;
+            background: #16161a;
+            padding: 10px 22px;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: background 0.2s, color 0.2s;
+            box-shadow: 0 2px 8px #6dd5ed22;
+        }
+        .download-link:hover {
+            background: #6dd5ed;
+            color: #16161a;
+        }
+        h3 {
+            color: #b8c1ec;
+            margin-top: 24px;
+        }
+        @media (max-width: 600px) {
+            .container {
+                padding: 16px 4vw;
+            }
+            h1 {
+                font-size: 1.2rem;
+            }
+        }
+    </style>
 </head>
 <body>
     <div class="topnav">
-        <a class="active"
-        href="index.html">Home</a>
-        <a href="musicaly.html">Musically</a>
-        </div>
-    <h1>Alan walker - Force</h1>
-    <audio src="alan walker force.mp3" controls autoplay></audio>
-    <h3>Song is downloadable</h3>
+        <a class="active" href="index.html">Home</a>
+        <a href="musicaly.html">Musicaly</a>
+    </div>
+    <div class="container">
+        <h1>Alan Walker - Force</h1>
+        <audio src="alan walker force.mp3" controls autoplay></audio>
+        <a class="download-link" href="alan walker force.mp3" download>Download Song</a>
+        <h3>Song is downloadable</h3>
+    </div>
 </body>
 </html>

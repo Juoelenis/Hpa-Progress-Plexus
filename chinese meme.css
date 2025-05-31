@@ -1,0 +1,20 @@
+body {
+    background-image: radial-gradient(rgb(0, 146, 231),white); height: 950px; width: 950px;
+}
+h1 {
+    text-align: center;
+    text-decoration: rgb(0, 255, 255);
+    text-shadow: blue;
+    font-family: cursive;
+    font-style: normal;
+    font-size: 100px;
+}
+h2 {
+    font-family: cursive;
+    text-align: center;
+}
+h3 {
+    text-align: left;
+    font-family: cursive;
+    font-style: italic;
+}

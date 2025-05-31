@@ -5,15 +5,101 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Hpa Progress Plexus</title>
     <link rel="stylesheet" href="about.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', Arial, sans-serif;
+            background: linear-gradient(120deg, #e0eafc, #cfdef3 80%);
+            margin: 0;
+            padding: 0;
+            color: #232946;
+        }
+        .container {
+            max-width: 700px;
+            margin: 48px auto;
+            background: #fff;
+            border-radius: 16px;
+            box-shadow: 0 4px 24px rgba(33,147,176,0.10);
+            padding: 36px 28px;
+            text-align: center;
+        }
+        h1 {
+            color: #e53935;
+            font-size: 2.2rem;
+            margin-bottom: 12px;
+        }
+        h2 {
+            color: #2193b0;
+            font-size: 1.15rem;
+            margin-bottom: 18px;
+            font-weight: 400;
+        }
+        h3 {
+            color: #888;
+            font-size: 1.05rem;
+            margin-bottom: 18px;
+            font-weight: 600;
+        }
+        h5 {
+            color: #b8c1ec;
+            margin-top: 24px;
+        }
+        .about-imgs {
+            display: flex;
+            justify-content: center;
+            gap: 24px;
+            margin: 24px 0 18px 0;
+            flex-wrap: wrap;
+        }
+        .about-imgs img {
+            border-radius: 10px;
+            box-shadow: 0 2px 8px rgba(33,147,176,0.08);
+            max-width: 100%;
+            height: auto;
+        }
+        .note {
+            color: #e53935;
+            background: #ffeaea;
+            border-radius: 8px;
+            padding: 10px 0;
+            margin: 18px 0 24px 0;
+            font-weight: 600;
+            font-size: 1rem;
+            box-shadow: 0 2px 8px #e5393522;
+        }
+        @media (max-width: 700px) {
+            .container {
+                padding: 14px 2vw;
+            }
+            h1 {
+                font-size: 1.3rem;
+            }
+            .about-imgs {
+                flex-direction: column;
+                gap: 12px;
+            }
+        }
+    </style>
 </head>
 <body>
-    
-   <h1>about hpa progress plexus</h1> 
-   <h2>hpa progress plexus (HPP) is a H1 P2 based intrenat protocol. everyone loves it cuz, they can browse, watch, interact with pages even if offline, without connecting to the net. it also brings good ol' vibes of the early net! make webpages with html5 and css3 offline,add pages sorce codes. make ur own, its your choice :D please remember that if you are using this in a browser the embed media (eg. Vidtube vids musicaly songs) wont work cuz icand link,em in my github (idk why) feel free to edit the sorce code!</h2>
-   <h3>if you want to support the project please favourite it on github,thanks :D</h3>
-   <img src="cool.jpg" height="150px" width="250px">
-   <img src="200.gif" alt="works best on IE8 And Above!" height="50px" width 100px>
-   <h3>If youtube didn't exist and all theese proggramming channels (eg. brocode,code with mosh, lewis) i would'nt have made this project. without yt stack overflow an all theese channels,hpp would'nt be possible. Thanks for using hpp to make the internet great again :)</h3>
-   <h5>ver. 1.8.9 (nightly)</h5>
+    <div class="container">
+        <h1>About HPP</h1>
+        <h2>
+            Hpa Progress Plexus (HPP) is a H1 P2 based intranet protocol. Everyone loves it because you can browse, watch, and interact with pages even offline, without connecting to the net.<br><br>
+            Make webpages with HTML5 and CSS3 offline, add page source codes, and make your own—it's your choice! 😃
+        </h2>
+        <div class="note">
+            If you are using this in a browser, embedded media (e.g., VidTube videos, Musicaly songs) may not work due to GitHub limitations. Feel free to edit the source code!
+        </div>
+        <h3>
+            If you want to support the project, please favorite it on GitHub. Thanks! 😃
+        </h3>
+        <div class="about-imgs">
+            <img src="cool.jpg" height="150" width="250" alt="Cool HPP">
+            <img src="200.gif" alt="Works best on Google Chrome!" height="50" width="100">
+        </div>
+        <h3>Open Source Initiatived Since 2024. HPP Inc.</h3>
+        <h5>ver.2.0 (2025 Re-write Release)</h5>
+    </div>
 </body>
 </html>

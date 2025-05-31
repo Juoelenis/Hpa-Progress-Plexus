@@ -1,0 +1,13 @@
+body {
+    background-image: linear-gradient(aqua,white);
+ }
+ h1 {
+     text-align: center;
+     font-family: cursive;
+     color: forestgreen;
+ }
+ h2 {
+     text-align: center;
+     font-family: cursive;
+     color: firebrick;
+ }

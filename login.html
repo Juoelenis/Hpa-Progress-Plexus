@@ -6,22 +6,165 @@
     <title>Login Page</title>
     <script src="login.js" defer></script>
     <link rel="stylesheet" href="login.css">
-    <link rel="icon" href="hpp logo.png">
+    <link rel="icon" href="hpp-n-l-p.png">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', Arial, sans-serif;
+            background: linear-gradient(120deg, #e0eafc 0%, #b2fefa 100%);
+            min-height: 100vh;
+            margin: 0;
+            padding: 0;
+            color: #232946;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .login-container {
+            background: #fff;
+            border-radius: 16px;
+            box-shadow: 0 4px 24px rgba(33,147,176,0.10);
+            padding: 36px 32px 28px 32px;
+            max-width: 350px;
+            width: 100%;
+            text-align: center;
+        }
+        .login-container img {
+            height: 60px;
+            margin-bottom: 18px;
+            border-radius: 12px;
+            box-shadow: 0 2px 8px #b2fefa44;
+        }
+        h2 {
+            color: #2193b0;
+            margin-bottom: 10px;
+            font-size: 1.3rem;
+            font-weight: 700;
+        }
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+        }
+        label {
+            text-align: left;
+            color: #232946;
+            font-weight: 600;
+            margin-bottom: 4px;
+        }
+        input[type="text"], input[type="password"] {
+            padding: 10px 12px;
+            border: 1px solid #2193b0;
+            border-radius: 8px;
+            font-size: 1rem;
+            outline: none;
+            transition: border 0.2s;
+        }
+        input[type="text"]:focus, input[type="password"]:focus {
+            border: 1.5px solid #6dd5ed;
+        }
+        button[type="submit"] {
+            padding: 12px 0;
+            background: #2193b0;
+            color: #fff;
+            border: none;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            font-weight: 700;
+            cursor: pointer;
+            margin-top: 8px;
+            transition: background 0.2s;
+        }
+        button[type="submit"]:hover {
+            background: #6dd5ed;
+            color: #232946;
+        }
+        .links {
+            margin-top: 18px;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+        .links a {
+            color: #2193b0;
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.2s;
+            font-size: 1rem;
+        }
+        .links a:hover {
+            color: #e53935;
+            text-decoration: underline;
+        }
+        .error-message {
+            color: #e53935;
+            background: #ffeaea;
+            border-radius: 8px;
+            padding: 8px 0;
+            margin-bottom: 8px;
+            font-weight: 600;
+            display: none;
+        }
+        @media (max-width: 500px) {
+            .login-container {
+                padding: 18px 4vw;
+            }
+        }
+    </style>
+
+<script>
+    // Modern login: checks localStorage for registered users, fallback to demo user
+    document.getElementById('loginForm').addEventListener('submit', function(e) {
+        e.preventDefault();
+        const username = document.getElementById('username').value.trim();
+        const password = document.getElementById('password').value.trim();
+        const errorMsg = document.getElementById('errorMsg');
+        // Check localStorage for registered users
+        let users = JSON.parse(localStorage.getItem('hppUsers') || '{}');
+        if ((users[username] && users[username] === password) || (username === "user" && password === "hpp")) {
+            errorMsg.style.display = "none";
+            window.location.href = "index.html";
+        } else {
+            errorMsg.textContent = "Invalid username or password.";
+            errorMsg.style.display = "block";
+        }
+    });
+</script>
+
 </head>
 <body>
-    <h2>Loginto HPP</h2>
-    <h2>DA!, Best www alternative!</h2>
-    <form id="loginForm">
-        <label for="username">Username:</label>
-        <input type="text" id="username" name="username" required>
-        <br><br>
-        <label for="password">Password:</label>
-        <input type="password" id="password" name="password" required>
-        <br><br>
-        <button type="submit">Login</button>
-        <a href="register.html">Dont Have an Account? Make one!</a>
-        <a href="index.html">Or use without account</a>
-    </form>
+    <div class="login-container">
+        <img src="hpp-n-l-p.png" alt="HPP Logo">
+        <h2>Login to HPP</h2>
+        <div class="error-message" id="errorMsg"></div>
+        <form id="loginForm" autocomplete="on">
+            <label for="username">Username</label>
+            <input type="text" id="username" name="username" required autocomplete="username">
+            <label for="password">Password</label>
+            <input type="password" id="password" name="password" required autocomplete="current-password">
+            <button type="submit">Login</button>
+        </form>
+        <div class="links">
+            <a href="register.html">Don't have an account? Make one!</a>
+            <a href="index.html">Or use without account</a>
+        </div>
+    </div>
+    <script>
+        // Simple demo login (replace with real backend logic)
+        document.getElementById('loginForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const username = document.getElementById('username').value.trim();
+            const password = document.getElementById('password').value.trim();
+            const errorMsg = document.getElementById('errorMsg');
+            // Demo: username "user", password "hpp"
+            if (username === "user" && password === "hpp") {
+                errorMsg.style.display = "none";
+                window.location.href = "index.html";
+            } else {
+                errorMsg.textContent = "Invalid username or password.";
+                errorMsg.style.display = "block";
+            }
+        });
+    </script>
 </body>
 </html>
-

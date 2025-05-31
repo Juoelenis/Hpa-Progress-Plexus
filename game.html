@@ -4,8 +4,156 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Snake in browser!</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@600&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', Arial, sans-serif;
+            background: linear-gradient(120deg, #a8ff78 0%, #78ffd6 100%);
+            min-height: 100vh;
+            margin: 0;
+            padding: 0;
+            color: #232946;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+        }
+        h1 {
+            color: #219150;
+            margin-top: 40px;
+            margin-bottom: 24px;
+            font-size: 2.2rem;
+            letter-spacing: 1px;
+        }
+        .game-container {
+            background: #fff;
+            border-radius: 16px;
+            box-shadow: 0 4px 24px rgba(33,147,80,0.10);
+            padding: 32px 24px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        canvas {
+            background: #232946;
+            border-radius: 8px;
+            box-shadow: 0 2px 12px #78ffd644;
+            margin-bottom: 18px;
+        }
+        .instructions {
+            color: #219150;
+            font-size: 1.1rem;
+            margin-bottom: 10px;
+        }
+        @media (max-width: 600px) {
+            .game-container {
+                padding: 16px 4vw;
+            }
+            h1 {
+                font-size: 1.3rem;
+            }
+            canvas {
+                width: 90vw !important;
+                height: 90vw !important;
+                max-width: 320px !important;
+                max-height: 320px !important;
+            }
+        }
+    </style>
 </head>
 <body>
-    
+    <h1>Snake in Browser!</h1>
+    <div class="game-container">
+        <div class="instructions">Use arrow keys to move. Eat the green squares. Don't hit the wall or yourself!</div>
+        <canvas id="snake" width="400" height="400"></canvas>
+        <div id="score" style="color:#232946;font-weight:600;font-size:1.1rem;">Score: 0</div>
+    </div>
+    <script>
+        // Simple Snake Game
+        const canvas = document.getElementById('snake');
+        const ctx = canvas.getContext('2d');
+        const box = 20;
+        let snake = [{x: 9*box, y: 10*box}];
+        let direction = null;
+        let food = {
+            x: Math.floor(Math.random()*19+1)*box,
+            y: Math.floor(Math.random()*19+1)*box
+        };
+        let score = 0;
+        let gameOver = false;
+
+        document.addEventListener("keydown", dir);
+
+        function dir(e) {
+            if (e.key === "ArrowLeft" && direction !== "RIGHT") direction = "LEFT";
+            else if (e.key === "ArrowUp" && direction !== "DOWN") direction = "UP";
+            else if (e.key === "ArrowRight" && direction !== "LEFT") direction = "RIGHT";
+            else if (e.key === "ArrowDown" && direction !== "UP") direction = "DOWN";
+        }
+
+        function draw() {
+            ctx.fillStyle = "#232946";
+            ctx.fillRect(0, 0, 400, 400);
+
+            for (let i = 0; i < snake.length; i++) {
+                ctx.fillStyle = i === 0 ? "#219150" : "#78ffd6";
+                ctx.fillRect(snake[i].x, snake[i].y, box, box);
+                ctx.strokeStyle = "#fff";
+                ctx.strokeRect(snake[i].x, snake[i].y, box, box);
+            }
+
+            ctx.fillStyle = "#a8ff78";
+            ctx.fillRect(food.x, food.y, box, box);
+
+            // Old head position
+            let snakeX = snake[0].x;
+            let snakeY = snake[0].y;
+
+            // Direction
+            if (direction === "LEFT") snakeX -= box;
+            if (direction === "UP") snakeY -= box;
+            if (direction === "RIGHT") snakeX += box;
+            if (direction === "DOWN") snakeY += box;
+
+            // Check collision
+            if (
+                snakeX < 0 || snakeX >= 400 ||
+                snakeY < 0 || snakeY >= 400 ||
+                collision(snakeX, snakeY, snake)
+            ) {
+                clearInterval(game);
+                gameOver = true;
+                ctx.fillStyle = "#e53935";
+                ctx.font = "bold 2rem Inter, Arial, sans-serif";
+                ctx.fillText("Game Over!", 110, 200);
+                return;
+            }
+
+            // Eat food
+            if (snakeX === food.x && snakeY === food.y) {
+                score++;
+                document.getElementById('score').textContent = "Score: " + score;
+                food = {
+                    x: Math.floor(Math.random()*19+1)*box,
+                    y: Math.floor(Math.random()*19+1)*box
+                };
+            } else {
+                snake.pop();
+            }
+
+            // New head
+            const newHead = {x: snakeX, y: snakeY};
+            snake.unshift(newHead);
+        }
+
+        function collision(x, y, array) {
+            for (let i = 0; i < array.length; i++) {
+                if (x === array[i].x && y === array[i].y) return true;
+            }
+            return false;
+        }
+
+        let game = setInterval(draw, 120);
+    </script>
 </body>
 </html>

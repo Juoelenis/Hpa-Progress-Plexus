@@ -6,30 +6,134 @@
     <title>Musicaly</title>
     <link rel="stylesheet" href="musicaly.css">
     <link rel="icon" href="lol 104.png">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', Arial, sans-serif;
+            background: linear-gradient(120deg, #232946 0%, #16161a 80%);
+            margin: 0;
+            padding: 0;
+            color: #f4f4f4;
+        }
+        .topnav {
+            background: #232946;
+            overflow: hidden;
+            padding: 0 10px;
+            display: flex;
+            align-items: center;
+            box-shadow: 0 2px 12px rgba(35,41,70,0.12);
+        }
+        .topnav a {
+            color: #f4f4f4;
+            text-align: center;
+            padding: 16px 18px;
+            text-decoration: none;
+            font-size: 17px;
+            transition: background 0.2s, color 0.2s;
+        }
+        .topnav a.active, .topnav a:hover {
+            background: #e53935;
+            color: #fff;
+        }
+        .logo-bar {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 32px 0 16px 0;
+        }
+        .logo-bar img {
+            height: 70px;
+            margin-right: 18px;
+            filter: drop-shadow(0 2px 8px #23294688);
+            background: #16161a;
+            border-radius: 12px;
+        }
+        .logo-bar h1 {
+            font-size: 2.2rem;
+            color: #e53935;
+            margin: 0;
+            font-weight: 700;
+            letter-spacing: 1px;
+            text-shadow: 0 2px 8px #23294688;
+        }
+        .music-section {
+            max-width: 500px;
+            margin: 0 auto;
+            background: #232946;
+            border-radius: 16px;
+            box-shadow: 0 4px 24px rgba(35,41,70,0.18);
+            padding: 32px 24px;
+            text-align: center;
+        }
+        .music-section h2 {
+            color: #6dd5ed;
+            margin-bottom: 12px;
+        }
+        .music-section h3 {
+            color: #b8c1ec;
+            margin-bottom: 18px;
+        }
+        .music-list {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+            margin-top: 18px;
+        }
+        .music-list a {
+            background: #16161a;
+            color: #6dd5ed;
+            padding: 14px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: background 0.2s, color 0.2s, box-shadow 0.2s;
+            box-shadow: 0 2px 8px rgba(109,213,237,0.08);
+        }
+        .music-list a:hover {
+            background: #6dd5ed;
+            color: #16161a;
+            box-shadow: 0 4px 16px #6dd5ed44;
+        }
+        @media (max-width: 600px) {
+            .music-section {
+                padding: 16px 4vw;
+            }
+            .logo-bar {
+                flex-direction: column;
+            }
+            .logo-bar img {
+                margin-right: 0;
+                margin-bottom: 10px;
+            }
+        }
+    </style>
 </head>
 <body>
     <div class="topnav">
-        <a class="active"
-        href="index.html">Home</a>
+        <a class="active" href="index.html">Home</a>
         <a href="buba.html">VidTube</a>
         <a href="cashaplay.html">Cashapp On Google Play</a>
         <a href="about.html">about HPP</a>
         <a href="funsta.html">Funstagram</a>
         <a href="searches.html">search</a>
-        <a href="about.html">First Ever HPP page</a>
         <a href="jweeter.html">Jweeter</a>
         <a href="musicaly.html">Musicaly</a>
         <a href="the iframe page.html">The iFrame Page</a>
     </div>
-    <img src="lol 104.png" alt="musicaly logo" class="center">
-    <h1>Musicaly</h1>
-    <h2>Music But on Steroids!</h2>
-    <h3>Best and most popular</h3>
-    <a href="alors on danse.html">Alors on Danse - Stromae</a>
-    <a href="spectre.html">Spectre alan walker</a>
-    <a href="gunna.html">Fukumean Gunna</a>
-    <a href="force.html">Force - Alan Walker</a>
-    
-
+    <div class="logo-bar">
+        <img src="musicaly.png" alt="Musicaly Logo">
+        <h1>Musicaly</h1>
+    </div>
+    <div class="music-section">
+        <h2>Music But on Steroids!</h2>
+        <h3>Best and most popular</h3>
+        <div class="music-list">
+            <a href="alors on danse.html">Alors on Danse - Stromae</a>
+            <a href="spectre.html">Spectre - Alan Walker</a>
+            <a href="gunna.html">Fukumean - Gunna</a>
+            <a href="force.html">Force - Alan Walker</a>
+        </div>
+    </div>
 </body>
 </html>

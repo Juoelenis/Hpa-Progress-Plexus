@@ -6,20 +6,169 @@
     <title>Register Page</title>
     <script src="register.js" defer></script>
     <link rel="stylesheet" href="register.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', Arial, sans-serif;
+            background: linear-gradient(120deg, #e0eafc 0%, #b2fefa 100%);
+            min-height: 100vh;
+            margin: 0;
+            padding: 0;
+            color: #232946;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .register-container {
+            background: #fff;
+            border-radius: 16px;
+            box-shadow: 0 4px 24px rgba(33,147,176,0.10);
+            padding: 36px 32px 28px 32px;
+            max-width: 350px;
+            width: 100%;
+            text-align: center;
+        }
+        h2 {
+            color: #2193b0;
+            margin-bottom: 18px;
+            font-size: 1.3rem;
+            font-weight: 700;
+        }
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+        }
+        label {
+            text-align: left;
+            color: #232946;
+            font-weight: 600;
+            margin-bottom: 4px;
+        }
+        input[type="text"], input[type="password"] {
+            padding: 10px 12px;
+            border: 1px solid #2193b0;
+            border-radius: 8px;
+            font-size: 1rem;
+            outline: none;
+            transition: border 0.2s;
+        }
+        input[type="text"]:focus, input[type="password"]:focus {
+            border: 1.5px solid #6dd5ed;
+        }
+        button[type="submit"] {
+            padding: 12px 0;
+            background: #2193b0;
+            color: #fff;
+            border: none;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            font-weight: 700;
+            cursor: pointer;
+            margin-top: 8px;
+            transition: background 0.2s;
+        }
+        button[type="submit"]:hover {
+            background: #6dd5ed;
+            color: #232946;
+        }
+        .success-message {
+            color: #219150;
+            background: #eaffea;
+            border-radius: 8px;
+            padding: 8px 0;
+            margin-bottom: 8px;
+            font-weight: 600;
+            display: none;
+        }
+        .error-message {
+            color: #e53935;
+            background: #ffeaea;
+            border-radius: 8px;
+            padding: 8px 0;
+            margin-bottom: 8px;
+            font-weight: 600;
+            display: none;
+        }
+        .links {
+            margin-top: 18px;
+        }
+        .links a {
+            color: #2193b0;
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.2s;
+            font-size: 1rem;
+        }
+        .links a:hover {
+            color: #e53935;
+            text-decoration: underline;
+        }
+        @media (max-width: 500px) {
+            .register-container {
+                padding: 18px 4vw;
+            }
+        }
+    </style>
 </head>
 <body>
-    <h2>Create an Account</h2>
-    <form id="registerForm">
-        <label for="username">Username:</label>
-        <input type="text" id="username" name="username" required>
-        <br><br>
-        <label for="password">Password:</label>
-        <input type="password" id="password" name="password" required>
-        <br><br>
-        <label for="confirmPassword">Confirm Password:</label>
-        <input type="password" id="confirmPassword" name="confirmPassword" required>
-        <br><br>
-        <button type="submit">Create Account</button>
-    </form>
+    <div class="register-container">
+        <h2>Create an Account</h2>
+        <div class="success-message" id="successMsg"></div>
+        <div class="error-message" id="errorMsg"></div>
+        <form id="registerForm" autocomplete="on">
+            <label for="username">Username</label>
+            <input type="text" id="username" name="username" required autocomplete="username">
+            <label for="password">Password</label>
+            <input type="password" id="password" name="password" required autocomplete="new-password">
+            <label for="confirmPassword">Confirm Password</label>
+            <input type="password" id="confirmPassword" name="confirmPassword" required autocomplete="new-password">
+            <button type="submit">Create Account</button>
+        </form>
+        <div class="links">
+            <a href="login.html">Already have an account? Login</a>
+            <br>
+            <a href="index.html">Back to Home</a>
+        </div>
+    </div>
+    <script>
+        // Simple demo registration (localStorage, not secure, for demo only)
+        document.getElementById('registerForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const username = document.getElementById('username').value.trim();
+            const password = document.getElementById('password').value;
+            const confirmPassword = document.getElementById('confirmPassword').value;
+            const errorMsg = document.getElementById('errorMsg');
+            const successMsg = document.getElementById('successMsg');
+            errorMsg.style.display = "none";
+            successMsg.style.display = "none";
+
+            if (password.length < 4) {
+                errorMsg.textContent = "Password must be at least 4 characters.";
+                errorMsg.style.display = "block";
+                return;
+            }
+            if (password !== confirmPassword) {
+                errorMsg.textContent = "Passwords do not match.";
+                errorMsg.style.display = "block";
+                return;
+            }
+            // Demo: Save to localStorage (not secure, just for demo)
+            let users = JSON.parse(localStorage.getItem('hppUsers') || '{}');
+            if (users[username]) {
+                errorMsg.textContent = "Username already exists.";
+                errorMsg.style.display = "block";
+                return;
+            }
+            users[username] = password;
+            localStorage.setItem('hppUsers', JSON.stringify(users));
+            successMsg.textContent = "Account created! You can now log in.";
+            successMsg.style.display = "block";
+            // Optionally redirect after a short delay
+            setTimeout(() => {
+                window.location.href = "login.html";
+            }, 1200);
+        });
+    </script>
 </body>
 </html>

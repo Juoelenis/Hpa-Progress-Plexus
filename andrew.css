@@ -1,0 +1,12 @@
+body {
+    background-image: repeating-radial-gradient(rgb(110, 231, 191),white);
+}
+h1 {
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    text-align: center;
+    color: aquamarine;
+}
+h2 {
+    text-align: initial;
+    font-family: 'Times New Roman', Times, serif;
+}

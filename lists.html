@@ -5,38 +5,160 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>HPP Pages List</title>
     <link rel="stylesheet" href="lists.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', Arial, sans-serif;
+            background: linear-gradient(120deg, #e0eafc, #cfdef3 80%);
+            margin: 0;
+            padding: 0;
+        }
+        .topnav {
+            background: #2193b0;
+            overflow: hidden;
+            padding: 0 10px;
+            display: flex;
+            align-items: center;
+        }
+        .topnav a {
+            color: #fff;
+            text-align: center;
+            padding: 16px 18px;
+            text-decoration: none;
+            font-size: 17px;
+            transition: background 0.2s;
+        }
+        .topnav a.active, .topnav a:hover {
+            background: #6dd5ed;
+            color: #222;
+        }
+        .container {
+            max-width: 700px;
+            margin: 40px auto;
+            background: #fff;
+            border-radius: 14px;
+            box-shadow: 0 4px 24px rgba(33,147,176,0.10);
+            padding: 32px 24px;
+        }
+        h1 {
+            text-align: center;
+            color: #2193b0;
+            margin-bottom: 24px;
+        }
+        ul {
+            list-style: none;
+            padding: 0;
+        }
+        li {
+            background: #f0f8ff;
+            margin-bottom: 16px;
+            border-radius: 8px;
+            padding: 18px 18px 12px 18px;
+            box-shadow: 0 2px 8px rgba(33,147,176,0.06);
+            font-size: 1.08rem;
+            display: flex;
+            flex-direction: column;
+        }
+        li a {
+            color: #2193b0;
+            font-weight: 600;
+            text-decoration: none;
+            margin-bottom: 4px;
+            font-size: 1.1rem;
+            transition: color 0.2s;
+        }
+        li a:hover {
+            color: #e53935;
+        }
+        .desc {
+            color: #555;
+            font-size: 0.98rem;
+        }
+        .coming-soon {
+            color: #888;
+            font-style: italic;
+            font-size: 0.97rem;
+            margin-top: 10px;
+        }
+        h4 {
+            text-align: center;
+            color: #888;
+            margin-top: 32px;
+            font-size: 1rem;
+        }
+        @media (max-width: 600px) {
+            .container {
+                padding: 12px 2vw;
+            }
+            li {
+                font-size: 1rem;
+                padding: 12px 8px 8px 12px;
+            }
+        }
+    </style>
 </head>
 <body>
     <div class="topnav">
-        <a class="active"
-        href="index.html">Home</a>
+        <a class="active" href="index.html">Home</a>
         <a href="buba.html">VidTube</a>
         <a href="cashaplay.html">Cashapp On Google Play</a>
         <a href="about.html">about HPP</a>
         <a href="funsta.html">Funstagram</a>
         <a href="searches.html">search</a>
-        <a href="about.html">First Ever HPP page</a>
         <a href="jweeter.html">Jweeter</a>
         <a href="musicaly.html">Musicaly</a>
         <a href="the iframe page.html">The iFrame Page</a>
         <a href="lists.html">HPP Page List</a>
     </div>
-    <h1>List of all HPP Pages</h1>
-    <ul>
-        <li><a href="index.html">Home</a> The homePage of HPP</li>
-        <li><a href="buba.html">VidTube</a> Lets you share and watch vieos smth like youtube</li>
-        <li><a href="cashaplay.html">Cashapp</a> a page that lets ya see cashapp balance and shit</li>
-        <li><a href="about.html">About HPP</a> a page where you can see what hpp is about</li>
-        <li><a href="funsta.html">Funstagram</a> lets you check stories and posts</li>
-        <li><a href="searches.html">HPP Search</a> Lets you search the hpp network (still in beta tho)</li>
-        <li><a href="jweeter.html">Jweeter</a> a platform like twitter</li>
-        <li><a href="musicaly.html">Musicaly</a> your go-to place for all music</li>
-        <li><a href="the iframe page.html"> Iframe page(cancelled)</a>old project of iframes</li>
-        <li><a href="weatherAPI/weatherapp.html">Weatherly</li>
-        <h3>More pages to come, stay tuned on the GitHub Repository!</h3>
-
-    </ul>
-    <h4>fun fact: i don't have fancy office, im coding this while standing</h4>
-
+    <div class="container">
+        <h1>List of all HPP Pages</h1>
+        <h3>HPP has a Variety of Pages made by users and People Like You! here is a List of the Top Most Used Pages on the HPP Network:</h3>
+        <ul>
+            <li>
+                <a href="index.html">Home</a>
+                <span class="desc">The homepage of HPP</span>
+            </li>
+            <li>
+                <a href="buba.html">VidTube</a>
+                <span class="desc">Lets you share and watch videos, like YouTube</span>
+            </li>
+            <li>
+                <a href="cashaplay.html">CashApp</a>
+                <span class="desc">A page that lets you see CashApp balance and more</span>
+            </li>
+            <li>
+                <a href="about.html">About HPP</a>
+                <span class="desc">A page where you can see what HPP is about</span>
+            </li>
+            <li>
+                <a href="funsta.html">Funstagram</a>
+                <span class="desc">Lets you check stories and posts</span>
+            </li>
+            <li>
+                <a href="searches.html">HPP Search</a>
+                <span class="desc">Lets you search the HPP network (still in beta)</span>
+            </li>
+            <li>
+                <a href="jweeter.html">Jweeter</a>
+                <span class="desc">A platform like Twitter</span>
+            </li>
+            <li>
+                <a href="musicaly.html">Musicaly</a>
+                <span class="desc">Your go-to place for all music</span>
+            </li>
+            <li>
+                <a href="the iframe page.html">Iframe Page</a>
+                <span class="desc">Old project of iframes (cancelled)</span>
+            </li>
+            <li>
+                <a href="weatherAPI/weatherapp.html">Weatherly</a>
+                <span class="desc">Check the weather in your area</span>
+            </li>
+        </ul>
+        <div class="coming-soon">
+            <h3>More pages to come, stay tuned on the GitHub Repository!</h3>
+        </div>
+        <h4>Fun fact: I don't have a fancy office, I'm coding this while standing.</h4>
+    </div>
 </body>
 </html>

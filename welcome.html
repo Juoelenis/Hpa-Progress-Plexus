@@ -4,14 +4,120 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Welcome to HPP!</title>
-    <link rel="icon" href="hpp logo.png">
+    <link rel="icon" href="hpp-n-l-p.png">
     <link rel="stylesheet" href="welcome.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', Arial, sans-serif;
+            background: linear-gradient(120deg, #e0eafc 0%, #b2fefa 100%);
+            min-height: 100vh;
+            margin: 0;
+            padding: 0;
+            color: #232946;
+        }
+        .topnav {
+            background: #2193b0;
+            overflow: hidden;
+            padding: 0 10px;
+            display: flex;
+            align-items: center;
+            box-shadow: 0 2px 12px rgba(33,147,176,0.10);
+        }
+        .topnav a {
+            color: #fff;
+            text-align: center;
+            padding: 16px 18px;
+            text-decoration: none;
+            font-size: 17px;
+            transition: background 0.2s;
+        }
+        .topnav a.active, .topnav a:hover {
+            background: #6dd5ed;
+            color: #222;
+        }
+        .logo {
+            display: block;
+            margin: 40px auto 18px auto;
+            height: 90px;
+            border-radius: 18px;
+            box-shadow: 0 2px 12px #b2fefa44;
+        }
+        .container {
+            max-width: 700px;
+            margin: 32px auto;
+            background: #fff;
+            border-radius: 16px;
+            box-shadow: 0 4px 24px rgba(33,147,176,0.10);
+            padding: 36px 28px;
+            text-align: center;
+        }
+        h1 {
+            color: #e53935;
+            font-size: 2.2rem;
+            margin-bottom: 12px;
+        }
+        h2 {
+            color: #2193b0;
+            font-size: 1.15rem;
+            margin-bottom: 18px;
+            font-weight: 400;
+        }
+        a[href="index.html"] {
+            display: inline-block;
+            margin: 24px 0 18px 0;
+            padding: 12px 32px;
+            background: #2193b0;
+            color: #fff;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            text-decoration: none;
+            box-shadow: 0 2px 8px #2193b044;
+            transition: background 0.2s, color 0.2s;
+        }
+        a[href="index.html"]:hover {
+            background: #6dd5ed;
+            color: #232946;
+        }
+        h3 {
+            color: #888;
+            font-size: 1.05rem;
+            margin-bottom: 12px;
+            font-weight: 500;
+        }
+        @media (max-width: 700px) {
+            .container {
+                padding: 14px 2vw;
+            }
+            h1 {
+                font-size: 1.3rem;
+            }
+            .logo {
+                height: 60px;
+            }
+        }
+    </style>
 </head>
 <body>
-    <h1>Welcome to Hpa Progress Plexus!</h1>
-    <h2>Hpa progress plexus (hpp) is a h1 p2 based af internet alternative that actually cares abt word peace. check out the github for the latest release!</h2>
-    <a href="index.html">Start surfin' the HPP!</a>
-    <h3>are you a developer? check out the github for the latest file improvements!</h3>
-    <h3>for contributors, this is my email: juog2558@gmail.com</h3>
+    <div class="topnav">
+        <a class="active" href="index.html">Home</a>
+        <a href="about.html">About HPP</a>
+        <a href="funsta.html">Funstagram</a>
+        <a href="searches.html">Search</a>
+        <a href="jweeter.html">Jweeter</a>
+        <a href="the iframe page.html">iFrame Page</a>
+    </div>
+    <div class="container">
+        <img src="hpp-n-l-p.png" alt="HPP Logo" class="logo">
+        <h1>Welcome to Hpa Progress Plexus!</h1>
+        <h2>
+            Hpa Progress Plexus (HPP) is a H1 P2 based AF internet alternative that actually cares about world peace.<br>
+            Check out the GitHub for the latest release!
+        </h2>
+        <a href="index.html">Start surfin' the HPP!</a>
+        <h3>Are you a developer? Check out the GitHub for the latest file improvements!</h3>
+        <h3>For contributors, this is my email: juog2558@gmail.com</h3>
+    </div>
 </body>
 </html>

@@ -1,9 +1,82 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <title="DS Store">
-  </head>
-  <body>
-    <h1>DS Store place</h1>
-  </body>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>DS Store</title>
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+    <style>
+        body {
+            background: linear-gradient(135deg, #e0eafc 0%, #cfdef3 100%);
+            min-height: 100vh;
+            margin: 0;
+            padding: 0;
+            font-family: 'Press Start 2P', Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+        }
+        .ds-header {
+            margin-top: 48px;
+            color: #e60012;
+            font-size: 2.2rem;
+            letter-spacing: 2px;
+            text-shadow: 2px 2px 0 #fff, 4px 4px 0 #888;
+            border-bottom: 4px solid #e60012;
+            padding-bottom: 12px;
+            margin-bottom: 32px;
+        }
+        .ds-card {
+            background: #fff;
+            border-radius: 18px;
+            box-shadow: 0 4px 24px rgba(33,147,176,0.10);
+            padding: 32px 24px;
+            max-width: 400px;
+            text-align: center;
+            margin-bottom: 32px;
+        }
+        .ds-btn {
+            display: inline-block;
+            background: #e60012;
+            color: #fff;
+            font-family: 'Press Start 2P', Arial, sans-serif;
+            font-size: 1rem;
+            padding: 14px 32px;
+            border: none;
+            border-radius: 8px;
+            margin-top: 24px;
+            text-decoration: none;
+            box-shadow: 0 2px 8px rgba(230,0,18,0.12);
+            transition: background 0.2s, transform 0.2s;
+            cursor: pointer;
+        }
+        .ds-btn:hover {
+            background: #b8000a;
+            transform: scale(1.05);
+        }
+        .ds-footer {
+            margin-top: 40px;
+            color: #888;
+            font-size: 0.9rem;
+            letter-spacing: 1px;
+        }
+        @media (max-width: 500px) {
+            .ds-header { font-size: 1.2rem; }
+            .ds-card { padding: 16px 6vw; }
+            .ds-btn { font-size: 0.8rem; padding: 10px 12vw; }
+        }
+    </style>
+</head>
+<body>
+    <div class="ds-header">DS Store</div>
+    <div class="ds-card">
+        <h2 style="color:#222; margin-top:0;">Welcome to the DS Store!</h2>
+        <p style="color:#444;">Discover classic Nintendo DS games and apps.<br>Enjoy a retro experience!</p>
+        <a class="ds-btn" href="#">Browse Games</a>
+    </div>
+    <div class="ds-footer">
+        &copy; 2025 DS Store. Inspired by Nintendo.<br>
+        <span style="font-size:0.8em;">Not affiliated with Nintendo.</span>
+    </div>
+</body>
 </html>

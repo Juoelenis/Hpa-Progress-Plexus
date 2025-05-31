@@ -3,14 +3,95 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>HPP search Results</title>
+    <title>HPP Search Results</title>
     <link rel="stylesheet" href="searches.css">
-    <link rel="icon" href="hpp logo.png"> 
+    <link rel="icon" href="hpp logo.png">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', Arial, sans-serif;
+            background: linear-gradient(120deg, #e0eafc, #cfdef3);
+            margin: 0;
+            padding: 0;
+        }
+        .topnav {
+            background: #2193b0;
+            overflow: hidden;
+            padding: 0 10px;
+        }
+        .topnav a {
+            float: left;
+            color: #fff;
+            text-align: center;
+            padding: 16px 18px;
+            text-decoration: none;
+            font-size: 17px;
+            transition: background 0.2s;
+        }
+        .topnav a.active, .topnav a:hover {
+            background: #6dd5ed;
+            color: #222;
+        }
+        .search-container {
+            display: flex;
+            justify-content: center;
+            margin: 40px 0 20px 0;
+        }
+        .search-container input[type="search"] {
+            width: 260px;
+            padding: 10px 14px;
+            border: 1px solid #2193b0;
+            border-radius: 6px 0 0 6px;
+            outline: none;
+            font-size: 16px;
+        }
+        .search-container button {
+            padding: 10px 18px;
+            border: none;
+            background: #2193b0;
+            color: #fff;
+            border-radius: 0 6px 6px 0;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+        .search-container button:hover {
+            background: #6dd5ed;
+            color: #222;
+        }
+        .results {
+            max-width: 500px;
+            margin: 0 auto;
+            background: #fff;
+            border-radius: 10px;
+            box-shadow: 0 2px 12px rgba(33,147,176,0.08);
+            padding: 30px 24px;
+            text-align: center;
+        }
+        .site-list {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            margin-top: 18px;
+        }
+        .site-list a {
+            background: #f0f8ff;
+            color: #2193b0;
+            padding: 12px;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: background 0.2s, color 0.2s;
+        }
+        .site-list a:hover {
+            background: #2193b0;
+            color: #fff;
+        }
+    </style>
 </head>
 <body>
     <div class="topnav">
-        <a class="active"
-        href="index.html">Home</a>
+        <a class="active" href="index.html">Home</a>
         <a href="buba.html">VidTube</a>
         <a href="cashaplay.html">Cashapp On Google Play</a>
         <a href="about.html">about HPP</a>
@@ -20,19 +101,23 @@
         <a href="musicaly.html">Musicaly</a>
         <a href="lists.html">HPP Page List</a>
     </div>
-     <h1>HPP search</h1>
-     <input type="search" height="15px" width="100px">
-     <h2>No Result. But don't Fret! check the available sites!</h2>
-     <h2>Available HPP Sites:</h2>
-        <a href="buba.html">VidTube</a>
-        <a href="cashaplay.html">Cashapp On Google Play</a>
-        <a href="about.html">about HPP</a>
-        <a href="funsta.html">Funstagram</a>
-        <a href="searches.html">search</a>
-        <a href="jweeter.html">Jweeter</a>
-        <a href="musicaly.html">Musicaly</a>
-        <a href="lists.html">HPP Page List</a>
+    <div class="search-container">
+        <input type="search" placeholder="Search the HPP..." />
+        <button>Search</button>
     </div>
-
+    <div class="results">
+        <h1>HPP Search</h1>
+        <h2>No Result. But don't fret! Check the available sites:</h2>
+        <div class="site-list">
+            <a href="buba.html">VidTube</a>
+            <a href="cashaplay.html">Cashapp On Google Play</a>
+            <a href="about.html">about HPP</a>
+            <a href="funsta.html">Funstagram</a>
+            <a href="searches.html">search</a>
+            <a href="jweeter.html">Jweeter</a>
+            <a href="musicaly.html">Musicaly</a>
+            <a href="lists.html">HPP Page List</a>
+        </div>
+    </div>
 </body>
 </html>
