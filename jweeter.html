@@ -3,13 +3,123 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Jweeeter</title>
+    <title>Jweeter</title>
     <link rel="icon" href="jweeterico.jpg">
     <link rel="stylesheet" href="jweeter.css">
+    <!-- Twitter-like font -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=Chirp:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Chirp', 'Inter', Arial, sans-serif;
+            background: linear-gradient(120deg, #e0eafc 0%, #b2fefa 100%);
+            margin: 0;
+            padding: 0;
+            color: #0f1419;
+        }
+        .topnav {
+            background: #1da1f2;
+            overflow: hidden;
+            padding: 0 10px;
+            display: flex;
+            align-items: center;
+            box-shadow: 0 2px 12px #1da1f222;
+        }
+        .topnav a {
+            color: #fff;
+            text-align: center;
+            padding: 16px 18px;
+            text-decoration: none;
+            font-size: 17px;
+            font-weight: 600;
+            transition: background 0.2s;
+            border-radius: 6px;
+            margin-right: 4px;
+        }
+        .topnav a.active, .topnav a:hover {
+            background: #0d8ddb;
+            color: #fff;
+        }
+        .logo-bar {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 36px 0 18px 0;
+        }
+        .logo-bar img {
+            height: 60px;
+            margin-right: 14px;
+            border-radius: 12px;
+            box-shadow: 0 2px 8px #1da1f244;
+        }
+        .logo-bar h1 {
+            font-family: 'Chirp', 'Inter', Arial, sans-serif;
+            font-size: 2.2rem;
+            color: #1da1f2;
+            margin: 0;
+            font-weight: 700;
+            letter-spacing: 1px;
+        }
+        .tweet-section {
+            max-width: 540px;
+            margin: 0 auto;
+            background: #fff;
+            border-radius: 16px;
+            box-shadow: 0 4px 24px #1da1f210;
+            padding: 32px 24px;
+            text-align: left;
+        }
+        .tweet-section h2 {
+            color: #0f1419;
+            font-size: 1.2rem;
+            margin-bottom: 18px;
+            font-weight: 600;
+        }
+        .tweet {
+            background: #f7fafd;
+            border-radius: 12px;
+            padding: 18px 16px;
+            margin-bottom: 18px;
+            box-shadow: 0 2px 8px #1da1f210;
+            font-size: 1.1rem;
+            color: #0f1419;
+        }
+        .tweet .user {
+            font-weight: 700;
+            color: #1da1f2;
+            margin-bottom: 6px;
+            display: block;
+        }
+        .tweet .meta {
+            color: #657786;
+            font-size: 0.95rem;
+            margin-bottom: 8px;
+        }
+        .tweet .content {
+            margin-bottom: 0;
+        }
+        .celebrate {
+            text-align: center;
+            margin: 24px 0 0 0;
+            color: #1da1f2;
+            font-size: 1.1rem;
+            font-weight: 600;
+        }
+        @media (max-width: 600px) {
+            .tweet-section {
+                padding: 14px 2vw;
+            }
+            .logo-bar h1 {
+                font-size: 1.3rem;
+            }
+            .logo-bar img {
+                height: 40px;
+            }
+        }
+    </style>
 </head>
 <body>
     <div class="topnav">
-        <a class="active"
+        <a class="active" href="jweeter.html">Jweeter</a>
         <a href="my page.html">Home</a>
         <a href="buba.html">VidTube</a>
         <a href="cashaplay.html">Cashapp On Google Play</a>
@@ -17,23 +127,26 @@
         <a href="funsta.html">Funstagram</a>
         <a href="searches.html">search</a>
         <a href="index.html">First Ever HPP page</a>
-        <a href="jweeter.html">Jweeter</a>
     </div>
-    <h1>Jweetr made it to the HPP!</h1>
-    <h2>to celebrate the come of jweeter to hpp lets sing cuz why not?</h2>
-    <!DOCTYPE html>
-<html>
-  <head>
-    <title>Center</title>
-  </head>
-  <body>
-
-    <div style="text-align: center;">
-      <div style="width: 500px; margin: 0 auto; background: #000; color: #fff;">This DIV is centered</div>
+    <div class="logo-bar">
+        <img src="jweeterico.jpg" alt="Jweeter Logo">
+        <h1>Jweeter</h1>
     </div>
-
-  </body>
-</html>
-    
+    <div class="tweet-section">
+        <h2>Latest Jweets</h2>
+        <div class="tweet">
+            <span class="user">@hppdev</span>
+            <span class="meta">now</span>
+            <div class="content">Jweetr made it to the HPP! 🚀</div>
+        </div>
+        <div class="tweet">
+            <span class="user">@hppfan</span>
+            <span class="meta">1m ago</span>
+            <div class="content">to celebrate the come of jweeter to hpp lets sing cuz why not? 🎶</div>
+        </div>
+        <div class="celebrate">
+            #WelcomeToJweeter
+        </div>
+    </div>
 </body>
 </html>
