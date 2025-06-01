@@ -2,7 +2,7 @@
 
 ## HPA Progress Plexus
 
-**HPA Progress Plexus** is a forward-thinking project aimed at redefining the modern intranet experience. Designed as a powerful alternative to traditional intranet solutions, it combines seamless internal networking with advanced NAS (Network Attached Storage) features to create a more connected, secure, and efficient digital environment for teams, organizations, and individuals.
+**HPA Progress Plexus** is a forward-thinking project aimed at redefining the modern intranet experience. Designed as a powerful alternative to traditional intranet solutions, it combines seamless internal networking with advanced NAT (Network Attached Translations) features to create a more connected, secure, and efficient digital environment for teams, organizations, and individuals.
 
 ---
 
