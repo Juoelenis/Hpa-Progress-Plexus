@@ -5,32 +5,85 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>HPP Search Results</title>
     <link rel="stylesheet" href="searches.css">
-    <link rel="icon" href="hpp logo.png">
+    <link rel="icon" href="hpp-n-l-p.png">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
     <style>
+        html, body {
+            height: 100%;
+            min-height: 100vh;
+            width: 100vw;
+            min-width: 100vw;
+            box-sizing: border-box;
+        }
         body {
             font-family: 'Inter', Arial, sans-serif;
             background: linear-gradient(120deg, #e0eafc, #cfdef3);
             margin: 0;
             padding: 0;
+            min-height: 100vh;
+            min-width: 100vw;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+        }
+        .main-wrapper {
+            flex: 1 0 auto;
+            width: 100vw;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
         }
         .topnav {
-            background: #2193b0;
+            background: linear-gradient(90deg, #2193b0 0%, #6dd5ed 100%);
             overflow: hidden;
             padding: 0 10px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            box-shadow: 0 2px 12px #2193b033;
         }
-        .topnav a {
-            float: left;
+        .topnav a.home-link {
+            display: flex;
+            align-items: center;
             color: #fff;
             text-align: center;
-            padding: 16px 18px;
+            padding: 14px 22px;
             text-decoration: none;
-            font-size: 17px;
-            transition: background 0.2s;
+            font-size: 18px;
+            font-weight: 700;
+            border-radius: 8px 8px 0 0;
+            background: transparent;
+            transition: background 0.2s, color 0.2s, box-shadow 0.2s;
         }
-        .topnav a.active, .topnav a:hover {
-            background: #6dd5ed;
-            color: #222;
+        .topnav a.home-link:hover {
+            background: #fff;
+            color: #2193b0;
+            box-shadow: 0 4px 16px #2193b044;
+        }
+        .topnav .searches-text {
+            color: #0d47a1;
+            background: rgba(255, 255, 255, 0.12);
+            font-size: 18px;
+            font-weight: 700;
+            padding: 14px 22px;
+            border-radius: 8px 8px 0 0;
+            background: transparent;
+            margin-left: 4px;
+            user-select: none;
+            cursor: default;
+        }
+        @media (max-width: 600px) {
+            .topnav {
+                flex-direction: column;
+                gap: 0;
+                padding: 0 2px;
+            }
+            .topnav a.home-link, .topnav .searches-text {
+                padding: 12px 10px;
+                font-size: 1rem;
+            }
         }
         .search-container {
             display: flex;
@@ -58,6 +111,25 @@
         .search-container button:hover {
             background: #6dd5ed;
             color: #222;
+        }
+        .search-path-option {
+            text-align: center;
+            margin-bottom: 18px;
+        }
+        .search-path-option label {
+            color: #2193b0;
+            font-weight: 600;
+            cursor: pointer;
+            display: inline-block;
+            margin-bottom: 6px;
+        }
+        .search-path-option input[type="text"] {
+            padding: 6px 12px;
+            border-radius: 6px;
+            border: 1px solid #2193b0;
+            width: 220px;
+            font-size: 1em;
+            outline: none;
         }
         .results {
             max-width: 500px;
@@ -87,37 +159,240 @@
             background: #2193b0;
             color: #fff;
         }
+        .search-mode-toggle {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 18px;
+            gap: 10px;
+        }
+        .search-mode-toggle label {
+            font-size: 1.05rem;
+            color: #2193b0;
+            font-weight: 600;
+            cursor: pointer;
+        }
+        .search-mode-toggle input[type="checkbox"] {
+            accent-color: #2193b0;
+            width: 18px;
+            height: 18px;
+            margin-right: 6px;
+        }
+        .www-results {
+            margin-top: 18px;
+            text-align: left;
+        }
+        .www-result-item {
+            margin-bottom: 18px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid #e0eafc;
+        }
+        .www-result-title {
+            font-size: 1.08rem;
+            font-weight: 700;
+            color: #2193b0;
+            text-decoration: none;
+        }
+        .www-result-title:hover {
+            color: #e53935;
+        }
+        .www-result-snippet {
+            color: #444;
+            font-size: 0.98rem;
+        }
     </style>
 </head>
 <body>
-    <div class="topnav">
-        <a class="active" href="index.html">Home</a>
-        <a href="buba.html">VidTube</a>
-        <a href="cashaplay.html">Cashapp On Google Play</a>
-        <a href="about.html">about HPP</a>
-        <a href="funsta.html">Funstagram</a>
-        <a href="searches.html">search</a>
-        <a href="jweeter.html">Jweeter</a>
-        <a href="musicaly.html">Musicaly</a>
-        <a href="lists.html">HPP Page List</a>
-    </div>
-    <div class="search-container">
-        <input type="search" placeholder="Search the HPP..." />
-        <button>Search</button>
-    </div>
-    <div class="results">
-        <h1>HPP Search</h1>
-        <h2>No Result. But don't fret! Check the available sites:</h2>
-        <div class="site-list">
-            <a href="buba.html">VidTube</a>
-            <a href="cashaplay.html">Cashapp On Google Play</a>
-            <a href="about.html">about HPP</a>
-            <a href="funsta.html">Funstagram</a>
-            <a href="searches.html">search</a>
-            <a href="jweeter.html">Jweeter</a>
-            <a href="musicaly.html">Musicaly</a>
-            <a href="lists.html">HPP Page List</a>
+    <div class="main-wrapper">
+        <div class="topnav">
+            <span class="searches-text" style="color:#0d3c61;">Searches</span>
+            <a class="home-link" href="index.html" title="Home">
+                <span style="vertical-align:middle;display:inline-block;margin-right:6px;">
+                    <svg xmlns="http://www.w3.org/2000/svg" height="22" viewBox="0 0 24 24" width="22" style="vertical-align:middle;fill:#fff;"><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/></svg>
+                </span>
+                Home
+            </a>
         </div>
+        <div class="search-container">
+            <input type="search" placeholder="Search the HPP..." />
+            <button>Search</button>
+        </div>
+        <div class="search-path-option" style="text-align:center;margin-bottom:18px;">
+            <label for="search-path" style="color:#2193b0;font-weight:600;">Search Path:</label>
+            <input type="text" id="search-path" placeholder="e.g. weatherAPI/ or leave blank for all" style="padding:6px 12px;border-radius:6px;border:1px solid #2193b0;width:220px;font-size:1em;">
+        </div>
+        <div class="search-mode-toggle">
+            <input type="checkbox" id="www-mode-toggle">
+            <label for="www-mode-toggle">WWW Search mode</label>
+        </div>
+        <div class="results">
+            <h1>HPP Search</h1>
+            <h2>No Result. But don't fret! Check the available sites:</h2>
+            <div class="site-list">
+                <a href="buba.html">VidTube</a>
+                <a href="cashaplay.html">Cashapp On Google Play</a>
+                <a href="about.html">about HPP</a>
+                <a href="funsta.html">Funstagram</a>
+                <a href="searches.html">search</a>
+                <a href="jweeter.html">Jweeter</a>
+                <a href="musicaly.html">Musicaly</a>
+                <a href="lists.html">HPP Page List</a>
+            </div>
+        </div>
+        <div class="www-results" id="www-results" style="display:none;"></div>
     </div>
+    <script>
+    // --- HPP Search App ---
+    // List of HTML files in the HPP folder and subfolders (auto-generated or user-provided)
+    let DEFAULT_PAGES = [
+        { name: 'Home', file: 'index.html', desc: 'The homepage of HPP' },
+        { name: 'VidTube', file: 'buba.html', desc: 'Lets you share and watch videos, like YouTube' },
+        { name: 'Cashapp On Google Play', file: 'cashaplay.html', desc: 'A page that lets you see CashApp balance and more' },
+        { name: 'About HPP', file: 'about.html', desc: 'A page where you can see what HPP is about' },
+        { name: 'Funstagram', file: 'funsta.html', desc: 'Lets you check stories and posts' },
+        { name: 'Jweeter', file: 'jweeter.html', desc: 'A platform like Twitter' },
+        { name: 'Musicaly', file: 'musicaly.html', desc: 'Your go-to place for all music' },
+        { name: 'The iFrame Page', file: 'the iframe page.html', desc: 'Old project of iframes (cancelled)' },
+        { name: 'HPP Page List', file: 'lists.html', desc: 'List of all HPP pages' },
+        { name: 'Weatherly', file: 'weatherAPI/weatherapp.html', desc: 'Check the weather in your area' },
+        // Add more pages here as needed
+    ];
+    // Dynamically add all HTML files in the root and subfolders (static list for now)
+    const EXTRA_PAGES = [
+        { name: 'Welcome', file: 'welcome.html', desc: 'Welcome page' },
+        { name: 'Video', file: 'video.html', desc: 'Videwo Inc. homepage' },
+        { name: 'Register', file: 'register.html', desc: 'Register for HPP' },
+        { name: 'Peppa', file: 'peppa.html', desc: 'Peppa Pig fun page' },
+        { name: 'Newsly', file: 'newsly.html', desc: 'Newsly - HPP News' },
+        { name: 'Login', file: 'login.html', desc: 'Login to HPP' },
+        { name: 'Lists', file: 'lists.html', desc: 'HPP Page List' },
+        { name: 'Juo Cars', file: 'juo cars.html', desc: 'Juo Cars page' },
+        { name: 'Gymbros', file: 'gymbros.html', desc: 'Gymbros page' },
+        { name: 'Gunna', file: 'gunna.html', desc: 'Gunna page' },
+        { name: 'GTA Evo', file: 'gta evo.html', desc: 'GTA Evo page' },
+        { name: 'Game', file: 'game.html', desc: 'Game page' },
+        { name: 'Force', file: 'force.html', desc: 'Force page' },
+        { name: 'Dogland', file: 'Dogland.html', desc: 'Dogland city' },
+        { name: 'Chinese Meme', file: 'chinese meme.html', desc: 'Chinese Meme' },
+        { name: 'Bobnete', file: 'bobnete.html', desc: 'Bobnete page' },
+        { name: 'Brickprod', file: 'brickprod.html', desc: 'Brickprod page' },
+        { name: 'Basic', file: 'basic.html', desc: 'Basic page' },
+        { name: 'Backgroub', file: 'backgroub.html', desc: 'Backgroub page' },
+        { name: 'Andrew', file: 'andrew.html', desc: 'Andrew page' },
+        { name: 'Allstar', file: 'allstar.html', desc: 'Allstar (Vim) page' },
+        { name: 'Spectre', file: 'spectre.html', desc: 'Spectre - Alan Walker' },
+        { name: 'Register', file: 'register.html', desc: 'Register page' },
+        { name: 'App', file: 'weatherAPI/app.html', desc: 'Weather App' },
+        { name: 'Public Index', file: 'public/index.html', desc: 'VidTube Kids' },
+        // ...add more as needed
+    ];
+    DEFAULT_PAGES = DEFAULT_PAGES.concat(EXTRA_PAGES);
+    let PAGES = [...DEFAULT_PAGES];
+
+    const searchPathInput = document.getElementById('search-path');
+    const searchInput = document.querySelector('.search-container input[type="search"]');
+    const searchBtn = document.querySelector('.search-container button');
+    const resultsDiv = document.querySelector('.results');
+    const siteListDiv = document.querySelector('.site-list');
+    const wwwModeToggle = document.getElementById('www-mode-toggle');
+    const wwwResultsDiv = document.getElementById('www-results');
+    const searchPathOption = document.querySelector('.search-path-option');
+
+    // List of the 5 most frequently visited pages (customize as needed)
+    const MOST_FREQUENT = [
+        { name: 'Home', file: 'index.html' },
+        { name: 'VidTube', file: 'buba.html' },
+        { name: 'Musicaly', file: 'musicaly.html' },
+        { name: 'Cashapp On Google Play', file: 'cashaplay.html' },
+        { name: 'About HPP', file: 'about.html' }
+    ];
+
+    function updatePagesForPath(path) {
+        // Reset to default pages before adding new path
+        PAGES = [...DEFAULT_PAGES];
+        if (!path || path.trim() === '') {
+            return;
+        }
+        // For static sites, you could provide a JSON file with the list of HTML files per folder
+        // Here, we just add a placeholder for demonstration
+        PAGES.push({ name: `Sample in ${path}`, file: `${path.replace(/\/$/, '')}/sample.html`, desc: `Sample HTML file in ${path}` });
+    }
+
+    function renderResults(results, query) {
+        if (results.length === 0) {
+            // Show 5 most frequently visited pages if no results
+            resultsDiv.innerHTML = `<h1>HPP Search</h1><h2>No results for '<span style='color:#e53935'>${query}</span>'.</h2><div class='site-list'>${MOST_FREQUENT.map(page => `<a href='${page.file}'>${page.name}</a>`).join('')}</div>`;
+        } else {
+            resultsDiv.innerHTML = `<h1>HPP Search</h1><h2>Results for '<span style='color:#2193b0'>${query}</span>':</h2><div class='site-list'>${results.map(page => `<a href='${page.file}'><b>${page.name}</b><br><span style='font-weight:400;font-size:0.98em;color:#555;'>${page.desc ? page.desc : ''}</span></a>`).join('')}</div>`;
+        }
+    }
+
+    function doSearch() {
+        const query = searchInput.value.trim().toLowerCase();
+        const path = searchPathInput.value.trim();
+        updatePagesForPath(path);
+        if (!query) {
+            // Hide all results if no query (just show the frequent list)
+            renderResults([], '');
+            return;
+        }
+        if (wwwModeToggle.checked) {
+            resultsDiv.style.display = 'none';
+            doWWWSearch(query);
+        } else {
+            wwwResultsDiv.style.display = 'none';
+            resultsDiv.style.display = 'block';
+            let results = PAGES;
+            if (path) {
+                results = results.filter(page => page.file.startsWith(path));
+            }
+            results = results.filter(page =>
+                page.name.toLowerCase().includes(query) ||
+                page.file.toLowerCase().includes(query) ||
+                (page.desc && page.desc.toLowerCase().includes(query))
+            );
+            renderResults(results, query);
+        }
+    }
+
+    wwwModeToggle.addEventListener('change', () => {
+        wwwResultsDiv.innerHTML = '';
+        wwwResultsDiv.style.display = 'none';
+        resultsDiv.style.display = 'block';
+        // Hide or show the search path option based on WWW mode
+        if (wwwModeToggle.checked) {
+            searchPathOption.style.display = 'none';
+        } else {
+            searchPathOption.style.display = 'block';
+        }
+    });
+    searchBtn.onclick = doSearch;
+    searchInput.addEventListener('keydown', function(e) {
+        if (e.key === 'Enter') doSearch();
+    });
+    searchPathInput.addEventListener('keydown', function(e) {
+        if (e.key === 'Enter') doSearch();
+    });
+    // Optional: Autofocus input
+    searchInput.focus();
+    // Hide all pages (except frequent) on load
+    renderResults([], '');
+    // On load, make sure the path option is visible (not in WWW mode)
+    if (wwwModeToggle.checked) {
+        searchPathOption.style.display = 'none';
+    } else {
+        searchPathOption.style.display = 'block';
+    }
+    // If there's a query in the URL (?q=...), prefill the search box and run the search
+    function getQueryParam(name) {
+        const url = new URL(window.location.href);
+        return url.searchParams.get(name) || '';
+    }
+    const initialQuery = getQueryParam('q');
+    if (initialQuery) {
+        searchInput.value = initialQuery;
+        doSearch();
+    }
+    </script>
 </body>
 </html>

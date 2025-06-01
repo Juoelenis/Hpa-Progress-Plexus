@@ -6,11 +6,210 @@
     <title>Chinese meme - VidTube</title>
     <link rel="icon" href="juo adventures 005.png">
     <link rel="stylesheet" href="chinese meme.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@600&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', Arial, sans-serif;
+            background: linear-gradient(120deg, #ff9966 0%, #ff5e62 40%, #ffc371 100%);
+            min-height: 100vh;
+            margin: 0;
+            padding: 0;
+            color: #232946;
+        }
+        .topnav {
+            background: #212121;
+            overflow: hidden;
+            padding: 0 10px;
+            display: flex;
+            align-items: center;
+        }
+        .topnav a {
+            color: #fff;
+            text-align: center;
+            padding: 16px 18px;
+            text-decoration: none;
+            font-size: 17px;
+            transition: background 0.2s;
+        }
+        .topnav a.active, .topnav a:hover {
+            background: #e53935;
+            color: #fff;
+        }
+        .container {
+            max-width: 900px;
+            margin: 40px auto;
+            background: #fff;
+            border-radius: 14px;
+            box-shadow: 0 4px 24px rgba(255,94,98,0.10);
+            padding: 32px 24px;
+        }
+        .logo-bar {
+            display: flex;
+            align-items: center;
+            margin-bottom: 18px;
+        }
+        .logo-bar img {
+            height: 48px;
+            margin-right: 14px;
+        }
+        .logo-bar h1 {
+            font-size: 2rem;
+            color: #e53935;
+            margin: 0;
+            font-weight: 700;
+            letter-spacing: 1px;
+        }
+        .video-title {
+            font-size: 1.3rem;
+            color: #222;
+            margin: 18px 0 10px 0;
+            font-weight: 600;
+        }
+        .meta {
+            color: #888;
+            font-size: 1rem;
+            margin-bottom: 10px;
+        }
+        video {
+            width: 100%;
+            max-width: 820px;
+            border-radius: 10px;
+            box-shadow: 0 2px 12px rgba(255,94,98,0.08);
+            margin-bottom: 18px;
+            background: #000;
+            display: block;
+        }
+        .desc {
+            color: #444;
+            font-size: 1.05rem;
+            margin-bottom: 18px;
+        }
+        .back-link {
+            display: inline-block;
+            margin-top: 18px;
+            color: #ff5e62;
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.2s;
+        }
+        .back-link:hover {
+            color: #e53935;
+        }
+        @media (max-width: 700px) {
+            .container {
+                padding: 12px 2vw;
+            }
+            video {
+                max-width: 98vw;
+            }
+            .logo-bar {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            .logo-bar img {
+                margin-right: 0;
+                margin-bottom: 8px;
+            }
+        }
+    </style>
 </head>
 <body>
-    <h1>VidTube</h1>
-    <h2>Ease of access to Videos!</h2>
-    <video src="chinese meme.mp4" controls autoplay></video>
-    <h3>Comments are comming soon to VidTube, Stay tuned!</h3>
+    <div class="topnav">
+        <a class="active" href="index.html">Home</a>
+        <a href="buba.html">VidTube</a>
+        <a href="cashaplay.html">Cashapp On Google Play</a>
+        <a href="about.html">about HPP</a>
+        <a href="funsta.html">Funstagram</a>
+        <a href="searches.html">search</a>
+        <a href="about.html">First Ever HPP page</a>
+        <a href="jweeter.html">Jweeter</a>
+        <a href="musicaly.html">Musicaly</a>
+        <a href="the iframe page.html">The iFrame Page</a>
+        <a href="lists.html">HPP Page List</a>
+    </div>
+    <div class="container">
+        <div class="logo-bar">
+            <img src="juo adventures 005.png" alt="VidTube Logo">
+            <h1>VidTube</h1>
+        </div>
+        <div class="video-title">Chinese Meme</div>
+        <div class="meta">Ease of access to Videos!</div>
+        <video src="chinese meme.mp4" controls autoplay poster="chinese meme.jpg"></video>
+        <div class="desc">
+            Comments are coming soon to VidTube, stay tuned!
+        </div>
+        <a class="back-link" href="buba.html">&larr; Back to VidTube</a>
+    </div>
+
+    <script>
+        // Autoplay video on page load
+        document.addEventListener('DOMContentLoaded', function() {
+            const video = document.querySelector('video');
+            if (video) {
+                video.play();
+            }
+
+            </script>
+
+<!-- ...existing code... -->
+<div class="desc">
+    Comments are coming soon to VidTube, stay tuned!
+</div>
+<!-- Add comments section -->
+<div id="comments-section" style="margin-top:32px;">
+    <h2 style="color:#e53935;font-size:1.2rem;margin-bottom:12px;">Comments</h2>
+    <form id="commentForm" style="display:flex;gap:10px;flex-wrap:wrap;margin-bottom:18px;">
+        <input type="text" id="commentName" placeholder="Your name" required style="flex:1;min-width:120px;padding:8px 10px;border-radius:6px;border:1px solid #ff9966;">
+        <input type="text" id="commentText" placeholder="Add a comment..." required style="flex:2;min-width:180px;padding:8px 10px;border-radius:6px;border:1px solid #ff9966;">
+        <button type="submit" style="background:#e53935;color:#fff;border:none;border-radius:6px;padding:8px 18px;font-weight:600;cursor:pointer;transition:background 0.2s;">Post</button>
+    </form>
+    <div id="commentsList" style="display:flex;flex-direction:column;gap:14px;"></div>
+</div>
+<a class="back-link" href="buba.html">&larr; Back to VidTube</a>
+</div>
+<script>
+    // Simple localStorage-based comments for demo
+    const commentsKey = "vidtube_comments_chinese_meme";
+    const form = document.getElementById('commentForm');
+    const nameInput = document.getElementById('commentName');
+    const textInput = document.getElementById('commentText');
+    const commentsList = document.getElementById('commentsList');
+
+    function renderComments() {
+        commentsList.innerHTML = "";
+        const comments = JSON.parse(localStorage.getItem(commentsKey) || "[]");
+        if (comments.length === 0) {
+            commentsList.innerHTML = "<span style='color:#888;'>No comments yet. Be the first!</span>";
+        } else {
+            comments.forEach(c => {
+                const div = document.createElement('div');
+                div.style.background = "linear-gradient(90deg,#ffeaea 0%,#fff5e1 100%)";
+                div.style.borderRadius = "8px";
+                div.style.padding = "10px 14px";
+                div.style.boxShadow = "0 1px 4px #ff996622";
+                div.innerHTML = `<strong style="color:#e53935;">${c.name}</strong>: <span style="color:#232946;">${c.text}</span>`;
+                commentsList.appendChild(div);
+            });
+        }
+    }
+
+    form.addEventListener('submit', function(e) {
+        e.preventDefault();
+        const name = nameInput.value.trim();
+        const text = textInput.value.trim();
+        if (!name || !text) return;
+        const comments = JSON.parse(localStorage.getItem(commentsKey) || "[]");
+        comments.push({ name, text });
+        localStorage.setItem(commentsKey, JSON.stringify(comments));
+        nameInput.value = "";
+        textInput.value = "";
+        renderComments();
+    });
+
+
+    renderComments();
+</script>
+<!-- ...existing code... -->
+
 </body>
 </html>

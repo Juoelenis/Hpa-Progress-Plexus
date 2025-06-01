@@ -1,4 +1,4 @@
-![hpp-n-l-p](https://github.com/user-attachments/assets/682891cc-591f-41cd-a486-7faf4e814fd5)
+![hpp logo](https://github.com/user-attachments/assets/498f0032-4a87-4bdf-aea7-3d007178a813)
 
 # HPA Progress Plexus Security Policy
 

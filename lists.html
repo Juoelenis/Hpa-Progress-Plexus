@@ -10,8 +10,15 @@
         body {
             font-family: 'Inter', Arial, sans-serif;
             background: linear-gradient(120deg, #e0eafc, #cfdef3 80%);
+            background-size: 300% 300%;
+            animation: gradientMove 18s ease-in-out infinite;
             margin: 0;
             padding: 0;
+        }
+        @keyframes gradientMove {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
         }
         .topnav {
             background: #2193b0;
@@ -19,8 +26,17 @@
             padding: 0 10px;
             display: flex;
             align-items: center;
+            width: 100vw;
+            min-width: 100vw;
+            box-sizing: border-box;
+            justify-content: stretch;
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 1000;
         }
         .topnav a {
+            flex: 1 1 0;
             color: #fff;
             text-align: center;
             padding: 16px 18px;
@@ -34,7 +50,7 @@
         }
         .container {
             max-width: 700px;
-            margin: 40px auto;
+            margin: 80px auto 40px auto;
             background: #fff;
             border-radius: 14px;
             box-shadow: 0 4px 24px rgba(33,147,176,0.10);
@@ -87,17 +103,94 @@
             font-size: 1rem;
         }
         @media (max-width: 600px) {
+            .topnav {
+                flex-direction: column;
+                width: 100vw;
+                min-width: 100vw;
+                position: fixed;
+                top: 0;
+                left: 0;
+            }
             .container {
                 padding: 12px 2vw;
+                margin-top: 120px;
             }
             li {
                 font-size: 1rem;
                 padding: 12px 8px 8px 12px;
             }
         }
+        .dark-mode {
+            background: linear-gradient(120deg, #232946, #1a1a2e 80%);
+            background-size: 300% 300%;
+            animation: gradientMove 18s ease-in-out infinite;
+            color: #e0eafc;
+        }
+        .dark-mode .container {
+            background: #232946;
+            color: #e0eafc;
+            box-shadow: 0 4px 24px rgba(33,147,176,0.25);
+        }
+        .dark-mode .topnav {
+            background: #232946;
+        }
+        .dark-mode .topnav a {
+            color: #e0eafc;
+        }
+        .dark-mode .topnav a.active, .dark-mode .topnav a:hover {
+            background: #393e46;
+            color: #43e97b;
+        }
+        .dark-mode li {
+            background: #1a1a2e;
+            color: #e0eafc;
+        }
+        .dark-mode li a {
+            color: #43e97b;
+        }
+        .dark-mode li a:hover {
+            color: #e53935;
+        }
+        .dark-mode .desc {
+            color: #b0b8c1;
+        }
+        .dark-mode .coming-soon {
+            color: #b0b8c1;
+        }
+        .dark-mode h1 {
+            color: #43e97b;
+        }
+        .dark-mode h4 {
+            color: #b0b8c1;
+        }
+        .darkmode-toggle {
+            position: fixed;
+            top: 18px;
+            right: 22px;
+            z-index: 1000;
+            background: #fff;
+            color: #232946;
+            border: none;
+            border-radius: 50%;
+            width: 44px;
+            height: 44px;
+            box-shadow: 0 2px 8px rgba(33,147,176,0.18);
+            cursor: pointer;
+            font-size: 1.3rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background 0.2s, color 0.2s;
+        }
+        .dark-mode .darkmode-toggle {
+            background: #232946;
+            color: #fff;
+            box-shadow: 0 2px 8px #23294644;
+        }
     </style>
 </head>
 <body>
+    <button class="darkmode-toggle" id="darkmode-toggle" title="Toggle dark/white mode">🌙</button>
     <div class="topnav">
         <a class="active" href="index.html">Home</a>
         <a href="buba.html">VidTube</a>
@@ -160,5 +253,28 @@
         </div>
         <h4>Fun fact: I don't have a fancy office, I'm coding this while standing.</h4>
     </div>
+    <script>
+    const toggleBtn = document.getElementById('darkmode-toggle');
+    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    const root = document.body;
+    function setDarkMode(on) {
+        if (on) {
+            root.classList.add('dark-mode');
+            toggleBtn.textContent = '☀️';
+        } else {
+            root.classList.remove('dark-mode');
+            toggleBtn.textContent = '🌙';
+        }
+    }
+    // Load preference
+    let dark = localStorage.getItem('hpp-darkmode');
+    if (dark === null) dark = prefersDark ? '1' : '0';
+    setDarkMode(dark === '1');
+    toggleBtn.onclick = () => {
+        dark = root.classList.toggle('dark-mode');
+        localStorage.setItem('hpp-darkmode', dark ? '1' : '0');
+        toggleBtn.textContent = dark ? '☀️' : '🌙';
+    };
+    </script>
 </body>
 </html>

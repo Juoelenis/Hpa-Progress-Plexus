@@ -1,22 +1,118 @@
 <!DOCTYPE html>
-
- <html>
-   <head>
-    <title="VIM">
-	    <link rel="stylesheet" href="abalat.css">
-	    <link rel="icon" href="vim.ico">
-    </head>
-    <body>
-	   <img src="vim.ico" alt="Vim Logo" class="center">
-     <h1>Vim</h1>
-      <h5>Da lit text editor</h5>
-      
-        <h3>Vim (acronym to Very intuitive text monitorer) is a text editor for windows, macOS and Linux that does its job very well</h3>
-	<p>vim can be used by everyone (even black men!) on any PC or mac ()or whatever hardware ur using) if you dont have vim installed make sure you run sudo apt install vim and you will have it imediately. vim was uilt by people for people. vim was made by some badass in da 90s and ever since then it became EXTREMELY popular, vim is the top 3rd editor used by developers worldwide!</p>
-	<a href="https://vim.org.download">Download VIM for windows mak or linux</a>
-
-	<footer>
-             <h6>copyright VIM inc, vim and GVim are pblic domain and should not be paid softwear</h6>
-		</footer>
-    </body>
-  </html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vim - Allstar</title>
+    <link rel="stylesheet" href="abalat.css">
+    <link rel="icon" href="vim.jpg">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', Arial, sans-serif;
+            background: linear-gradient(120deg, #232946 0%, #1a1a2e 100%);
+            background-size: 300% 300%;
+            animation: gradientMove 14s ease-in-out infinite;
+            margin: 0;
+            padding: 0;
+            color: #e0eafc;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+        }
+        @keyframes gradientMove {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        .container {
+            background: #232946cc;
+            border-radius: 18px;
+            box-shadow: 0 4px 24px #1a1a2e55;
+            padding: 38px 32px 24px 32px;
+            margin: 64px auto 32px auto;
+            max-width: 520px;
+            text-align: center;
+            animation: fadeIn 1.2s;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(40px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .vim-logo {
+            display: block;
+            margin: 0 auto 18px auto;
+            height: 70px;
+            width: 70px;
+            border-radius: 16px;
+            box-shadow: 0 2px 8px #1a1a2e44;
+        }
+        h1 {
+            color: #43e97b;
+            font-size: 2.2rem;
+            margin-bottom: 8px;
+        }
+        h5 {
+            color: #b8c1ec;
+            font-size: 1.1rem;
+            margin-bottom: 18px;
+        }
+        h3 {
+            color: #e0eafc;
+            font-size: 1.08rem;
+            margin-bottom: 18px;
+            font-weight: 400;
+        }
+        p {
+            color: #b0b8c1;
+            font-size: 1.01rem;
+            margin-bottom: 18px;
+        }
+        a {
+            color: #43e97b;
+            font-weight: 700;
+            text-decoration: none;
+            background: #1a1a2e;
+            padding: 10px 24px;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px #43e97b22;
+            transition: background 0.2s, color 0.2s;
+            display: inline-block;
+            margin-bottom: 18px;
+        }
+        a:hover {
+            background: #43e97b;
+            color: #232946;
+        }
+        footer {
+            color: #b8c1ec;
+            font-size: 0.95rem;
+            margin-top: 24px;
+        }
+        @media (max-width: 600px) {
+            .container {
+                padding: 18px 4vw 12px 4vw;
+                margin-top: 24px;
+            }
+            h1 {
+                font-size: 1.3rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <img src="vim.png" alt="Vim Logo" class="vim-logo">
+        <h1>Vim</h1>
+        <h5>Da lit text editor</h5>
+        <h3>Vim (acronym to Very intuitive text monitorer) is a text editor for Windows, macOS, and Linux that does its job very well.</h3>
+        <p>Vim can be used by everyone on any PC or Mac (or whatever hardware you're using). If you don't have Vim installed, run <b>sudo apt install vim</b> and you'll have it immediately. Vim was built by people for people. Vim was made by some badass in the 90s and ever since then it became EXTREMELY popular—Vim is the 3rd most used editor by developers worldwide!</p>
+        <a href="https://github.com/vim/vim-win32-installer/releases/download/v9.1.0/gvim_9.1.0_x64_signed.exe">Download VIM for Windows, Mac, or Linux</a>
+        <footer>
+            <h6>&copy; VIM Inc. Vim and GVim are public domain and should not be paid software.</h6>
+        </footer>
+    </div>
+</body>
+</html>

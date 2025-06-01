@@ -16,13 +16,15 @@
             padding: 0;
             color: #232946;
         }
-        .topnav {
+        nav {
             background: #232946;
-            overflow: hidden;
-            padding: 0 10px;
+            box-shadow: 0 2px 12px #e5393522;
+        }
+        .topnav {
             display: flex;
             align-items: center;
-            box-shadow: 0 2px 12px #e5393522;
+            gap: 8px;
+            padding: 0 10px;
         }
         .topnav a {
             color: #fff;
@@ -32,32 +34,44 @@
             font-size: 17px;
             font-weight: 600;
             transition: background 0.2s;
+            border-radius: 4px;
+        }
+        .topnav a.logo {
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: #43e97b;
+            background: none;
+            pointer-events: none;
+            cursor: default;
         }
         .topnav a.active, .topnav a:hover {
             background: #e53935;
             color: #fff;
         }
-        .container {
+        main {
             max-width: 700px;
             margin: 48px auto;
             background: #fff;
             border-radius: 16px;
             box-shadow: 0 4px 24px rgba(229,57,53,0.10);
             padding: 36px 28px;
-            text-align: center;
         }
         h1 {
             color: #e53935;
             font-size: 2.2rem;
             margin-bottom: 18px;
+            text-align: center;
         }
-        .news-card {
+        section.news-list {
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+        }
+        article.news-card {
             background: linear-gradient(90deg, #ffeaea 0%, #eaffea 100%);
             border-radius: 12px;
             box-shadow: 0 2px 8px #43e97b22;
             padding: 22px 18px;
-            margin-bottom: 24px;
-            text-align: left;
             display: flex;
             align-items: flex-start;
             gap: 18px;
@@ -83,14 +97,28 @@
             font-size: 0.98rem;
             margin-top: 8px;
         }
+        .news-extra {
+            margin-top: 10px;
+            font-size: 1rem;
+            color: #232946;
+        }
+        footer {
+            margin-top: 40px;
+            padding: 20px 0;
+            background: rgba(33,147,176,0.08);
+            text-align: center;
+        }
+        footer small {
+            color: #888;
+        }
         @media (max-width: 700px) {
-            .container {
+            main {
                 padding: 14px 2vw;
             }
             h1 {
                 font-size: 1.3rem;
             }
-            .news-card {
+            article.news-card {
                 flex-direction: column;
                 align-items: center;
                 padding: 14px 8px;
@@ -103,35 +131,34 @@
     </style>
 </head>
 <body>
-    <div class="topnav">
-        <a class="active" href="index.html">Home</a>
-        <a href="buba.html">VidTube</a>
-        <a href="cashaplay.html">Cashapp On Google Play</a>
-        <a href="about.html">about HPP</a>
-        <a href="funsta.html">Funstagram</a>
-        <a href="searches.html">search</a>
-        <a href="about.html">First Ever HPP page</a>
-        <a href="jweeter.html">Jweeter</a>
-        <a href="musicaly.html">Musicaly</a>
-        <a href="the iframe page.html">The iFrame Page</a>
-        <a href="lists.html">HPP Page List</a>
-    </div>
-    <div class="container">
-        <h1>Newsly, Top New News</h1>
-        <div class="news-card">
-            <img src="cripper.jpg" alt="Intel CPU News">
-            <div class="news-content">
-                <div class="news-title">Intel 13/14 gen CPUs are dying, even Intel ain't knowing wtf is happening</div>
-                <div class="news-source">Source: <span style="color:#e53935;">Newsly</span></div>
-            </div>
+    <nav>
+        <div class="topnav" role="navigation" aria-label="Main navigation">
+            <a class="logo" href="#" style="font-size:1.4rem;font-weight:700;color:#43e97b;background:none;pointer-events:none;cursor:default;">Newsly</a>
+            <a class="active" href="index.html">Home</a>
         </div>
-        <div class="news-card">
-            <img src="cripper.jpg" alt="Crowdstrike News">
-            <div class="news-content">
-                <div class="news-title">Crowdstrike update kills millions of PCs around the globe</div>
-                <div class="news-source">Source: <a href="https://aka.ms" style="color:#219150;">Microsoft</a></div>
-            </div>
-        </div>
-    </div>
+    </nav>
+    <main>
+        <h1>Newsly: Top New News</h1>
+        <section class="news-list">
+            <article class="news-card">
+                <img src="cpu.png" alt="Intel CPU News">
+                <div class="news-content">
+                    <div class="news-title">Intel 13/14 gen CPUs are dying, even Intel isn't sure what's happening</div>
+                    <div class="news-source">Source: <span style="color:#e53935;">Newsly</span></div>
+                    <div class="news-extra">NEWS! MR. Lean steals 300 dih worth of ketchup from a nearby Annashan in Dupeval! <span style="color:#888;">Source: Doglanda News</span></div>
+                </div>
+            </article>
+            <article class="news-card">
+                <img src="crowdstrikke.svg" alt="Crowdstrike News">
+                <div class="news-content">
+                    <div class="news-title">Crowdstrike update kills millions of PCs around the globe</div>
+                    <div class="news-source">Source: <a href="https://aka.ms" style="color:#219150;">Microsoft</a></div>
+                </div>
+            </article>
+        </section>
+    </main>
+    <footer>
+        <small>&copy; 2024 Newsly &mdash; Part of Hpa Progress Plexus</small>
+    </footer>
 </body>
 </html>

@@ -10,9 +10,16 @@
         body {
             font-family: 'Inter', Arial, sans-serif;
             background: linear-gradient(120deg, #e0eafc, #cfdef3 80%);
+            background-size: 300% 300%;
+            animation: gradientMove 16s ease-in-out infinite;
             margin: 0;
             padding: 0;
             color: #232946;
+        }
+        @keyframes gradientMove {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
         }
         .container {
             max-width: 700px;
@@ -96,7 +103,7 @@
         </h3>
         <div class="about-imgs">
             <img src="cool.jpg" height="150" width="250" alt="Cool HPP">
-            <img src="200.gif" alt="Works best on Google Chrome!" height="50" width="100">
+            <img src="hpp-n-l-p.png" alt="Works best on Google Chrome!" height="50" width="100">
         </div>
         <h3>Open Source Initiatived Since 2024. HPP Inc.</h3>
         <h5>ver.2.0 (2025 Re-write Release)</h5>

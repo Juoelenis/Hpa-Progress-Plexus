@@ -6,15 +6,172 @@
     <title>Spectre alan walker - Musicaly</title>
     <link rel="icon" href="lol 104.png">
     <link rel="stylesheet" href="spectre.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', Arial, sans-serif;
+            background: linear-gradient(120deg, #e0eafc, #cfdef3 80%);
+            background-size: 300% 300%;
+            animation: gradientMove 16s ease-in-out infinite;
+            margin: 0;
+            padding: 0;
+            color: #232946;
+            min-height: 100vh;
+            transition: background 0.5s, color 0.5s;
+        }
+        @keyframes gradientMove {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        .topnav {
+            background: #2193b0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 18px;
+            padding: 18px 0 10px 0;
+            box-shadow: 0 2px 12px #2193b033;
+            border-radius: 0 0 18px 18px;
+        }
+        .topnav a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 1.1rem;
+            font-weight: 700;
+            padding: 10px 22px;
+            border-radius: 8px;
+            transition: background 0.2s, color 0.2s;
+        }
+        .topnav a.active, .topnav a:hover {
+            background: #6dd5ed;
+            color: #232946;
+        }
+        .container {
+            max-width: 420px;
+            margin: 48px auto 0 auto;
+            background: #fff;
+            border-radius: 18px;
+            box-shadow: 0 4px 24px #2193b022;
+            padding: 36px 28px 28px 28px;
+            text-align: center;
+            animation: fadeIn 1.2s;
+        }
+        h1 {
+            color: #2193b0;
+            font-size: 2rem;
+            margin-bottom: 10px;
+        }
+        h2 {
+            color: #e53935;
+            font-size: 1.2rem;
+            margin-bottom: 24px;
+        }
+        audio {
+            width: 100%;
+            margin-top: 18px;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px #2193b044;
+        }
+        .darkmode-toggle {
+            position: fixed;
+            top: 18px;
+            right: 22px;
+            z-index: 1000;
+            background: #fff;
+            color: #232946;
+            border: none;
+            border-radius: 50%;
+            width: 44px;
+            height: 44px;
+            box-shadow: 0 2px 8px #2193b044;
+            cursor: pointer;
+            font-size: 1.3rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background 0.2s, color 0.2s;
+        }
+        .dark-mode {
+            background: linear-gradient(120deg, #232946, #1a1a2e 80%);
+            color: #e0eafc;
+        }
+        .dark-mode .container {
+            background: #232946;
+            color: #e0eafc;
+            box-shadow: 0 4px 24px #23294644;
+        }
+        .dark-mode .topnav {
+            background: #232946;
+        }
+        .dark-mode .topnav a {
+            color: #e0eafc;
+        }
+        .dark-mode .topnav a.active, .dark-mode .topnav a:hover {
+            background: #393e46;
+            color: #43e97b;
+        }
+        .dark-mode h1 {
+            color: #43e97b;
+        }
+        .dark-mode h2 {
+            color: #e53935;
+        }
+        .dark-mode .darkmode-toggle {
+            background: #232946;
+            color: #fff;
+            box-shadow: 0 2px 8px #23294644;
+        }
+        @media (max-width: 600px) {
+            .container {
+                padding: 16px 2vw;
+                margin-top: 24px;
+            }
+            .topnav {
+                flex-direction: column;
+                gap: 0;
+                padding: 12px 0 6px 0;
+            }
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(40px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
 </head>
 <body>
-    div class="topnav">
-                <a class="active"
-                href="index.html">Home</a>
-                <a href="musicaly.html">Musicaly</a>
-</div>
-    <h1>Musicaly</h1>
-    <h2>Spectre - Alan Walker</h2>
-    <audio src="spectre alan walker.mp3" controls></audio>
+    <button class="darkmode-toggle" id="darkmode-toggle" title="Toggle dark/white mode">🌙</button>
+    <div class="topnav">
+        <a class="active" href="index.html">Home</a>
+        <a href="musicaly.html">Musicaly</a>
+    </div>
+    <div class="container">
+        <h1>Musicaly</h1>
+        <h2>Spectre - Alan Walker</h2>
+        <audio src="spectre alan walker.mp3" controls></audio>
+    </div>
+    <script>
+    const toggleBtn = document.getElementById('darkmode-toggle');
+    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    const root = document.body;
+    function setDarkMode(on) {
+        if (on) {
+            root.classList.add('dark-mode');
+            toggleBtn.textContent = '☀️';
+        } else {
+            root.classList.remove('dark-mode');
+            toggleBtn.textContent = '🌙';
+        }
+    }
+    // Load preference
+    let dark = localStorage.getItem('spectre-darkmode');
+    if (dark === null) dark = prefersDark ? '1' : '0';
+    setDarkMode(dark === '1');
+    toggleBtn.onclick = () => {
+        dark = root.classList.toggle('dark-mode');
+        localStorage.setItem('spectre-darkmode', dark ? '1' : '0');
+        toggleBtn.textContent = dark ? '☀️' : '🌙';
+    };
+    </script>
 </body>
 </html>

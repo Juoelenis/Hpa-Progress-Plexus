@@ -13,6 +13,7 @@
             background: #f9f9f9;
             margin: 0;
             padding: 0;
+            color: #0f0f0f;
         }
         .topnav {
             background: #212121;
@@ -20,6 +21,7 @@
             padding: 0 10px;
             display: flex;
             align-items: center;
+            box-shadow: 0 2px 12px #00000022;
         }
         .topnav a {
             color: #fff;
@@ -28,6 +30,8 @@
             text-decoration: none;
             font-size: 17px;
             transition: background 0.2s;
+            border-radius: 6px;
+            margin-right: 4px;
         }
         .topnav a.active, .topnav a:hover {
             background: #e53935;
@@ -36,12 +40,14 @@
         .logo-bar {
             display: flex;
             align-items: center;
-            padding: 24px 0 8px 0;
+            padding: 32px 0 8px 0;
             justify-content: center;
         }
         .logo-bar img {
             height: 60px;
             margin-right: 16px;
+            border-radius: 12px;
+            box-shadow: 0 2px 8px #e5393544;
         }
         .logo-bar h1 {
             font-size: 2.2rem;
@@ -49,6 +55,7 @@
             margin: 0;
             font-weight: 700;
             letter-spacing: 1px;
+            font-family: 'Inter', Arial, sans-serif;
         }
         .section-title {
             text-align: left;
@@ -56,10 +63,11 @@
             font-size: 1.3rem;
             color: #222;
             font-weight: 600;
+            letter-spacing: 0.5px;
         }
         .video-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
             gap: 28px;
             padding: 0 6vw 40px 6vw;
         }
@@ -68,19 +76,27 @@
             border-radius: 10px;
             box-shadow: 0 2px 12px rgba(33,147,176,0.08);
             overflow: hidden;
-            transition: transform 0.15s;
+            transition: transform 0.15s, box-shadow 0.15s;
             display: flex;
             flex-direction: column;
+            cursor: pointer;
         }
         .video-card:hover {
-            transform: translateY(-6px) scale(1.03);
-            box-shadow: 0 6px 24px rgba(229,57,53,0.12);
+            transform: translateY(-10px) scale(1.04) rotate(-1deg);
+            box-shadow: 0 10px 32px 0 rgba(229,57,53,0.18), 0 2px 12px #e5393522;
+            background: #fbeee6;
         }
         .video-thumb {
             width: 100%;
-            height: 150px;
+            height: 180px;
             object-fit: cover;
             background: #eee;
+            border-bottom: 1px solid #f1f1f1;
+            transition: filter 0.2s, box-shadow 0.2s;
+        }
+        .video-card:hover .video-thumb {
+            filter: brightness(1.08) saturate(1.2);
+            box-shadow: 0 4px 16px #e5393544;
         }
         .video-info {
             padding: 16px;
@@ -92,18 +108,193 @@
         .video-title {
             font-size: 1.1rem;
             color: #222;
-            font-weight: 600;
+            font-weight: 700;
             margin: 0 0 8px 0;
             text-decoration: none;
+            transition: color 0.18s;
+        }
+        .video-title:hover {
+            color: #e53935;
         }
         .video-meta {
             color: #888;
             font-size: 0.95rem;
         }
-        @media (max-width: 600px) {
+        footer {
+            background: #212121;
+            color: #fff;
+            text-align: center;
+            padding: 24px 0 12px 0;
+            margin-top: 32px;
+        }
+        footer h4, footer h5 {
+            margin: 6px 0;
+            font-weight: 400;
+        }
+        footer a {
+            color: #e53935;
+            text-decoration: none;
+            font-weight: 600;
+        }
+        footer a:hover {
+            text-decoration: underline;
+        }
+        /* Sleek Animations and Effects */
+        .video-card {
+            transition: transform 0.18s cubic-bezier(.4,2,.3,1), box-shadow 0.18s cubic-bezier(.4,2,.3,1), background 0.18s;
+            will-change: transform, box-shadow;
+        }
+        .video-card:hover {
+            transform: translateY(-10px) scale(1.04) rotate(-1deg);
+            box-shadow: 0 10px 32px 0 rgba(229,57,53,0.18), 0 2px 12px #e5393522;
+            background: #fbeee6;
+        }
+        .video-thumb {
+            transition: filter 0.2s, box-shadow 0.2s;
+        }
+        .video-card:hover .video-thumb {
+            filter: brightness(1.08) saturate(1.2);
+            box-shadow: 0 4px 16px #e5393544;
+        }
+        .video-title {
+            transition: color 0.18s;
+        }
+        .video-title:hover {
+            color: #e53935;
+        }
+        .fade-in {
+            animation: fadeIn 0.7s cubic-bezier(.4,2,.3,1);
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: none; }
+        }
+        /* Sign In/Up Modal */
+        #auth-modal {
+            display: none;
+            position: fixed;
+            top: 0; left: 0; width: 100vw; height: 100vh;
+            background: rgba(33,33,33,0.85);
+            z-index: 10000;
+            align-items: center;
+            justify-content: center;
+        }
+        #auth-form {
+            background: #fff;
+            color: #232946;
+            padding: 32px 28px;
+            border-radius: 16px;
+            box-shadow: 0 4px 24px #e5393522;
+            display: flex;
+            flex-direction: column;
+            gap: 18px;
+            min-width: 260px;
+            max-width: 90vw;
+        }
+        #auth-form h2 {
+            color: #e53935;
+            margin: 0 0 8px 0;
+            text-align: center;
+        }
+        #auth-form input {
+            padding: 10px 12px;
+            border-radius: 6px;
+            border: 1px solid #e53935;
+            font-size: 1.1rem;
+            outline: none;
+        }
+        #auth-form button {
+            background: #e53935;
+            color: #fff;
+            border: none;
+            border-radius: 6px;
+            padding: 10px 0;
+            font-weight: 700;
+            font-size: 1.1rem;
+            cursor: pointer;
+        }
+        #auth-error {
+            color: #e53935;
+            text-align: center;
+            font-size: 1rem;
+            display: none;
+        }
+        .user-bar {
+            margin-left: auto;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .user-bar span {
+            color: #e53935;
+            font-weight: 600;
+        }
+        .user-bar button {
+            background: #e53935;
+            color: #fff;
+            border: none;
+            border-radius: 6px;
+            padding: 8px 16px;
+            font-weight: 600;
+            cursor: pointer;
+        }
+        .user-bar button#sign-out-btn {
+            background: #888;
+        }
+        /* Comments */
+        .comments-section {
+            max-width: 900px;
+            margin: 40px auto 0 auto;
+            background: #fff;
+            border-radius: 12px;
+            box-shadow: 0 2px 12px #e5393522;
+            padding: 28px 24px;
+        }
+        .comments-section h3 {
+            color: #e53935;
+            margin-bottom: 16px;
+        }
+        .comment-list {
+            margin-bottom: 18px;
+        }
+        .comment-item {
+            background: #fbeee6;
+            border-radius: 8px;
+            padding: 12px 14px;
+            margin-bottom: 10px;
+            color: #232946;
+            box-shadow: 0 2px 8px #e5393522;
+        }
+        .comment-meta {
+            font-size: 0.95em;
+            color: #888;
+            margin-bottom: 2px;
+        }
+        .comment-form {
+            display: flex;
+            gap: 8px;
+        }
+        .comment-form input, .comment-form textarea {
+            flex: 1;
+            padding: 8px 10px;
+            border-radius: 6px;
+            border: 1px solid #e53935;
+            font-size: 1rem;
+        }
+        .comment-form button {
+            background: #e53935;
+            color: #fff;
+            border: none;
+            border-radius: 6px;
+            padding: 8px 16px;
+            font-weight: 600;
+            cursor: pointer;
+        }
+        @media (max-width: 900px) {
             .video-grid {
-                padding: 0 2vw 24px 2vw;
+                grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
                 gap: 16px;
+                padding: 0 2vw 24px 2vw;
             }
             .logo-bar {
                 flex-direction: column;
@@ -114,28 +305,39 @@
                 margin-bottom: 8px;
             }
         }
+        @media (max-width: 600px) {
+            .video-thumb {
+                height: 120px;
+            }
+            .section-title {
+                margin: 24px 0 12px 4vw;
+                font-size: 1.1rem;
+            }
+        }
     </style>
 </head>
 <body>
     <div class="topnav">
+        <span style="color:#fff;font-size:17px;font-weight:700;padding:16px 18px;">VidTube</span>
         <a class="active" href="index.html">Home</a>
-        <a href="buba.html">VidTube</a>
-        <a href="cashaplay.html">Cashapp On Google Play</a>
-        <a href="about.html">about HPP</a>
-        <a href="funsta.html">Funstagram</a>
-        <a href="searches.html">search</a>
-        <a href="jweeter.html">Jweeter</a>
-        <a href="musicaly.html">Musicaly</a>
-        <a href="the iframe page.html">The iFrame Page</a>
-        <a href="lists.html">HPP Page List</a>
+        <div class="user-bar">
+            <span id="user-greeting"></span>
+            <button id="sign-in-btn">Sign In</button>
+            <button id="sign-out-btn" style="display:none;">Sign Out</button>
+        </div>
     </div>
     <div class="logo-bar">
         <img src="VidTube-Logo.webp" alt="VidTube Logo">
         <h1>VidTube</h1>
     </div>
+    <div class="search-container" style="display:flex;justify-content:center;margin:24px 0 8px 0;">
+        <input id="video-search" type="search" placeholder="Search for videos..." style="width:260px;padding:10px 14px;border:1px solid #e53935;border-radius:6px 0 0 6px;outline:none;font-size:16px;">
+        <button id="video-search-btn" style="padding:10px 18px;border:none;background:#e53935;color:#fff;border-radius:0 6px 6px 0;font-size:16px;cursor:pointer;transition:background 0.2s;">Search</button>
+    </div>
+    <div id="search-results" style="max-width:900px;margin:0 auto 24px auto;display:none;"></div>
     <div class="section-title">Recommended by People</div>
     <div class="video-grid">
-        <div class="video-card">
+        <div class="video-card" onclick="window.location.href='bobnete.html'">
             <a href="bobnete.html"><img class="video-thumb" src="jcars.JPG" alt="Bobita si buburuza o ora"></a>
             <div class="video-info">
                 <a class="video-title" href="bobnete.html">Bobita si buburuza o ora</a>
@@ -143,10 +345,232 @@
             </div>
         </div>
     </div>
+
+    <div class="section-title">Latest Videos</div>
+    <div class="video-grid">
+        <div class="video-card" onclick="window.location.href='chinese%20meme.html'">
+            <a href="chinese%20meme.html"><img class="video-thumb" src="yeas.jpg" alt="Chinese Meme"></a>
+            <div class="video-info">
+                <a class="video-title" href="chinese%20meme.html">Chinese Meme</a>
+                <div class="video-meta">By Juo | 2024</div>
+            </div>
+        </div>
+        <!-- Add more video-cards here for more videos -->
+    </div>
+
+    <div id="auth-modal">
+        <form id="auth-form">
+            <h2>Sign In / Register</h2>
+            <input id="auth-username" type="text" placeholder="Username" required>
+            <input id="auth-password" type="password" placeholder="Password" required>
+            <button type="submit">Sign In / Register</button>
+            <span id="auth-error"></span>
+        </form>
+    </div>
+
+    <div class="comments-section fade-in" id="comments-section" style="display:none;">
+        <h3>Comments</h3>
+        <div class="comment-list" id="comment-list"></div>
+        <form class="comment-form" id="comment-form">
+            <textarea id="comment-input" placeholder="Add a comment..." required rows="2"></textarea>
+            <button type="submit">Post</button>
+        </form>
+    </div>
+
     <footer>
         <h4>HPP - Hpa Progress Plexus</h4>
         <h5>Created by Juo</h5>
-        <h5>Contact: <a href="mailto: support@hpp.com"></a></h5>
+        <h5>Contact: <a href="mailto:support@hpp.com">support@hpp.com</a></h5>
     </footer>
+    <script>
+    // --- VidTube Local Video Search ---
+    // List of local videos (add more as needed)
+    const VIDEOS = [
+        {
+            title: 'Bobita si buburuza o ora',
+            file: 'bobnete.html',
+            thumb: 'jcars.JPG',
+            author: 'Bobita',
+            year: '2024',
+            desc: 'A fun hour with Bobita and Buburuza.'
+        },
+        {
+            title: 'Chinese Meme',
+            file: 'chinese meme.html',
+            thumb: 'yeas.jpg',
+            author: 'Juo',
+            year: '2024',
+            desc: 'A hilarious Chinese meme video.'
+        }
+        // Add more video objects here as you add more videos
+    ];
+    const searchInput = document.getElementById('video-search');
+    const searchBtn = document.getElementById('video-search-btn');
+    const resultsDiv = document.getElementById('search-results');
+    function renderVideoResults(results, query) {
+        if (results.length === 0) {
+            resultsDiv.innerHTML = `<div style='color:#e53935;text-align:center;font-size:1.1rem;'>No results for '<b>${query}</b>'.</div>`;
+        } else {
+            resultsDiv.innerHTML = `<div style='display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:28px;'>` +
+                results.map(v => `
+                <div class='video-card' style='background:#fff;border-radius:10px;box-shadow:0 2px 12px rgba(33,147,176,0.08);overflow:hidden;display:flex;flex-direction:column;cursor:pointer;' onclick="window.location.href='${v.file}'">
+                    <a href='${v.file}'><img class='video-thumb' src='${v.thumb}' alt='${v.title}' style='width:100%;height:180px;object-fit:cover;background:#eee;border-bottom:1px solid #f1f1f1;'></a>
+                    <div class='video-info' style='padding:16px;flex:1;display:flex;flex-direction:column;justify-content:center;'>
+                        <a class='video-title' href='${v.file}' style='font-size:1.1rem;color:#222;font-weight:700;margin:0 0 8px 0;text-decoration:none;transition:color 0.2s;'>${v.title}</a>
+                        <div class='video-meta' style='color:#888;font-size:0.95rem;'>By ${v.author} | ${v.year}</div>
+                        <div style='color:#555;font-size:0.98rem;margin-top:6px;'>${v.desc}</div>
+                    </div>
+                </div>`).join('') + '</div>';
+        }
+        resultsDiv.style.display = 'block';
+    }
+    function doVideoSearch() {
+        const query = searchInput.value.trim().toLowerCase();
+        if (!query) return;
+        const results = VIDEOS.filter(v =>
+            v.title.toLowerCase().includes(query) ||
+            v.author.toLowerCase().includes(query) ||
+            v.year.includes(query) ||
+            (v.desc && v.desc.toLowerCase().includes(query))
+        );
+        renderVideoResults(results, query);
+    }
+    searchBtn.onclick = doVideoSearch;
+    searchInput.addEventListener('keydown', function(e) {
+        if (e.key === 'Enter') doVideoSearch();
+    });
+    // Optional: Autofocus input
+    searchInput.focus();
+
+    // --- Sleek Animations: Fade in on load ---
+    document.querySelectorAll('.video-card, .logo-bar, .section-title, .search-container, .video-grid, .comments-section').forEach(el => {
+        el.classList.add('fade-in');
+    });
+    // --- Sign In/Up Feature & User Video History ---
+    const USER_KEY = 'vidtube-user';
+    const USERS_KEY = 'vidtube-users';
+    const HISTORY_KEY = 'vidtube-history';
+    const signInBtn = document.getElementById('sign-in-btn');
+    const signOutBtn = document.getElementById('sign-out-btn');
+    const userGreeting = document.getElementById('user-greeting');
+    const authModal = document.getElementById('auth-modal');
+    const authForm = document.getElementById('auth-form');
+    const authUsername = document.getElementById('auth-username');
+    const authPassword = document.getElementById('auth-password');
+    const authError = document.getElementById('auth-error');
+    const commentsSection = document.getElementById('comments-section');
+    const commentList = document.getElementById('comment-list');
+    const commentForm = document.getElementById('comment-form');
+    const commentInput = document.getElementById('comment-input');
+
+    function getUsers() {
+        try { return JSON.parse(localStorage.getItem(USERS_KEY)) || {}; } catch { return {}; }
+    }
+    function setUsers(users) { localStorage.setItem(USERS_KEY, JSON.stringify(users)); }
+    function getCurrentUser() { return localStorage.getItem(USER_KEY); }
+    function setCurrentUser(username) { if (username) localStorage.setItem(USER_KEY, username); else localStorage.removeItem(USER_KEY); }
+    function getHistory() {
+        try { return JSON.parse(localStorage.getItem(HISTORY_KEY)) || {}; } catch { return {}; }
+    }
+    function setHistory(hist) { localStorage.setItem(HISTORY_KEY, JSON.stringify(hist)); }
+    function updateAuthUI() {
+        const user = getCurrentUser();
+        if (user) {
+            userGreeting.textContent = `Hi, ${user}!`;
+            signInBtn.style.display = 'none';
+            signOutBtn.style.display = '';
+            commentsSection.style.display = '';
+        } else {
+            userGreeting.textContent = '';
+            signInBtn.style.display = '';
+            signOutBtn.style.display = 'none';
+            commentsSection.style.display = 'none';
+        }
+    }
+    signInBtn.onclick = () => {
+        authModal.style.display = 'flex';
+        authError.style.display = 'none';
+        authForm.reset();
+        authUsername.focus();
+    };
+    signOutBtn.onclick = () => {
+        setCurrentUser(null);
+        updateAuthUI();
+    };
+    authModal.onclick = e => { if (e.target === authModal) authModal.style.display = 'none'; };
+    authForm.onsubmit = e => {
+        e.preventDefault();
+        const username = authUsername.value.trim();
+        const password = authPassword.value;
+        if (!username || !password) return;
+        let users = getUsers();
+        if (users[username]) {
+            if (users[username] !== password) {
+                authError.textContent = 'Incorrect password.';
+                authError.style.display = 'block';
+                return;
+            }
+        } else {
+            users[username] = password;
+            setUsers(users);
+        }
+        setCurrentUser(username);
+        updateAuthUI();
+        authModal.style.display = 'none';
+    };
+    // --- Video History Tracking ---
+    function addToHistory(videoTitle, videoFile) {
+        const user = getCurrentUser();
+        if (!user) return;
+        let hist = getHistory();
+        if (!hist[user]) hist[user] = [];
+        // Remove if already exists
+        hist[user] = hist[user].filter(v => v.file !== videoFile);
+        hist[user].unshift({ title: videoTitle, file: videoFile, date: new Date().toISOString() });
+        if (hist[user].length > 10) hist[user] = hist[user].slice(0, 10);
+        setHistory(hist);
+    }
+    document.querySelectorAll('.video-card').forEach(card => {
+        card.addEventListener('click', function() {
+            const title = this.querySelector('.video-title')?.textContent || '';
+            const file = this.querySelector('a')?.getAttribute('href') || '';
+            addToHistory(title, file);
+        });
+    });
+    // --- Comments Feature ---
+    function getComments() {
+        try { return JSON.parse(localStorage.getItem('vidtube-comments')) || {}; } catch { return {}; }
+    }
+    function setComments(obj) { localStorage.setItem('vidtube-comments', JSON.stringify(obj)); }
+    function renderComments() {
+        const user = getCurrentUser();
+        if (!user) return;
+        const file = window.location.pathname.split('/').pop();
+        const allComments = getComments();
+        const comments = allComments[file] || [];
+        commentList.innerHTML = comments.map(c => `
+            <div class='comment-item'>
+                <div class='comment-meta'>${c.user} &bull; ${new Date(c.date).toLocaleString()}</div>
+                <div>${c.text}</div>
+            </div>
+        `).join('');
+    }
+    commentForm.onsubmit = function(e) {
+        e.preventDefault();
+        const user = getCurrentUser();
+        if (!user) return;
+        const file = window.location.pathname.split('/').pop();
+        const allComments = getComments();
+        if (!allComments[file]) allComments[file] = [];
+        allComments[file].unshift({ user, text: commentInput.value, date: new Date().toISOString() });
+        if (allComments[file].length > 30) allComments[file] = allComments[file].slice(0, 30);
+        setComments(allComments);
+        commentInput.value = '';
+        renderComments();
+    };
+    // On load
+    updateAuthUI();
+    renderComments();
+    </script>
 </body>
 </html>

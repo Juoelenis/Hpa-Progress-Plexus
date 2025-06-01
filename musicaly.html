@@ -10,30 +10,48 @@
     <style>
         body {
             font-family: 'Inter', Arial, sans-serif;
-            background: linear-gradient(120deg, #232946 0%, #16161a 80%);
+            background: linear-gradient(120deg, #191414 0%, #232946 100%);
             margin: 0;
             padding: 0;
             color: #f4f4f4;
         }
         .topnav {
-            background: #232946;
+            background: #191414;
             overflow: hidden;
             padding: 0 10px;
             display: flex;
             align-items: center;
-            box-shadow: 0 2px 12px rgba(35,41,70,0.12);
+            box-shadow: 0 2px 12px rgba(25,20,20,0.12);
         }
-        .topnav a {
-            color: #f4f4f4;
+        .topnav .musicaly-label {
+            color: #1db954;
+            font-size: 1.15rem;
+            font-weight: 700;
+            padding: 16px 18px;
+            letter-spacing: 1px;
+            background: none;
+            border-radius: 6px;
+            cursor: default;
+            user-select: none;
+        }
+        .topnav a.home-btn {
+            color: #fff;
             text-align: center;
             padding: 16px 18px;
             text-decoration: none;
             font-size: 17px;
+            font-weight: 600;
+            border-radius: 6px;
+            background: none;
             transition: background 0.2s, color 0.2s;
+            margin-left: 0;
+            display: flex;
+            align-items: center;
+            gap: 8px;
         }
-        .topnav a.active, .topnav a:hover {
-            background: #e53935;
-            color: #fff;
+        .topnav a.home-btn:hover {
+            background: #1db954;
+            color: #191414;
         }
         .logo-bar {
             display: flex;
@@ -44,21 +62,21 @@
         .logo-bar img {
             height: 70px;
             margin-right: 18px;
-            filter: drop-shadow(0 2px 8px #23294688);
-            background: #16161a;
+            filter: drop-shadow(0 2px 8px #1db95488);
+            background: #191414;
             border-radius: 12px;
         }
         .logo-bar h1 {
             font-size: 2.2rem;
-            color: #e53935;
+            color: #1db954;
             margin: 0;
             font-weight: 700;
             letter-spacing: 1px;
-            text-shadow: 0 2px 8px #23294688;
+            text-shadow: 0 2px 8px #1db95444;
         }
         .music-section {
             max-width: 500px;
-            margin: 0 auto;
+            margin: 0 auto 32px auto;
             background: #232946;
             border-radius: 16px;
             box-shadow: 0 4px 24px rgba(35,41,70,0.18);
@@ -66,7 +84,7 @@
             text-align: center;
         }
         .music-section h2 {
-            color: #6dd5ed;
+            color: #1db954;
             margin-bottom: 12px;
         }
         .music-section h3 {
@@ -80,23 +98,113 @@
             margin-top: 18px;
         }
         .music-list a {
-            background: #16161a;
-            color: #6dd5ed;
+            background: #191414;
+            color: #1db954;
             padding: 14px;
             border-radius: 8px;
             text-decoration: none;
             font-weight: 600;
             font-size: 1.1rem;
             transition: background 0.2s, color 0.2s, box-shadow 0.2s;
-            box-shadow: 0 2px 8px rgba(109,213,237,0.08);
+            box-shadow: 0 2px 8px rgba(29,185,84,0.08);
+            display: flex;
+            align-items: center;
+            gap: 12px;
         }
         .music-list a:hover {
-            background: #6dd5ed;
-            color: #16161a;
-            box-shadow: 0 4px 16px #6dd5ed44;
+            background: #1db954;
+            color: #191414;
+            box-shadow: 0 4px 16px #1db95444;
+        }
+        .recent-section {
+            max-width: 500px;
+            margin: 0 auto 32px auto;
+            background: #232946;
+            border-radius: 16px;
+            box-shadow: 0 4px 24px rgba(35,41,70,0.18);
+            padding: 28px 24px 20px 24px;
+            text-align: center;
+        }
+        .recent-section h3 {
+            color: #1db954;
+            margin-bottom: 18px;
+        }
+        .recent-list {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            margin-top: 10px;
+        }
+        .recent-list a {
+            background: #191414;
+            color: #b8c1ec;
+            padding: 12px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 1.05rem;
+            transition: background 0.2s, color 0.2s;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .recent-list a:hover {
+            background: #1db954;
+            color: #191414;
+        }
+        #auth-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background: rgba(25,20,20,0.85);
+            z-index: 10000;
+            align-items: center;
+            justify-content: center;
+        }
+        #auth-form {
+            background: #232946;
+            padding: 32px 28px;
+            border-radius: 16px;
+            box-shadow: 0 4px 24px #19141488;
+            display: flex;
+            flex-direction: column;
+            gap: 18px;
+            min-width: 260px;
+            max-width: 90vw;
+        }
+        #auth-form h2 {
+            color: #1db954;
+            margin: 0 0 8px 0;
+            text-align: center;
+        }
+        #auth-form input {
+            padding: 10px 12px;
+            border-radius: 6px;
+            border: 1px solid #1db954;
+            font-size: 1.1rem;
+            outline: none;
+        }
+        #auth-form button {
+            background: #1db954;
+            color: #191414;
+            border: none;
+            border-radius: 6px;
+            padding: 10px 0;
+            font-weight: 700;
+            font-size: 1.1rem;
+            cursor: pointer;
+        }
+        #auth-error {
+            color: #e53935;
+            text-align: center;
+            font-size: 1rem;
+            display: none;
         }
         @media (max-width: 600px) {
-            .music-section {
+            .music-section, .recent-section {
                 padding: 16px 4vw;
             }
             .logo-bar {
@@ -111,15 +219,14 @@
 </head>
 <body>
     <div class="topnav">
-        <a class="active" href="index.html">Home</a>
-        <a href="buba.html">VidTube</a>
-        <a href="cashaplay.html">Cashapp On Google Play</a>
-        <a href="about.html">about HPP</a>
-        <a href="funsta.html">Funstagram</a>
-        <a href="searches.html">search</a>
-        <a href="jweeter.html">Jweeter</a>
-        <a href="musicaly.html">Musicaly</a>
-        <a href="the iframe page.html">The iFrame Page</a>
+        <span class="musicaly-label">Musicaly</span>
+        <a class="home-btn" href="index.html" title="Home">
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none" style="vertical-align:middle;">
+                <path d="M3 9.5L10 3L17 9.5V17C17 17.5523 16.5523 18 16 18H4C3.44772 18 3 17.5523 3 17V9.5Z" stroke="#1db954" stroke-width="2" fill="none"/>
+                <rect x="7" y="13" width="6" height="5" rx="1" fill="#1db954"/>
+            </svg>
+            Home
+        </a>
     </div>
     <div class="logo-bar">
         <img src="musicaly.png" alt="Musicaly Logo">
@@ -128,12 +235,229 @@
     <div class="music-section">
         <h2>Music But on Steroids!</h2>
         <h3>Best and most popular</h3>
-        <div class="music-list">
-            <a href="alors on danse.html">Alors on Danse - Stromae</a>
-            <a href="spectre.html">Spectre - Alan Walker</a>
-            <a href="gunna.html">Fukumean - Gunna</a>
-            <a href="force.html">Force - Alan Walker</a>
+        <div class="search-bar" style="display:flex;justify-content:center;gap:0.5rem;margin-bottom:18px;">
+            <input id="song-search" type="search" placeholder="Search for songs, albums, artists..." style="width:220px;padding:10px 12px;border-radius:6px 0 0 6px;border:1px solid #1db954;font-size:1rem;outline:none;">
+            <select id="sort-select" style="padding:10px 8px;border-radius:0;border:1px solid #1db954;border-left:none;background:#232946;color:#1db954;font-size:1rem;">
+                <option value="">Sort by</option>
+                <option value="year">Year</option>
+                <option value="album">Album</option>
+                <option value="title">Title</option>
+            </select>
+            <button id="song-search-btn" style="padding:10px 16px;border:none;background:#1db954;color:#191414;border-radius:0 6px 6px 0;font-weight:600;font-size:1rem;cursor:pointer;">Search</button>
+        </div>
+        <div class="music-list" id="music-list">
+            <a href="alors on danse.html" data-title="Alors on Danse - Stromae" data-year="2009" data-album="1">Alors on Danse - Stromae</a>
+            <a href="spectre.html" data-title="Spectre - Alan Walker" data-year="2015" data-album="2">Spectre - Alan Walker</a>
+            <a href="gunna.html" data-title="Fukumean - Gunna" data-year="2023" data-album="3">Fukumean - Gunna</a>
+            <a href="force.html" data-title="Force - Alan Walker" data-year="2018" data-album="2">Force - Alan Walker</a>
+        </div>
+        <div id="external-results" style="margin-top:18px;"></div>
+    </div>
+    <div class="recent-section">
+        <h3>Recently Played</h3>
+        <div class="recent-list" id="recent-list">
+            <span style="color:#888;">No recently played songs yet.</span>
         </div>
     </div>
+    <div id="auth-modal">
+        <form id="auth-form">
+            <h2>Sign In / Register</h2>
+            <input id="auth-username" type="text" placeholder="Username" required>
+            <input id="auth-password" type="password" placeholder="Password" required>
+            <button type="submit">Sign In / Register</button>
+            <span id="auth-error"></span>
+        </form>
+    </div>
+    <script>
+    // --- Recently Played Songs ---
+    const musicLinks = document.querySelectorAll('#music-list a');
+    const recentList = document.getElementById('recent-list');
+    const RECENT_KEY = 'musicaly-recent';
+    function getRecent() {
+        try {
+            return JSON.parse(localStorage.getItem(RECENT_KEY)) || [];
+        } catch { return []; }
+    }
+    function setRecent(arr) {
+        localStorage.setItem(RECENT_KEY, JSON.stringify(arr));
+    }
+    function renderRecent() {
+        const recent = getRecent();
+        if (!recent.length) {
+            recentList.innerHTML = '<span style="color:#888;">No recently played songs yet.</span>';
+            return;
+        }
+        recentList.innerHTML = recent.map(song => `<a href="${song.href}">${song.title}</a>`).join('');
+    }
+    musicLinks.forEach(link => {
+        link.addEventListener('click', function() {
+            const title = this.getAttribute('data-title') || this.textContent;
+            const href = this.getAttribute('href');
+            let recent = getRecent();
+            // Remove if already exists
+            recent = recent.filter(s => s.href !== href);
+            // Add to front
+            recent.unshift({ title, href });
+            // Limit to 6
+            if (recent.length > 6) recent = recent.slice(0, 6);
+            setRecent(recent);
+        });
+    });
+    renderRecent();
+
+    // --- User Registration/Sign In for Musicaly ---
+    const USER_KEY = 'musicaly-user';
+    const USERS_KEY = 'musicaly-users';
+    const signInBtn = document.getElementById('sign-in-btn');
+    const signOutBtn = document.getElementById('sign-out-btn');
+    const userGreeting = document.getElementById('user-greeting');
+    const authModal = document.getElementById('auth-modal');
+    const authForm = document.getElementById('auth-form');
+    const authUsername = document.getElementById('auth-username');
+    const authPassword = document.getElementById('auth-password');
+    const authError = document.getElementById('auth-error');
+
+    function getUsers() {
+        try {
+            return JSON.parse(localStorage.getItem(USERS_KEY)) || {};
+        } catch { return {}; }
+    }
+    function setUsers(users) {
+        localStorage.setItem(USERS_KEY, JSON.stringify(users));
+    }
+    function getCurrentUser() {
+        return localStorage.getItem(USER_KEY);
+    }
+    function setCurrentUser(username) {
+        if (username) localStorage.setItem(USER_KEY, username);
+        else localStorage.removeItem(USER_KEY);
+    }
+    function updateAuthUI() {
+        const user = getCurrentUser();
+        if (user) {
+            userGreeting.textContent = `Hi, ${user}!`;
+            signInBtn.style.display = 'none';
+            signOutBtn.style.display = '';
+        } else {
+            userGreeting.textContent = '';
+            signInBtn.style.display = '';
+            signOutBtn.style.display = 'none';
+        }
+    }
+    signInBtn.onclick = () => {
+        authModal.style.display = 'flex';
+        authError.style.display = 'none';
+        authForm.reset();
+        authUsername.focus();
+    };
+    signOutBtn.onclick = () => {
+        setCurrentUser(null);
+        updateAuthUI();
+    };
+    authModal.onclick = e => {
+        if (e.target === authModal) authModal.style.display = 'none';
+    };
+    authForm.onsubmit = e => {
+        e.preventDefault();
+        const username = authUsername.value.trim();
+        const password = authPassword.value;
+        if (!username || !password) return;
+        let users = getUsers();
+        if (users[username]) {
+            // Sign in
+            if (users[username] !== password) {
+                authError.textContent = 'Incorrect password.';
+                authError.style.display = 'block';
+                return;
+            }
+        } else {
+            // Register
+            users[username] = password;
+            setUsers(users);
+        }
+        setCurrentUser(username);
+        updateAuthUI();
+        authModal.style.display = 'none';
+    };
+    // On load
+    updateAuthUI();
+
+    // --- Music Search & Sort (Spotify-like) ---
+    const musicListDiv = document.getElementById('music-list');
+    const searchInput = document.getElementById('song-search');
+    const searchBtn = document.getElementById('song-search-btn');
+    const sortSelect = document.getElementById('sort-select');
+    const externalResultsDiv = document.getElementById('external-results');
+    // Local music data
+    let localSongs = Array.from(musicListDiv.querySelectorAll('a')).map(a => ({
+        title: a.getAttribute('data-title') || a.textContent,
+        href: a.getAttribute('href'),
+        year: a.getAttribute('data-year') || '',
+        album: a.getAttribute('data-album') || '',
+        element: a
+    }));
+    function renderLocalSongs(songs) {
+        musicListDiv.innerHTML = songs.map(song => `<a href="${song.href}" data-title="${song.title}" data-year="${song.year}" data-album="${song.album}">${song.title}</a>`).join('');
+    }
+    function doLocalSearch() {
+        const q = searchInput.value.trim().toLowerCase();
+        let filtered = localSongs.filter(song =>
+            song.title.toLowerCase().includes(q)
+        );
+        // Sort
+        const sortBy = sortSelect.value;
+        if (sortBy) {
+            filtered = filtered.slice().sort((a, b) => {
+                if (sortBy === 'year') return (b.year || '').localeCompare(a.year || '');
+                if (sortBy === 'album') return (a.album || '').localeCompare(b.album || '');
+                if (sortBy === 'title') return (a.title || '').localeCompare(b.title || '');
+                return 0;
+            });
+        }
+        renderLocalSongs(filtered);
+    }
+    searchBtn.onclick = doLocalSearch;
+    searchInput.addEventListener('keydown', e => { if (e.key === 'Enter') doLocalSearch(); });
+    sortSelect.onchange = doLocalSearch;
+    // --- External API Search (Last.fm) ---
+    async function doExternalSearch(query) {
+        externalResultsDiv.innerHTML = '<span style="color:#888;">Searching Last.fm...</span>';
+        // Last.fm API (free, requires API key, demo key used for public search)
+        // Docs: https://www.last.fm/api/show/track.search
+        const apiKey = 'b25b959554ed76058ac220b7b2e0a026'; // public demo key
+        const url = `https://ws.audioscrobbler.com/2.0/?method=track.search&track=${encodeURIComponent(query)}&api_key=${apiKey}&format=json&limit=6`;
+        try {
+            const resp = await fetch(url);
+            const data = await resp.json();
+            if (data.results && data.results.trackmatches && data.results.trackmatches.track && data.results.trackmatches.track.length) {
+                externalResultsDiv.innerHTML = '<div style="color:#1db954;font-weight:600;margin-bottom:8px;">Results from Last.fm</div>' +
+                    data.results.trackmatches.track.map(track =>
+                        `<div style='background:#191414;color:#b8c1ec;padding:10px 12px;border-radius:8px;margin-bottom:8px;display:flex;align-items:center;gap:12px;'>
+                            <img src='${track.image && track.image[1] && track.image[1]['#text'] ? track.image[1]['#text'] : ''}' alt='' style='width:36px;height:36px;border-radius:6px;background:#232946;object-fit:cover;'>
+                            <div style='flex:1;'>
+                                <div style='font-weight:700;color:#1db954;'>${track.name}</div>
+                                <div style='font-size:0.98em;color:#b8c1ec;'>${track.artist}</div>
+                            </div>
+                            <a href='${track.url}' target='_blank' style='color:#1db954;font-weight:600;text-decoration:none;'>Open</a>
+                        </div>`
+                    ).join('');
+            } else {
+                externalResultsDiv.innerHTML = '<span style="color:#e53935;">No results from Last.fm.</span>';
+            }
+        } catch {
+            externalResultsDiv.innerHTML = '<span style="color:#e53935;">Error searching Last.fm.</span>';
+        }
+    }
+    // When searching, also search Last.fm
+    function doFullSearch() {
+        doLocalSearch();
+        const q = searchInput.value.trim();
+        if (q) doExternalSearch(q);
+        else externalResultsDiv.innerHTML = '';
+    }
+    searchBtn.onclick = doFullSearch;
+    searchInput.addEventListener('keydown', e => { if (e.key === 'Enter') doFullSearch(); });
+    sortSelect.onchange = doFullSearch;
+    </script>
 </body>
 </html>
