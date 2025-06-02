@@ -355,6 +355,34 @@
         }
     }
 
+    function doWWWSearch(query) {
+        // Use DuckDuckGo Instant Answer API (JSONP workaround)
+        wwwResultsDiv.innerHTML = '<div style="text-align:center;font-size:1.1em;color:#2193b0;">Searching the web for: <b>' + query + '</b> ...</div>';
+        wwwResultsDiv.style.display = 'block';
+        // Use a public CORS proxy for demo (not for production)
+        const apiUrl = `https://api.duckduckgo.com/?q=${encodeURIComponent(query)}&format=json&no_redirect=1&no_html=1`;
+        fetch(apiUrl)
+            .then(r => r.json())
+            .then(data => {
+                let results = [];
+                if (data.RelatedTopics && data.RelatedTopics.length > 0) {
+                    results = data.RelatedTopics.filter(item => item.Text && item.FirstURL);
+                }
+                if (results.length === 0) {
+                    wwwResultsDiv.innerHTML = '<div style="color:#e53935;font-weight:600;">No web results found.</div>';
+                    return;
+                }
+                wwwResultsDiv.innerHTML = '<h2>Web Results</h2>' + results.map(item =>
+                    `<div class='www-result-item'>
+                        <a class='www-result-title' href='${item.FirstURL}' target='_blank' rel='noopener'>${item.Text}</a>
+                    </div>`
+                ).join('');
+            })
+            .catch(() => {
+                wwwResultsDiv.innerHTML = '<div style="color:#e53935;font-weight:600;">Failed to fetch web results.</div>';
+            });
+    }
+
     wwwModeToggle.addEventListener('change', () => {
         wwwResultsDiv.innerHTML = '';
         wwwResultsDiv.style.display = 'none';
