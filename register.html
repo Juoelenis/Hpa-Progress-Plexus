@@ -162,6 +162,7 @@
             }
             users[username] = password;
             localStorage.setItem('hppUsers', JSON.stringify(users));
+            localStorage.setItem('hppCurrentUser', username);
             successMsg.textContent = "Account created! You can now log in.";
             successMsg.style.display = "block";
             // Optionally redirect after a short delay

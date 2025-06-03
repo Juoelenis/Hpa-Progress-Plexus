@@ -127,22 +127,27 @@
     </style>
 
 <script>
-    function handleLogin(e) {
-        e.preventDefault();
-        const username = document.getElementById('username').value.trim();
-        const password = document.getElementById('password').value.trim();
-        const errorMsg = document.getElementById('errorMsg');
-        // Check localStorage for registered users
-        let users = JSON.parse(localStorage.getItem('hppUsers') || '{}');
-        if ((users[username] && users[username] === password) || (username === "user" && password === "hpp")) {
-            errorMsg.style.display = "none";
-            window.location.href = "index.html";
-        } else {
-            errorMsg.textContent = "Invalid username or password.";
-            errorMsg.style.display = "block";
+    // Save current user on login (login.html)
+    document.addEventListener('DOMContentLoaded', function() {
+        const loginForm = document.getElementById('loginForm');
+        if (loginForm) {
+            loginForm.onsubmit = function(e) {
+                e.preventDefault();
+                const username = document.getElementById('username').value.trim();
+                const password = document.getElementById('password').value.trim();
+                const errorMsg = document.getElementById('errorMsg');
+                let users = JSON.parse(localStorage.getItem('hppUsers') || '{}');
+                if ((users[username] && users[username] === password) || (username === "user" && password === "hpp")) {
+                    errorMsg.style.display = "none";
+                    localStorage.setItem('hppCurrentUser', username);
+                    window.location.href = "account.html";
+                } else {
+                    errorMsg.textContent = "Invalid username or password.";
+                    errorMsg.style.display = "block";
+                }
+            };
         }
-    }
-    document.getElementById('loginForm').addEventListener('submit', handleLogin);
+    });
 </script>
 
 </head>

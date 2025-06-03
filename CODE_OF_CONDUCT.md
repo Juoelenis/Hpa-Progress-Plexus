@@ -1,5 +1,4 @@
-![hpp-n-l-p](https://github.com/user-attachments/assets/b2d19920-3219-4fab-8d64-d27a1d93fd8b)
-
+![hpp logo](https://github.com/user-attachments/assets/48baf90e-667a-4569-ba34-90413f6e9cb7)
 
 # Contributor Covenant Code of Conduct
 

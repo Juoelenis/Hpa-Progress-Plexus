@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>HPP My Account</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body { font-family: Arial, sans-serif; background: #f4f6fa; margin: 0; }
+        .container { max-width: 500px; margin: 40px auto; background: #fff; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.07); padding: 32px; }
+        h2 { text-align: center; color: #2a3d66; }
+        .section { margin-bottom: 32px; }
+        label { display: block; margin-bottom: 6px; color: #2a3d66; }
+        input[type="text"], input[type="email"], input[type="password"] {
+            width: 100%; padding: 10px; margin-bottom: 16px; border: 1px solid #cfd8dc; border-radius: 4px;
+        }
+        button {
+            background: #2a3d66; color: #fff; border: none; padding: 10px 20px;
+            border-radius: 4px; cursor: pointer; font-size: 16px;
+        }
+        button:hover { background: #1a2847; }
+        .danger { background: #e53935; }
+        .danger:hover { background: #b71c1c; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>My HPP Account</h2>
+        <form class="section" id="profileForm">
+            <h3>Profile Information</h3>
+            <label for="name">Full Name</label>
+            <input type="text" id="name" name="name" placeholder="Your name" required>
+            <label for="email">Email Address</label>
+            <input type="email" id="email" name="email" placeholder="you@email.com" required>
+            <button type="submit">Update Profile</button>
+        </form>
+        <form class="section" id="passwordForm">
+            <h3>Change Password</h3>
+            <label for="currentPassword">Current Password</label>
+            <input type="password" id="currentPassword" name="currentPassword" required>
+            <label for="newPassword">New Password</label>
+            <input type="password" id="newPassword" name="newPassword" required>
+            <button type="submit">Change Password</button>
+        </form>
+        <div class="section">
+            <h3>Account Actions</h3>
+            <button class="danger" onclick="confirm('Are you sure you want to delete your account?')">Delete Account</button>
+        </div>
+    </div>
+    <script>
+    // Account management logic
+    document.addEventListener('DOMContentLoaded', function() {
+        // Load user info if available
+        let currentUser = localStorage.getItem('hppCurrentUser');
+        let users = JSON.parse(localStorage.getItem('hppUsers') || '{}');
+        if (currentUser && users[currentUser]) {
+            document.getElementById('name').value = currentUser;
+            document.getElementById('email').value = currentUser + '@example.com';
+        }
+        // Profile update
+        document.getElementById('profileForm').onsubmit = function(e) {
+            e.preventDefault();
+            let newName = document.getElementById('name').value.trim();
+            let email = document.getElementById('email').value.trim();
+            if (newName && users[currentUser]) {
+                if (newName !== currentUser && users[newName]) {
+                    alert('Username already exists.');
+                    return;
+                }
+                users[newName] = users[currentUser];
+                if (newName !== currentUser) {
+                    delete users[currentUser];
+                    localStorage.setItem('hppCurrentUser', newName);
+                }
+                localStorage.setItem('hppUsers', JSON.stringify(users));
+                alert('Profile updated!');
+                location.reload();
+            }
+        };
+        // Password change
+        document.getElementById('passwordForm').onsubmit = function(e) {
+            e.preventDefault();
+            let curr = document.getElementById('currentPassword').value;
+            let newP = document.getElementById('newPassword').value;
+            if (users[currentUser] === curr) {
+                users[currentUser] = newP;
+                localStorage.setItem('hppUsers', JSON.stringify(users));
+                alert('Password changed!');
+            } else {
+                alert('Current password incorrect.');
+            }
+        };
+        // Delete account
+        document.querySelector('.danger').onclick = function() {
+            if (confirm('Are you sure you want to delete your account?')) {
+                delete users[currentUser];
+                localStorage.setItem('hppUsers', JSON.stringify(users));
+                localStorage.removeItem('hppCurrentUser');
+                window.location.href = 'index.html';
+            }
+        };
+    });
+    </script>
+</body>
+</html>
