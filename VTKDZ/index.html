@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" href="favicon.ico" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#000000" />
+    <meta
+      name="description"
+      content="Web site created using create-react-app"
+    />
+    <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+    />
+    <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
+    
+    <title>VidTube Kids</title>
+    <style>
+      body {
+        margin: 0;
+        padding: 0;
+        min-height: 100vh;
+        font-family: 'Roboto', Arial, sans-serif;
+        background: linear-gradient(120deg, #ffb347 0%, #ffcc33 100%);
+        color: #232946;
+        transition: background 0.5s;
+      }
+      .navbar {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        background: #fffbe7cc;
+        box-shadow: 0 2px 12px #ffb34733;
+        padding: 18px 32px;
+        border-radius: 0 0 18px 18px;
+        position: sticky;
+        top: 0;
+        z-index: 10;
+      }
+      .navbar .logo {
+        display: flex;
+        align-items: center;
+        font-size: 2rem;
+        font-weight: 900;
+        color: #ff9800;
+        letter-spacing: 2px;
+        text-shadow: 0 2px 8px #fffbe7cc;
+      }
+      .navbar img {
+        height: 48px;
+        margin-right: 12px;
+        border-radius: 12px;
+        box-shadow: 0 2px 8px #ffb34744;
+      }
+      .navbar .home-link {
+        font-size: 1.1rem;
+        color: #232946;
+        text-decoration: none;
+        font-weight: 700;
+        background: #ffb347;
+        padding: 8px 18px;
+        border-radius: 8px;
+        box-shadow: 0 2px 8px #ffb34733;
+        transition: background 0.2s, color 0.2s;
+      }
+      .navbar .home-link:hover {
+        background: #ff9800;
+        color: #fff;
+      }
+      .kids-title {
+        text-align: center;
+        font-size: 2.2rem;
+        font-weight: 800;
+        margin: 48px 0 18px 0;
+        color: #ff9800;
+        letter-spacing: 1px;
+        text-shadow: 0 2px 8px #fffbe7cc;
+      }
+      .desc {
+        text-align: center;
+        font-size: 1.2rem;
+        color: #232946cc;
+        margin-bottom: 32px;
+      }
+      .main-content {
+        max-width: 700px;
+        margin: 0 auto;
+        background: #fffbe7cc;
+        border-radius: 18px;
+        box-shadow: 0 4px 24px #ffb34722;
+        padding: 36px 28px;
+        text-align: center;
+        animation: fadeIn 1.2s;
+      }
+      .main-content img {
+        width: 120px;
+        margin-bottom: 18px;
+        border-radius: 16px;
+        box-shadow: 0 2px 8px #ffb34744;
+      }
+      .main-content h2 {
+        color: #ff9800;
+        font-size: 1.5rem;
+        margin-bottom: 12px;
+      }
+      .main-content p {
+        color: #232946cc;
+        font-size: 1.1rem;
+        margin-bottom: 18px;
+      }
+      .main-content .cta {
+        display: inline-block;
+        background: linear-gradient(90deg, #ffb347 60%, #ff9800 100%);
+        color: #fff;
+        font-weight: 700;
+        padding: 12px 32px;
+        border-radius: 10px;
+        font-size: 1.1rem;
+        text-decoration: none;
+        margin-top: 18px;
+        box-shadow: 0 2px 8px #ffb34733;
+        transition: background 0.2s, color 0.2s, transform 0.2s;
+        animation: popIn 1.2s;
+      }
+      .main-content .cta:hover {
+        background: #ff9800;
+        color: #fffbe7;
+        transform: scale(1.05);
+      }
+      @media (max-width: 600px) {
+        .navbar {
+          flex-direction: column;
+          padding: 12px 8px;
+        }
+        .navbar .logo {
+          font-size: 1.3rem;
+        }
+        .main-content {
+          padding: 18px 4vw;
+        }
+        .kids-title {
+          font-size: 1.3rem;
+        }
+      }
+      @keyframes fadeIn {
+        from { opacity: 0; transform: translateY(40px); }
+        to { opacity: 1; transform: translateY(0); }
+      }
+      @keyframes popIn {
+        0% { transform: scale(0.8); opacity: 0; }
+        80% { transform: scale(1.08); opacity: 1; }
+        100% { transform: scale(1); }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="navbar">
+      <span class="logo"><img src="favicon.ico" alt="VidTube Kids Logo">VidTube Kids</span>
+      <a class="home-link" href="../video.html">Back to Videwo Inc.</a>
+    </div>
+    <div class="kids-title">Welcome to VidTube Kids!</div>
+    <div class="desc">A safe, fun, and colorful video platform just for kids.</div>
+    <div class="main-content">
+      <img src="favicon.ico" alt="VidTube Kids Logo">
+      <h2>Watch, Learn, and Play!</h2>
+      <p>VidTube Kids is designed for children to explore videos in a safe and friendly environment. Enjoy curated content, fun animations, and a bright, easy-to-use interface!</p>
+      <a class="cta" href="#">Start Watching</a>
+    </div>
+    <noscript>You need to enable JavaScript to run this app.</noscript>
+    <div id="root"></div>
+  </body>
+</html>
