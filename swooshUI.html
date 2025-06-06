@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Swoosh UI</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            font-family: 'San Francisco', 'Segoe UI', Arial, sans-serif;
+            background: linear-gradient(135deg, #e8eaf6 0%, #f5f7fa 100%);
+            margin: 0;
+            min-height: 100vh;
+        }
+        .mac-menubar {
+            position: sticky;
+            top: 0;
+            width: 100%;
+            background: linear-gradient(90deg, #f5f7fa 60%, #e8eaf6 100%);
+            border-bottom: 1px solid #e0e0e0;
+            display: flex;
+            align-items: center;
+            height: 38px;
+            z-index: 100;
+            box-shadow: 0 2px 8px rgba(42,61,102,0.04);
+        }
+        .mac-menubar .menu-item {
+            padding: 0 18px;
+            color: #2a3d66;
+            font-size: 1.08rem;
+            font-weight: 500;
+            cursor: pointer;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            transition: background 0.15s, color 0.15s;
+        }
+        .mac-menubar .menu-item:hover {
+            background: #e3ebff;
+            color: #4e6ed6;
+        }
+        .mac-menubar .menu-logo {
+            font-weight: 700;
+            font-size: 1.15rem;
+            margin-right: 18px;
+            color: #2a3d66;
+            letter-spacing: 0.03em;
+        }
+        .mac-window {
+            max-width: 700px;
+            margin: 48px auto;
+            background: #fff;
+            border-radius: 18px;
+            box-shadow: 0 8px 32px rgba(42,61,102,0.13);
+            overflow: hidden;
+        }
+        .mac-content {
+            padding: 38px 32px 32px 32px;
+        }
+        .mac-section {
+            background: #f5f7fa;
+            border-radius: 12px;
+            box-shadow: 0 2px 8px rgba(42,61,102,0.06);
+            padding: 28px 22px 18px 22px;
+            margin-bottom: 28px;
+        }
+        .mac-section h2 {
+            margin-top: 0;
+            color: #2a3d66;
+            font-size: 1.18rem;
+        }
+        label {
+            display: block;
+            margin-bottom: 6px;
+            color: #2a3d66;
+            font-weight: 500;
+        }
+        input[type="text"], input[type="email"], input[type="password"], textarea {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 16px;
+            border: 1px solid #cfd8dc;
+            border-radius: 6px;
+            font-size: 1rem;
+            background: #fff;
+            transition: border 0.2s;
+        }
+        input[type="text"]:focus, input[type="email"]:focus, input[type="password"]:focus, textarea:focus {
+            border: 1.5px solid #2a3d66;
+            outline: none;
+        }
+        button {
+            background: linear-gradient(90deg, #2a3d66 60%, #4e6ed6 100%);
+            color: #fff;
+            border: none;
+            padding: 10px 24px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 1.08rem;
+            font-weight: 500;
+            box-shadow: 0 2px 8px rgba(42,61,102,0.07);
+            transition: background 0.2s, box-shadow 0.2s;
+        }
+        button:hover {
+            background: linear-gradient(90deg, #1a2847 60%, #3a5bb5 100%);
+            box-shadow: 0 4px 16px rgba(42,61,102,0.13);
+        }
+        @media (max-width: 700px) {
+            .mac-window { max-width: 100%; margin: 0; border-radius: 0; }
+            .mac-content { padding: 18px 6px 18px 6px; }
+            .mac-menubar .menu-item, .mac-menubar .menu-logo { font-size: 1rem; padding: 0 10px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="mac-menubar">
+        <span class="menu-logo">Swoosh UI</span>
+        <span class="menu-item">File</span>
+        <span class="menu-item">Edit</span>
+        <span class="menu-item">View</span>
+        <span class="menu-item">Window</span>
+        <span class="menu-item">Help</span>
+    </div>
+    <div class="mac-window">
+        <div class="mac-content">
+            <div class="mac-section">
+                <h2>Welcome to Swoosh UI</h2>
+                <p>This interface is inspired by Apple macOS, featuring a clean, modern, and approachable design language. All elements are styled for clarity, comfort, and a touch of delight.</p>
+            </div>
+            <div class="mac-section">
+                <h2>Sample Form</h2>
+                <form>
+                    <label for="name">Name</label>
+                    <input type="text" id="name" placeholder="Your name">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" placeholder="you@example.com">
+                    <label for="message">Message</label>
+                    <textarea id="message" rows="4" placeholder="Type your message..."></textarea>
+                    <button type="submit">Send</button>
+                </form>
+            </div>
+            <div class="mac-section">
+                <h2>About Swoosh UI</h2>
+                <p>Swoosh UI is a demonstration of a macOS-inspired web interface. It uses soft gradients, rounded corners, and subtle shadows to create a sense of depth and comfort, just like a native Mac app.</p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

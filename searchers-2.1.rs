@@ -18,22 +18,29 @@ async fn redirect(query: web::Query<Query>) -> impl Responder {
         .finish()
 }
 
-// Local search function: searches for files containing the query in their name
+// Local search function: searches for files containing the query in their name (recursive, only .html files)
 async fn local_search(query: web::Query<Query>) -> impl Responder {
     let search_dir = "./"; // Change this to your desired directory
     let mut results = Vec::new();
-
-    if let Ok(entries) = fs::read_dir(search_dir) {
-        for entry in entries.flatten() {
-            let path: PathBuf = entry.path();
-            if let Some(name) = path.file_name().and_then(|n| n.to_str()) {
-                if name.to_lowercase().contains(&query.q.to_lowercase()) {
-                    results.push(name.to_string());
+    fn visit_dirs(dir: &str, query: &str, results: &mut Vec<String>) {
+        if let Ok(entries) = fs::read_dir(dir) {
+            for entry in entries.flatten() {
+                let path = entry.path();
+                if path.is_dir() {
+                    if let Some(p) = path.to_str() {
+                        visit_dirs(p, query, results);
+                    }
+                } else if let Some(name) = path.file_name().and_then(|n| n.to_str()) {
+                    if name.to_lowercase().contains(&query.to_lowercase()) && name.ends_with(".html") {
+                        if let Some(p) = path.to_str() {
+                            results.push(p.replace(".\\", "").replace("./", ""));
+                        }
+                    }
                 }
             }
         }
     }
-
+    visit_dirs(search_dir, &query.q, &mut results);
     HttpResponse::Ok().json(results)
 }
 

@@ -18,7 +18,7 @@
             font-family: 'Inter', Arial, sans-serif;
             min-height: 100vh;
             min-width: 100vw;
-            background: linear-gradient(0deg, #e0eafc 0%, #b2fefa 100%);
+            background: linear-gradient(120deg, #e0eafc 0%, #b2fefa 100%);
             background-size: 100% 200%;
             animation: gradientMove 6s ease-in-out infinite alternate;
             color: #232946;
@@ -27,84 +27,98 @@
             justify-content: center;
         }
         @keyframes gradientMove {
-            0% {
-                background-position: 0% 0%;
-            }
-            100% {
-                background-position: 0% 100%;
-            }
+            0% { background-position: 0% 0%; }
+            100% { background-position: 0% 100%; }
         }
         .login-container {
             background: #fff;
-            border-radius: 16px;
-            box-shadow: 0 4px 24px rgba(33,147,176,0.10);
-            padding: 36px 32px 28px 32px;
-            max-width: 350px;
+            border-radius: 22px;
+            box-shadow: 0 8px 32px #2193b022, 0 1.5px 8px #b2fefa33;
+            padding: 44px 36px 32px 36px;
+            max-width: 370px;
             width: 100%;
             text-align: center;
+            animation: fadeInUp 0.7s cubic-bezier(.23,1.01,.32,1) 0s 1;
+        }
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(40px); }
+            to { opacity: 1; transform: translateY(0); }
         }
         .login-container img {
-            height: 60px;
+            height: 64px;
             margin-bottom: 18px;
-            border-radius: 12px;
-            box-shadow: 0 2px 8px #b2fefa44;
+            border-radius: 14px;
+            box-shadow: 0 2px 12px #b2fefa44;
+            animation: popIn 0.7s cubic-bezier(.23,1.01,.32,1) 0.1s 1;
+        }
+        @keyframes popIn {
+            0% { opacity: 0; transform: scale(0.7); }
+            80% { opacity: 1; transform: scale(1.08); }
+            100% { opacity: 1; transform: scale(1); }
         }
         h2 {
             color: #2193b0;
             margin-bottom: 10px;
-            font-size: 1.3rem;
-            font-weight: 700;
+            font-size: 1.35rem;
+            font-weight: 800;
+            letter-spacing: 0.01em;
         }
         form {
             display: flex;
             flex-direction: column;
             gap: 14px;
+            margin-top: 8px;
         }
         label {
             text-align: left;
-            color: #232946;
-            font-weight: 600;
+            color: #2193b0;
+            font-weight: 700;
             margin-bottom: 4px;
+            font-size: 1.01rem;
         }
         input[type="text"], input[type="password"] {
-            padding: 10px 12px;
-            border: 1px solid #2193b0;
-            border-radius: 8px;
-            font-size: 1rem;
+            padding: 12px 14px;
+            border: 1.5px solid #e0eafc;
+            border-radius: 10px;
+            font-size: 1.05rem;
             outline: none;
-            transition: border 0.2s;
+            background: #f5fafd;
+            transition: border 0.2s, box-shadow 0.2s;
         }
         input[type="text"]:focus, input[type="password"]:focus {
-            border: 1.5px solid #6dd5ed;
+            border: 1.5px solid #2193b0;
+            box-shadow: 0 0 0 2px #2193b033;
         }
         button[type="submit"] {
-            padding: 12px 0;
-            background: #2193b0;
+            padding: 14px 0;
+            background: linear-gradient(90deg, #2193b0 60%, #6dd5ed 100%);
             color: #fff;
             border: none;
-            border-radius: 8px;
-            font-size: 1.1rem;
-            font-weight: 700;
+            border-radius: 10px;
+            font-size: 1.13rem;
+            font-weight: 800;
             cursor: pointer;
             margin-top: 8px;
-            transition: background 0.2s;
+            box-shadow: 0 2px 8px #2193b022;
+            transition: background 0.2s, color 0.2s, box-shadow 0.2s;
         }
         button[type="submit"]:hover {
-            background: #6dd5ed;
+            background: linear-gradient(90deg, #6dd5ed 60%, #2193b0 100%);
             color: #232946;
+            box-shadow: 0 4px 16px #2193b044;
         }
         .links {
-            margin-top: 18px;
+            margin-top: 22px;
             display: flex;
             flex-direction: column;
-            gap: 8px;
+            gap: 10px;
         }
         .links a {
             color: #2193b0;
             text-decoration: none;
-            font-weight: 600;
+            font-weight: 700;
             transition: color 0.2s;
-            font-size: 1rem;
+            font-size: 1.04rem;
         }
         .links a:hover {
             color: #e53935;
@@ -116,8 +130,13 @@
             border-radius: 8px;
             padding: 8px 0;
             margin-bottom: 8px;
-            font-weight: 600;
+            font-weight: 700;
             display: none;
+            animation: fadeIn 0.5s;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
         }
         @media (max-width: 500px) {
             .login-container {
@@ -125,8 +144,25 @@
             }
         }
     </style>
-
-<script>
+</head>
+<body>
+    <div class="login-container">
+        <img src="hpp-n-l-p.png" alt="HPP Logo">
+        <h2>Login to HPP</h2>
+        <div class="error-message" id="errorMsg"></div>
+        <form id="loginForm" autocomplete="on">
+            <label for="username">Username</label>
+            <input type="text" id="username" name="username" required autocomplete="username">
+            <label for="password">Password</label>
+            <input type="password" id="password" name="password" required autocomplete="current-password">
+            <button type="submit">Login</button>
+        </form>
+        <div class="links">
+            <a href="register.html">Don't have an account? Make one!</a>
+            <a href="index.html">Or use without account</a>
+        </div>
+    </div>
+    <script>
     // Save current user on login (login.html)
     document.addEventListener('DOMContentLoaded', function() {
         const loginForm = document.getElementById('loginForm');
@@ -148,25 +184,6 @@
             };
         }
     });
-</script>
-
-</head>
-<body>
-    <div class="login-container">
-        <img src="hpp-n-l-p.png" alt="HPP Logo">
-        <h2>Login to HPP</h2>
-        <div class="error-message" id="errorMsg"></div>
-        <form id="loginForm" autocomplete="on">
-            <label for="username">Username</label>
-            <input type="text" id="username" name="username" required autocomplete="username">
-            <label for="password">Password</label>
-            <input type="password" id="password" name="password" required autocomplete="current-password">
-            <button type="submit">Login</button>
-        </form>
-        <div class="links">
-            <a href="register.html">Don't have an account? Make one!</a>
-            <a href="index.html">Or use without account</a>
-        </div>
-    </div>
+    </script>
 </body>
 </html>

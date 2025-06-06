@@ -14,11 +14,20 @@
             min-height: 100vh;
             margin: 0;
             padding: 0;
+            padding-top: 60px;
             color: #232946;
+            transition: background 0.5s;
         }
         nav {
             background: #232946;
             box-shadow: 0 2px 12px #e5393522;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            min-width: 100vw;
+            z-index: 1000;
+            animation: fadeInDown 0.7s cubic-bezier(.23,1.01,.32,1) 0s 1;
         }
         .topnav {
             display: flex;
@@ -33,7 +42,7 @@
             text-decoration: none;
             font-size: 17px;
             font-weight: 600;
-            transition: background 0.2s;
+            transition: background 0.2s, color 0.2s, box-shadow 0.2s;
             border-radius: 4px;
         }
         .topnav a.logo {
@@ -47,59 +56,82 @@
         .topnav a.active, .topnav a:hover {
             background: #e53935;
             color: #fff;
+            box-shadow: 0 2px 8px #e5393522;
         }
         main {
             max-width: 700px;
-            margin: 48px auto;
+            width: 100vw;
+            margin: 48px 0 0 0;
             background: #fff;
-            border-radius: 16px;
-            box-shadow: 0 4px 24px rgba(229,57,53,0.10);
-            padding: 36px 28px;
+            border-radius: 18px;
+            box-shadow: 0 8px 32px rgba(229,57,53,0.13);
+            padding: 40px 32px 36px 32px;
+            animation: fadeInUp 0.7s cubic-bezier(.23,1.01,.32,1) 0s 1;
+            position: relative;
+            left: 50%;
+            transform: translateX(-50%);
         }
         h1 {
             color: #e53935;
             font-size: 2.2rem;
             margin-bottom: 18px;
             text-align: center;
+            letter-spacing: 0.01em;
+            font-weight: 800;
+            animation: fadeIn 1s 0.2s both;
         }
         section.news-list {
             display: flex;
             flex-direction: column;
-            gap: 24px;
+            gap: 28px;
         }
         article.news-card {
             background: linear-gradient(90deg, #ffeaea 0%, #eaffea 100%);
-            border-radius: 12px;
-            box-shadow: 0 2px 8px #43e97b22;
-            padding: 22px 18px;
+            border-radius: 14px;
+            box-shadow: 0 2px 12px #43e97b22;
+            padding: 26px 22px;
             display: flex;
             align-items: flex-start;
-            gap: 18px;
+            gap: 22px;
+            transition: box-shadow 0.2s, transform 0.2s;
+            animation: fadeInUp 0.7s cubic-bezier(.23,1.01,.32,1) 0.1s 1;
+        }
+        article.news-card:hover {
+            box-shadow: 0 8px 32px #e5393533;
+            transform: translateY(-4px) scale(1.015);
         }
         .news-card img {
-            border-radius: 10px;
+            border-radius: 12px;
             width: 90px;
             height: 90px;
             object-fit: cover;
             box-shadow: 0 2px 8px #e5393522;
+            transition: box-shadow 0.2s, transform 0.2s;
+            animation: popIn 0.7s cubic-bezier(.23,1.01,.32,1) 0.2s 1;
+        }
+        .news-card img:hover {
+            box-shadow: 0 4px 16px #43e97b44;
+            transform: scale(1.06);
         }
         .news-content {
             flex: 1;
         }
         .news-title {
             color: #219150;
-            font-size: 1.15rem;
-            font-weight: 700;
+            font-size: 1.18rem;
+            font-weight: 800;
             margin-bottom: 8px;
+            letter-spacing: 0.01em;
+            animation: fadeIn 1s 0.3s both;
         }
         .news-source {
             color: #888;
-            font-size: 0.98rem;
+            font-size: 1.01rem;
             margin-top: 8px;
         }
         .news-extra {
             margin-top: 10px;
-            font-size: 1rem;
+            font-size: 1.04rem;
             color: #232946;
         }
         footer {
@@ -107,6 +139,8 @@
             padding: 20px 0;
             background: rgba(33,147,176,0.08);
             text-align: center;
+            border-radius: 0 0 18px 18px;
+            animation: fadeInUp 0.7s cubic-bezier(.23,1.01,.32,1) 0.3s 1;
         }
         footer small {
             color: #888;
@@ -127,6 +161,23 @@
                 width: 60px;
                 height: 60px;
             }
+        }
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(40px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes fadeInDown {
+            from { opacity: 0; transform: translateY(-40px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        @keyframes popIn {
+            0% { opacity: 0; transform: scale(0.7); }
+            80% { opacity: 1; transform: scale(1.08); }
+            100% { opacity: 1; transform: scale(1); }
         }
     </style>
 </head>

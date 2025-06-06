@@ -69,12 +69,15 @@
             color: #2193b0;
             border: 2px solid #2193b0;
             border-radius: 32px;
-            padding: 8px 22px 8px 12px;
-            font-size: 1.1rem;
+            padding: 0 12px 0 6px;
+            height: 38px;
+            min-height: 38px;
+            line-height: 38px;
+            font-size: 1rem;
             font-weight: 700;
             display: flex;
             align-items: center;
-            gap: 10px;
+            gap: 6px;
             box-shadow: 0 2px 12px #2193b022;
             cursor: pointer;
             z-index: 1001;
@@ -85,9 +88,9 @@
             color: #fff;
         }
         .account-btn img {
-            height: 28px;
-            width: 28px;
-            border-radius: 8px;
+            height: 26px;
+            width: 26px;
+            border-radius: 6px;
             background: #e0eafc;
         }
         .account-modal-bg {
@@ -256,12 +259,15 @@
             color: #2193b0;
             border: 2px solid #2193b0;
             border-radius: 32px;
-            padding: 8px 22px 8px 12px;
-            font-size: 1.1rem;
+            padding: 0 12px 0 6px;
+            height: 38px;
+            min-height: 38px;
+            line-height: 38px;
+            font-size: 1rem;
             font-weight: 700;
             display: flex;
             align-items: center;
-            gap: 10px;
+            gap: 6px;
             box-shadow: 0 2px 12px #2193b022;
             cursor: pointer;
             z-index: 1001;
@@ -274,6 +280,7 @@
         }
         .topnav {
             animation: fadeInNav 1.1s 0.1s both;
+            padding-right: 80px; /* reduced space for account button */
         }
         @keyframes fadeInNav {
             0% { opacity: 0; transform: translateY(-30px); }
@@ -292,19 +299,285 @@
             100% { opacity: 1; transform: scale(1) translateY(0); }
         }
     </style>
+    <style>
+        .account-dropdown .account-btn { box-shadow: 0 2px 12px #2193b022; }
+        .account-dropdown .dropdown-menu a:hover, .account-dropdown .dropdown-menu button:hover {
+            background: #f0f8ff;
+        }
+    </style>
+    <style>
+        .account-btn, .account-dropdown {
+            position: fixed !important;
+            top: 18px !important;
+            right: 32px !important;
+        }
+        .account-dropdown { z-index: 1100; }
+        .account-dropdown .dropdown-menu {
+            top: 48px;
+            right: 0;
+            left: auto;
+        }
+        @media (max-width: 600px) {
+            .account-btn, .account-dropdown {
+                right: 8px !important;
+                top: 8px !important;
+            }
+            .account-dropdown .dropdown-menu {
+                min-width: 120px;
+                right: 0;
+                left: auto;
+            }
+        }
+    </style>
 
 </head>
 <body>
     <script src="index.js"></script>
     <script>
-    // Floating account modal logic
+    // --- Multi-account logic ---
+    function getAccounts() {
+        return JSON.parse(localStorage.getItem('hppAccounts') || '[]');
+    }
+    function setAccounts(accounts) {
+        localStorage.setItem('hppAccounts', JSON.stringify(accounts));
+    }
+    function getCurrentAccount() {
+        return localStorage.getItem('hppCurrentUser') || null;
+    }
+    function setCurrentAccount(username) {
+        localStorage.setItem('hppCurrentUser', username);
+    }
+    function getAccountByUsername(username) {
+        return getAccounts().find(acc => acc.username === username);
+    }
+    function updateAccount(username, update) {
+        let accounts = getAccounts();
+        let idx = accounts.findIndex(acc => acc.username === username);
+        if (idx !== -1) {
+            accounts[idx] = { ...accounts[idx], ...update };
+            setAccounts(accounts);
+        }
+    }
+    function removeAccount(username) {
+        let accounts = getAccounts().filter(acc => acc.username !== username);
+        setAccounts(accounts);
+        if (getCurrentAccount() === username) {
+            localStorage.removeItem('hppCurrentUser');
+        }
+    }
+    function renderAccountDropdown() {
+        const accountDropdown = document.getElementById('accountDropdown');
+        const dropdownMenu = document.getElementById('dropdownMenu');
+        const accountDropdownBtn = document.getElementById('accountDropdownBtn');
+        const accountUsername = document.getElementById('accountUsername');
+        const currentUser = getCurrentAccount();
+        const accounts = getAccounts();
+        // Set current PFP and username
+        let currentAcc = getAccountByUsername(currentUser);
+        let pfp = currentAcc && currentAcc.pfp ? currentAcc.pfp : 'hpp-n-l-p.png';
+        if (accountDropdownBtn) {
+            accountDropdownBtn.querySelector('img').src = pfp;
+        }
+        if (accountUsername) {
+            accountUsername.textContent = currentUser || '';
+        }
+        // Build dropdown
+        if (dropdownMenu) {
+            dropdownMenu.innerHTML = '';
+            accounts.forEach(acc => {
+                let accDiv = document.createElement('div');
+                accDiv.style.display = 'flex';
+                accDiv.style.alignItems = 'center';
+                accDiv.style.padding = '8px 18px';
+                accDiv.style.cursor = 'pointer';
+                accDiv.style.gap = '10px';
+                accDiv.onmouseenter = () => accDiv.style.background = '#f0f8ff';
+                accDiv.onmouseleave = () => accDiv.style.background = '';
+                // PFP
+                let img = document.createElement('img');
+                img.src = acc.pfp || 'hpp-n-l-p.png';
+                img.style.width = '32px';
+                img.style.height = '32px';
+                img.style.borderRadius = '8px';
+                img.style.background = '#e0eafc';
+                img.style.objectFit = 'cover';
+                // Info
+                let infoDiv = document.createElement('div');
+                infoDiv.style.display = 'flex';
+                infoDiv.style.flexDirection = 'column';
+                let nameSpan = document.createElement('span');
+                nameSpan.textContent = acc.username;
+                nameSpan.style.fontWeight = '700';
+                let emailSpan = document.createElement('span');
+                emailSpan.textContent = acc.username + '@hppmail.com';
+                emailSpan.style.fontSize = '0.95em';
+                emailSpan.style.color = '#2193b0';
+                infoDiv.appendChild(nameSpan);
+                infoDiv.appendChild(emailSpan);
+                // PFP upload button
+                let pfpBtn = document.createElement('button');
+                pfpBtn.textContent = '🖼️';
+                pfpBtn.title = 'Change PFP';
+                pfpBtn.style.marginLeft = '8px';
+                pfpBtn.style.border = 'none';
+                pfpBtn.style.background = 'none';
+                pfpBtn.style.cursor = 'pointer';
+                pfpBtn.onclick = (e) => {
+                    e.stopPropagation();
+                    let fileInput = document.createElement('input');
+                    fileInput.type = 'file';
+                    fileInput.accept = 'image/*';
+                    fileInput.onchange = function(ev) {
+                        let file = ev.target.files[0];
+                        if (file) {
+                            let reader = new FileReader();
+                            reader.onload = function(evt) {
+                                updateAccount(acc.username, { pfp: evt.target.result });
+                                renderAccountDropdown();
+                                renderAccountBtn();
+                            };
+                            reader.readAsDataURL(file);
+                        }
+                    };
+                    fileInput.click();
+                };
+                // Remove account button
+                let removeBtn = document.createElement('button');
+                removeBtn.textContent = '✖';
+                removeBtn.title = 'Remove Account';
+                removeBtn.style.marginLeft = '4px';
+                removeBtn.style.border = 'none';
+                removeBtn.style.background = 'none';
+                removeBtn.style.color = '#e53935';
+                removeBtn.style.cursor = 'pointer';
+                removeBtn.onclick = (e) => {
+                    e.stopPropagation();
+                    if (confirm('Remove this account?')) {
+                        removeAccount(acc.username);
+                        renderAccountDropdown();
+                        renderAccountBtn();
+                        window.location.reload();
+                    }
+                };
+                // Switch account
+                accDiv.onclick = function() {
+                    setCurrentAccount(acc.username);
+                    renderAccountDropdown();
+                    renderAccountBtn();
+                    window.location.reload();
+                };
+                // Highlight current
+                if (acc.username === currentUser) {
+                    accDiv.style.background = '#e0f7fa';
+                }
+                accDiv.appendChild(img);
+                accDiv.appendChild(infoDiv);
+                accDiv.appendChild(pfpBtn);
+                if (accounts.length > 1) accDiv.appendChild(removeBtn);
+                dropdownMenu.appendChild(accDiv);
+            });
+            // Add account button if < 5
+            if (accounts.length < 5) {
+                let addBtn = document.createElement('button');
+                addBtn.textContent = '+ Add another account';
+                addBtn.style.display = 'block';
+                addBtn.style.width = '100%';
+                addBtn.style.padding = '10px 18px';
+                addBtn.style.background = 'none';
+                addBtn.style.border = 'none';
+                addBtn.style.color = '#2193b0';
+                addBtn.style.fontWeight = '700';
+                addBtn.style.cursor = 'pointer';
+                addBtn.onclick = function(e) {
+                    e.stopPropagation();
+                    document.getElementById('openAccountModal').click();
+                    dropdownMenu.style.display = 'none';
+                };
+                dropdownMenu.appendChild(addBtn);
+            }
+            // Divider
+            let divider = document.createElement('div');
+            divider.style.height = '1px';
+            divider.style.background = '#e0eafc';
+            divider.style.margin = '8px 0';
+            dropdownMenu.appendChild(divider);
+            // My Account
+            let myAcc = document.createElement('a');
+            myAcc.href = 'account.html';
+            myAcc.textContent = 'My Account';
+            myAcc.style.display = 'block';
+            myAcc.style.padding = '10px 18px';
+            myAcc.style.color = '#2193b0';
+            myAcc.style.textDecoration = 'none';
+            myAcc.style.fontWeight = '600';
+            dropdownMenu.appendChild(myAcc);
+            // Log off
+            let logoffBtn = document.createElement('button');
+            logoffBtn.textContent = 'Log off';
+            logoffBtn.style.display = 'block';
+            logoffBtn.style.width = '100%';
+            logoffBtn.style.padding = '10px 18px';
+            logoffBtn.style.background = 'none';
+            logoffBtn.style.border = 'none';
+            logoffBtn.style.color = '#e53935';
+            logoffBtn.style.textAlign = 'left';
+            logoffBtn.style.fontWeight = '600';
+            logoffBtn.style.cursor = 'pointer';
+            logoffBtn.onclick = function(e) {
+                e.stopPropagation();
+                localStorage.removeItem('hppCurrentUser');
+                renderAccountDropdown();
+                renderAccountBtn();
+                window.location.reload();
+            };
+            dropdownMenu.appendChild(logoffBtn);
+        }
+    }
+    function renderAccountBtn() {
+        const openBtn = document.getElementById('openAccountModal');
+        const accountDropdown = document.getElementById('accountDropdown');
+        const accountDropdownBtn = document.getElementById('accountDropdownBtn');
+        const currentUser = getCurrentAccount();
+        const currentAcc = getAccountByUsername(currentUser);
+        let pfp = currentAcc && currentAcc.pfp ? currentAcc.pfp : 'hpp-n-l-p.png';
+        if (currentUser) {
+            if (openBtn) openBtn.style.display = 'none';
+            if (accountDropdown) accountDropdown.style.display = 'block';
+            if (accountDropdownBtn) accountDropdownBtn.querySelector('img').src = pfp;
+        } else {
+            if (openBtn) {
+                openBtn.style.display = 'flex';
+                openBtn.querySelector('img').src = 'hpp-n-l-p.png';
+            }
+            if (accountDropdown) accountDropdown.style.display = 'none';
+        }
+    }
     document.addEventListener('DOMContentLoaded', function() {
+        // Welcome message
+        const welcomeUser = document.getElementById('welcome-user');
+        const currentUser = getCurrentAccount();
+        if (currentUser && welcomeUser) {
+            welcomeUser.textContent = `Welcome, ${currentUser}!`;
+        }
+        // Render account button and dropdown
+        renderAccountBtn();
+        renderAccountDropdown();
+        // Dropdown toggle
+        const accountDropdownBtn = document.getElementById('accountDropdownBtn');
+        const dropdownMenu = document.getElementById('dropdownMenu');
+        if (accountDropdownBtn && dropdownMenu) {
+            accountDropdownBtn.onclick = function(e) {
+                e.stopPropagation();
+                dropdownMenu.style.display = dropdownMenu.style.display === 'block' ? 'none' : 'block';
+            };
+            document.body.addEventListener('click', function() {
+                dropdownMenu.style.display = 'none';
+            });
+        }
+        // Modal logic
         const openBtn = document.getElementById('openAccountModal');
         const modalBg = document.getElementById('accountModalBg');
         const closeBtn = document.getElementById('closeAccountModal');
-        const modalToRegister = document.getElementById('modalToRegister');
-        const modalLoginForm = document.getElementById('modalLoginForm');
-        const modalErrorMsg = document.getElementById('modalErrorMsg');
         if (openBtn && modalBg) {
             openBtn.onclick = () => { modalBg.classList.add('active'); };
         }
@@ -314,10 +587,14 @@
         if (modalBg && closeBtn) {
             modalBg.onclick = (e) => { if (e.target === modalBg) modalBg.classList.remove('active'); };
         }
+        // Modal login/signup logic
+        const modalToRegister = document.getElementById('modalToRegister');
+        const modalLoginForm = document.getElementById('modalLoginForm');
+        const modalErrorMsg = document.getElementById('modalErrorMsg');
         if (modalToRegister) {
             modalToRegister.onclick = (e) => {
                 e.preventDefault();
-                window.location.href = 'register.html';
+                showRegisterModal();
             };
         }
         if (modalLoginForm) {
@@ -325,18 +602,80 @@
                 e.preventDefault();
                 const username = document.getElementById('modalUsername').value.trim();
                 const password = document.getElementById('modalPassword').value.trim();
-                let users = JSON.parse(localStorage.getItem('hppUsers') || '{}');
-                if ((users[username] && users[username] === password) || (username === "user" && password === "hpp")) {
-                    modalErrorMsg.style.display = "none";
-                    window.location.href = "account.html";
+                let accounts = getAccounts();
+                let acc = accounts.find(a => a.username === username);
+                if (acc && acc.password === password) {
+                    setCurrentAccount(username);
+                    renderAccountBtn();
+                    renderAccountDropdown();
+                    document.getElementById('accountModalBg').classList.remove('active');
+                    window.location.reload();
                 } else {
                     modalErrorMsg.textContent = "Invalid username or password.";
                     modalErrorMsg.style.display = "block";
                 }
             };
         }
+        // Register modal
+        function showRegisterModal() {
+            let modalBg = document.getElementById('accountModalBg');
+            let modal = document.querySelector('.account-modal');
+            modal.innerHTML = `<button class="close-btn" id="closeAccountModal" title="Close">&times;</button>
+            <h2>Sign up for HPP</h2>
+            <div class="error-message" id="modalErrorMsg"></div>
+            <form id="modalRegisterForm" autocomplete="on">
+                <label for="regUsername">Username</label>
+                <input type="text" id="regUsername" name="username" required autocomplete="username">
+                <label for="regPassword">Password</label>
+                <input type="password" id="regPassword" name="password" required autocomplete="new-password">
+                <label for="regPFP">Profile Picture (optional)</label>
+                <input type="file" id="regPFP" accept="image/*">
+                <button type="submit">Sign Up</button>
+            </form>
+            <div class="links"><a href="#" id="modalToLogin">Already have an account? Sign in!</a></div>`;
+            document.getElementById('closeAccountModal').onclick = () => { modalBg.classList.remove('active'); };
+            document.getElementById('modalToLogin').onclick = (e) => {
+                e.preventDefault();
+                window.location.reload();
+            };
+            document.getElementById('modalRegisterForm').onsubmit = function(e) {
+                e.preventDefault();
+                let username = document.getElementById('regUsername').value.trim();
+                let password = document.getElementById('regPassword').value.trim();
+                let pfpInput = document.getElementById('regPFP');
+                let accounts = getAccounts();
+                if (accounts.length >= 5) {
+                    document.getElementById('modalErrorMsg').textContent = 'Maximum 5 accounts allowed.';
+                    document.getElementById('modalErrorMsg').style.display = 'block';
+                    return;
+                }
+                if (accounts.find(a => a.username === username)) {
+                    document.getElementById('modalErrorMsg').textContent = 'Username already exists.';
+                    document.getElementById('modalErrorMsg').style.display = 'block';
+                    return;
+                }
+                let addAccount = (pfpData) => {
+                    accounts.push({ username, password, pfp: pfpData, email: username + '@hppmail.com' });
+                    setAccounts(accounts);
+                    setCurrentAccount(username);
+                    renderAccountBtn();
+                    renderAccountDropdown();
+                    modalBg.classList.remove('active');
+                    window.location.reload();
+                };
+                if (pfpInput.files && pfpInput.files[0]) {
+                    let reader = new FileReader();
+                    reader.onload = function(evt) {
+                        addAccount(evt.target.result);
+                    };
+                    reader.readAsDataURL(pfpInput.files[0]);
+                } else {
+                    addAccount('');
+                }
+            };
+        }
     });
-    // IE warning popup
+    // IE warning popup (unchanged)
     (function() {
         var ua = window.navigator.userAgent;
         var isIE = /MSIE |Trident\//.test(ua);
@@ -365,6 +704,7 @@
         <a href="buba.html">VidTube</a>
         <a href="cashaplay.html">DoglanBank</a>
         <a href="funsta.html">Funstagram</a>
+        <a href="hppmail.html">HPP Mail</a>
         <a href="searches.html">search</a>
         <a href="jweeter.html">Jweeter</a>
         <a href="musicaly.html">Musicaly</a>
@@ -381,18 +721,34 @@
         <button type="submit">Search</button>
     </form>
 
-    <h1>Welcome To HPP!</h1>
+    <h1 id="welcome-user">Welcome To HPP!</h1>
 
     <h4>HPP (Hpa Progress Plexus) is a project to make an alternative to the WWW on your local network. You can add any HTML/CSS/JS page and host it using this frontend.</h4>
-    <h3>NEWS! MR. Lean Steals 300 dih worth of Ketchup From a Nearby Annashan in Dupeval!</h3>
-    <h3><a href="newsly.html">Newsly</a> has more news to offer!</h3>
+
+    <!-- News Article Card -->
+    <div class="news-article">
+      <div class="news-headline">NEWS!</div>
+      <div class="news-title">MR. Lean Steals 300 dih worth of Ketchup From a Nearby Annashan in Dupeval!</div>
+      <div class="news-meta">Dupeval • June 6, 2025 • Local Crime</div>
+    </div>
+    <div class="newsly-link-wrap">
+      <a href="newsly.html" class="newsly-link">Newsly has more news to offer!</a>
+    </div>
 
     <img src="n1.png" alt="LatestNews">
 
-    <button class="account-btn" id="openAccountModal">
+    <button class="account-btn" id="openAccountModal" style="display:none;">
         <img src="hpp-n-l-p.png" alt="HPP Account">
         Sign In / Sign Up
     </button>
+    <div class="account-dropdown" id="accountDropdown" style="display:none;position:absolute;top:18px;right:32px;z-index:1002;">
+        <button class="account-btn" id="accountDropdownBtn" style="position:relative;">
+            <img src="hpp-n-l-p.png" alt="HPP Account">
+            <span id="accountUsername"></span>
+            <span style="margin-left:8px;font-size:1.2em;">▼</span>
+        </button>
+        <div class="dropdown-menu" id="dropdownMenu" style="display:none;position:absolute;top:48px;right:0;background:#fff;border-radius:12px;box-shadow:0 4px 24px #2193b044;padding:8px 0;min-width:160px;"></div>
+    </div>
     <div class="account-modal-bg" id="accountModalBg">
         <div class="account-modal">
             <button class="close-btn" id="closeAccountModal" title="Close">&times;</button>
@@ -416,5 +772,71 @@
         <h5><a href="https://www.github.com/juoelenis/Hpa-progress-plexus">GitHub</a></h5>
         <h5><a href="https://www.google.com/">Exit HPP</a></h5>
     </footer>
+    <!-- News Article Styles -->
+    <style>
+    .news-article {
+      max-width: 540px;
+      margin: 32px auto 18px auto;
+      background: #fff;
+      border-radius: 16px;
+      box-shadow: 0 4px 24px #2193b022;
+      padding: 24px 28px 18px 28px;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      animation: fadeInNews 1.2s 0.5s both;
+      border-left: 6px solid #e53935;
+    }
+    .news-headline {
+      color: #e53935;
+      font-size: 1.1rem;
+      font-weight: 800;
+      letter-spacing: 1px;
+      margin-bottom: 6px;
+      text-transform: uppercase;
+    }
+    .news-title {
+      color: #232946;
+      font-size: 1.18rem;
+      font-weight: 700;
+      margin-bottom: 10px;
+      line-height: 1.4;
+    }
+    .news-meta {
+      color: #2193b0;
+      font-size: 0.98rem;
+      font-weight: 500;
+      opacity: 0.85;
+    }
+    @keyframes fadeInNews {
+      0% { opacity: 0; transform: translateY(30px); }
+      100% { opacity: 1; transform: translateY(0); }
+    }
+    </style>
+    <style>
+    .newsly-link-wrap {
+      display: flex;
+      justify-content: center;
+      margin-bottom: 18px;
+    }
+    .newsly-link {
+      color: #2193b0;
+      font-size: 1.08rem;
+      font-weight: 700;
+      text-decoration: none;
+      background: linear-gradient(90deg, #e0eafc 60%, #f0f8ff 100%);
+      padding: 8px 22px;
+      border-radius: 8px;
+      box-shadow: 0 2px 12px #2193b022;
+      transition: background 0.2s, color 0.2s, box-shadow 0.2s;
+      margin-top: 0;
+    }
+    .newsly-link:hover {
+      background: #2193b0;
+      color: #fff;
+      box-shadow: 0 4px 18px #2193b044;
+      text-decoration: underline;
+    }
+    </style>
 </body>
 </html>

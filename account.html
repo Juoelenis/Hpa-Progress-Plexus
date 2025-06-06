@@ -2,76 +2,371 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>HPP My Account</title>
+    <title>My HPP Account</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="icon" href="hpp-n-l-p.png">
     <style>
-        body { font-family: Arial, sans-serif; background: #f4f6fa; margin: 0; }
-        .container { max-width: 500px; margin: 40px auto; background: #fff; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.07); padding: 32px; }
-        h2 { text-align: center; color: #2a3d66; }
-        .section { margin-bottom: 32px; }
-        label { display: block; margin-bottom: 6px; color: #2a3d66; }
-        input[type="text"], input[type="email"], input[type="password"] {
-            width: 100%; padding: 10px; margin-bottom: 16px; border: 1px solid #cfd8dc; border-radius: 4px;
+        body {
+            font-family: 'Inter', Arial, sans-serif;
+            background: linear-gradient(120deg, #e0eafc 0%, #f5f5f7 100%);
+            margin: 0;
+            min-height: 100vh;
+            transition: background 0.5s;
         }
-        button {
-            background: #2a3d66; color: #fff; border: none; padding: 10px 20px;
-            border-radius: 4px; cursor: pointer; font-size: 16px;
+        .main-card {
+            max-width: 520px;
+            margin: 48px auto 32px auto;
+            background: #fff;
+            border-radius: 20px;
+            box-shadow: 0 8px 32px #2193b022;
+            padding: 0 0 32px 0;
+            overflow: hidden;
+            animation: fadeInUp 0.7s cubic-bezier(.23,1.01,.32,1) 0s 1;
         }
-        button:hover { background: #1a2847; }
-        .danger { background: #e53935; }
-        .danger:hover { background: #b71c1c; }
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(40px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .profile-header {
+            background: linear-gradient(90deg, #2193b0 60%, #6dd5ed 100%);
+            padding: 36px 0 24px 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            border-radius: 0 0 32px 32px;
+            position: relative;
+            animation: fadeInDown 0.7s cubic-bezier(.23,1.01,.32,1) 0s 1;
+        }
+        @keyframes fadeInDown {
+            from { opacity: 0; transform: translateY(-40px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .profile-avatar {
+            width: 92px;
+            height: 92px;
+            border-radius: 50%;
+            background: #e0eafc;
+            border: 4px solid #fff;
+            object-fit: cover;
+            box-shadow: 0 2px 12px #2193b022;
+            transition: box-shadow 0.3s;
+            animation: popIn 0.7s cubic-bezier(.23,1.01,.32,1) 0.1s 1;
+        }
+        @keyframes popIn {
+            0% { opacity: 0; transform: scale(0.7); }
+            80% { opacity: 1; transform: scale(1.08); }
+            100% { opacity: 1; transform: scale(1); }
+        }
+        .profile-avatar:hover {
+            box-shadow: 0 4px 24px #2193b044;
+        }
+        .profile-upload {
+            margin-top: 8px;
+            font-size: 0.95rem;
+            color: #2193b0;
+            background: none;
+            border: none;
+            cursor: pointer;
+            text-decoration: underline;
+            transition: color 0.2s;
+        }
+        .profile-upload:hover {
+            color: #6dd5ed;
+        }
+        .profile-name {
+            margin-top: 16px;
+            font-size: 1.35rem;
+            font-weight: 700;
+            color: #fff;
+            letter-spacing: 0.01em;
+            animation: fadeIn 1s 0.2s both;
+        }
+        .profile-email {
+            color: #e0eafc;
+            font-size: 1.05rem;
+            margin-top: 2px;
+            margin-bottom: 0;
+            animation: fadeIn 1s 0.3s both;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        .section-card {
+            background: #f8fafc;
+            border-radius: 14px;
+            box-shadow: 0 2px 12px #2193b012;
+            margin: 28px 24px 0 24px;
+            padding: 24px 22px 18px 22px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            animation: fadeInUp 0.7s cubic-bezier(.23,1.01,.32,1) 0.2s 1;
+        }
+        .section-card h3 {
+            margin: 0 0 10px 0;
+            color: #2193b0;
+            font-size: 1.13rem;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .section-card label {
+            color: #232946;
+            font-weight: 600;
+            margin-bottom: 4px;
+        }
+        .section-card input[type="text"],
+        .section-card input[type="email"],
+        .section-card input[type="password"] {
+            width: 100%;
+            padding: 10px 12px;
+            margin-bottom: 12px;
+            border: 1.5px solid #e0eafc;
+            border-radius: 8px;
+            font-size: 1rem;
+            background: #f5fafd;
+            transition: border 0.2s, box-shadow 0.2s;
+        }
+        .section-card input:focus {
+            border: 1.5px solid #2193b0;
+            outline: none;
+            box-shadow: 0 0 0 2px #2193b033;
+        }
+        .section-card button {
+            background: #2193b0;
+            color: #fff;
+            border: none;
+            border-radius: 8px;
+            padding: 12px 0;
+            font-size: 1.08rem;
+            font-weight: 700;
+            cursor: pointer;
+            margin-top: 6px;
+            transition: background 0.2s, color 0.2s, box-shadow 0.2s;
+            box-shadow: 0 2px 8px #2193b022;
+        }
+        .section-card button:hover {
+            background: #6dd5ed;
+            color: #232946;
+            box-shadow: 0 4px 16px #2193b044;
+        }
+        .danger {
+            background: #e53935 !important;
+        }
+        .danger:hover {
+            background: #b71c1c !important;
+            color: #fff !important;
+        }
+        .section-card .delete-info {
+            color: #e53935;
+            font-size: 0.98rem;
+            margin-bottom: 8px;
+        }
+        .dark-mode body {
+            background: linear-gradient(120deg, #232946 0%, #16161a 100%);
+        }
+        .dark-mode .main-card {
+            background: #181a20;
+            box-shadow: 0 8px 32px #23294644;
+        }
+        .dark-mode .profile-header {
+            background: linear-gradient(90deg, #232946 60%, #2193b0 100%);
+        }
+        .dark-mode .profile-avatar {
+            background: #232946;
+            border: 4px solid #232946;
+        }
+        .dark-mode .profile-name {
+            color: #fff;
+        }
+        .dark-mode .profile-email {
+            color: #b8c1ec;
+        }
+        .dark-mode .section-card {
+            background: #232946;
+            box-shadow: 0 2px 12px #16161a44;
+        }
+        .dark-mode .section-card h3 {
+            color: #6dd5ed;
+        }
+        .dark-mode .section-card label {
+            color: #b8c1ec;
+        }
+        .dark-mode .section-card input[type="text"],
+        .dark-mode .section-card input[type="email"],
+        .dark-mode .section-card input[type="password"] {
+            background: #181a20;
+            border: 1.5px solid #232946;
+            color: #fff;
+        }
+        .dark-mode .section-card input:focus {
+            border: 1.5px solid #6dd5ed;
+            box-shadow: 0 0 0 2px #6dd5ed33;
+        }
+        .dark-mode .section-card button {
+            background: #6dd5ed;
+            color: #232946;
+        }
+        .dark-mode .section-card button:hover {
+            background: #2193b0;
+            color: #fff;
+        }
+        .dark-mode .danger {
+            background: #e53935 !important;
+            color: #fff !important;
+        }
+        .dark-mode .danger:hover {
+            background: #b71c1c !important;
+            color: #fff !important;
+        }
+        .dark-mode .section-card .delete-info {
+            color: #ff8a80;
+        }
+        @media (max-width: 600px) {
+            .main-card { margin: 16px 0; border-radius: 0; }
+            .section-card { margin: 18px 6px 0 6px; padding: 16px 6vw 12px 6vw; }
+            .profile-header { border-radius: 0 0 24px 24px; padding: 28px 0 18px 0; }
+        }
+        .dark-toggle {
+            position: fixed;
+            top: 18px;
+            right: 18px;
+            z-index: 100;
+            background: #fff;
+            color: #232946;
+            border: 1.5px solid #e0eafc;
+            border-radius: 50%;
+            width: 44px;
+            height: 44px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.3rem;
+            box-shadow: 0 2px 8px #2193b022;
+            cursor: pointer;
+            transition: background 0.2s, color 0.2s, border 0.2s;
+        }
+        .dark-toggle:hover {
+            background: #e0eafc;
+            color: #2193b0;
+        }
+        .dark-mode .dark-toggle {
+            background: #232946;
+            color: #6dd5ed;
+            border: 1.5px solid #232946;
+        }
+        .dark-mode .dark-toggle:hover {
+            background: #181a20;
+            color: #fff;
+        }
     </style>
 </head>
 <body>
-    <div class="container">
-        <h2>My HPP Account</h2>
-        <form class="section" id="profileForm">
-            <h3>Profile Information</h3>
+    <button class="dark-toggle" id="darkToggle" title="Toggle dark mode">🌙</button>
+    <div class="main-card">
+        <div class="profile-header">
+            <img src="hpp-n-l-p.png" alt="Profile Picture" class="profile-avatar" id="profileAvatar">
+            <input type="file" id="pfpInput" accept="image/*" style="display:none;">
+            <button class="profile-upload" id="uploadBtn">Change profile picture</button>
+            <div class="profile-name" id="profileName">User</div>
+            <div class="profile-email" id="profileEmail">user@hppmail.com</div>
+        </div>
+        <form class="section-card" id="profileForm">
+            <h3><span>👤</span> Profile Information</h3>
             <label for="name">Full Name</label>
             <input type="text" id="name" name="name" placeholder="Your name" required>
             <label for="email">Email Address</label>
             <input type="email" id="email" name="email" placeholder="you@email.com" required>
             <button type="submit">Update Profile</button>
         </form>
-        <form class="section" id="passwordForm">
-            <h3>Change Password</h3>
+        <form class="section-card" id="passwordForm">
+            <h3><span>🔒</span> Change Password</h3>
             <label for="currentPassword">Current Password</label>
             <input type="password" id="currentPassword" name="currentPassword" required>
             <label for="newPassword">New Password</label>
             <input type="password" id="newPassword" name="newPassword" required>
             <button type="submit">Change Password</button>
         </form>
-        <div class="section">
-            <h3>Account Actions</h3>
-            <button class="danger" onclick="confirm('Are you sure you want to delete your account?')">Delete Account</button>
+        <div class="section-card">
+            <h3><span>⚠️</span> Account Actions</h3>
+            <div class="delete-info">Deleting your account is permanent and cannot be undone.</div>
+            <button class="danger" id="deleteBtn">Delete Account</button>
         </div>
     </div>
     <script>
-    // Account management logic
-    document.addEventListener('DOMContentLoaded', function() {
-        // Load user info if available
-        let currentUser = localStorage.getItem('hppCurrentUser');
-        let users = JSON.parse(localStorage.getItem('hppUsers') || '{}');
-        if (currentUser && users[currentUser]) {
-            document.getElementById('name').value = currentUser;
-            document.getElementById('email').value = currentUser + '@example.com';
+    // Modern Google-style My Account logic (integrated with HPP multi-account system)
+    function getAccounts() {
+        return JSON.parse(localStorage.getItem('hppAccounts') || '[]');
+    }
+    function setAccounts(accounts) {
+        localStorage.setItem('hppAccounts', JSON.stringify(accounts));
+    }
+    function getCurrentAccount() {
+        return localStorage.getItem('hppCurrentUser') || null;
+    }
+    function setCurrentAccount(username) {
+        localStorage.setItem('hppCurrentUser', username);
+    }
+    function getAccountByUsername(username) {
+        return getAccounts().find(acc => acc.username === username);
+    }
+    function updateAccount(username, update) {
+        let accounts = getAccounts();
+        let idx = accounts.findIndex(acc => acc.username === username);
+        if (idx !== -1) {
+            accounts[idx] = { ...accounts[idx], ...update };
+            setAccounts(accounts);
         }
+    }
+    document.addEventListener('DOMContentLoaded', function() {
+        let currentUser = getCurrentAccount();
+        let acc = getAccountByUsername(currentUser);
+        if (!acc) {
+            window.location.href = 'index.html';
+            return;
+        }
+        // Set profile info
+        document.getElementById('profileName').textContent = acc.username;
+        document.getElementById('profileEmail').textContent = acc.username + '@hppmail.com';
+        document.getElementById('name').value = acc.username;
+        document.getElementById('email').value = acc.username + '@hppmail.com';
+        document.getElementById('profileAvatar').src = acc.pfp || 'hpp-n-l-p.png';
+        // PFP upload
+        document.getElementById('uploadBtn').onclick = function() {
+            document.getElementById('pfpInput').click();
+        };
+        document.getElementById('pfpInput').onchange = function(e) {
+            let file = e.target.files[0];
+            if (file) {
+                let reader = new FileReader();
+                reader.onload = function(evt) {
+                    updateAccount(acc.username, { pfp: evt.target.result });
+                    document.getElementById('profileAvatar').src = evt.target.result;
+                };
+                reader.readAsDataURL(file);
+            }
+        };
         // Profile update
         document.getElementById('profileForm').onsubmit = function(e) {
             e.preventDefault();
             let newName = document.getElementById('name').value.trim();
             let email = document.getElementById('email').value.trim();
-            if (newName && users[currentUser]) {
-                if (newName !== currentUser && users[newName]) {
-                    alert('Username already exists.');
-                    return;
-                }
-                users[newName] = users[currentUser];
-                if (newName !== currentUser) {
-                    delete users[currentUser];
-                    localStorage.setItem('hppCurrentUser', newName);
-                }
-                localStorage.setItem('hppUsers', JSON.stringify(users));
+            if (!newName) return;
+            if (newName !== acc.username && getAccountByUsername(newName)) {
+                alert('Username already exists.');
+                return;
+            }
+            // Update username/email
+            let accounts = getAccounts();
+            let idx = accounts.findIndex(a => a.username === acc.username);
+            if (idx !== -1) {
+                accounts[idx].username = newName;
+                accounts[idx].email = newName + '@hppmail.com';
+                setAccounts(accounts);
+                setCurrentAccount(newName);
                 alert('Profile updated!');
                 location.reload();
             }
@@ -81,24 +376,46 @@
             e.preventDefault();
             let curr = document.getElementById('currentPassword').value;
             let newP = document.getElementById('newPassword').value;
-            if (users[currentUser] === curr) {
-                users[currentUser] = newP;
-                localStorage.setItem('hppUsers', JSON.stringify(users));
+            if (acc.password === curr) {
+                updateAccount(acc.username, { password: newP });
                 alert('Password changed!');
             } else {
                 alert('Current password incorrect.');
             }
         };
         // Delete account
-        document.querySelector('.danger').onclick = function() {
+        document.getElementById('deleteBtn').onclick = function() {
             if (confirm('Are you sure you want to delete your account?')) {
-                delete users[currentUser];
-                localStorage.setItem('hppUsers', JSON.stringify(users));
+                let accounts = getAccounts().filter(a => a.username !== acc.username);
+                setAccounts(accounts);
                 localStorage.removeItem('hppCurrentUser');
                 window.location.href = 'index.html';
             }
         };
     });
+    // Dark mode toggle
+    (function() {
+        const root = document.documentElement;
+        const darkBtn = document.getElementById('darkToggle');
+        function setDarkMode(on) {
+            if (on) {
+                root.classList.add('dark-mode');
+                localStorage.setItem('hppDarkMode', '1');
+                darkBtn.textContent = '☀️';
+                darkBtn.title = 'Switch to light mode';
+            } else {
+                root.classList.remove('dark-mode');
+                localStorage.setItem('hppDarkMode', '0');
+                darkBtn.textContent = '🌙';
+                darkBtn.title = 'Switch to dark mode';
+            }
+        }
+        // Initial state
+        setDarkMode(localStorage.getItem('hppDarkMode') === '1');
+        darkBtn.onclick = function() {
+            setDarkMode(!root.classList.contains('dark-mode'));
+        };
+    })();
     </script>
 </body>
 </html>
