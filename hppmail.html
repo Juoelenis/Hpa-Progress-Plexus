@@ -1,0 +1,523 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>HPP Mail</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="hppmailp.jpeg" type="image/png">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #1a1a1a;
+            --secondary: #f5f5f7;
+            --accent: #2193b0;
+            --window-bg: #fff;
+            --window-shadow: 0 8px 32px rgba(33,147,176,0.13);
+            --border-radius: 18px;
+        }
+        body {
+            margin: 0;
+            font-family: 'Inter', 'Segoe UI', Arial, sans-serif;
+            background: linear-gradient(135deg, #e0eafc 0%, #f5f5f7 100%);
+            color: var(--primary);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .window {
+            background: var(--window-bg);
+            box-shadow: var(--window-shadow);
+            border-radius: var(--border-radius);
+            width: 440px;
+            max-width: 96vw;
+            padding: 2.5rem 2rem 2rem 2rem;
+            position: relative;
+            overflow: hidden;
+            animation: fadeIn 0.8s cubic-bezier(.4,0,.2,1);
+        }
+        .window-header {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-bottom: 1.5rem;
+        }
+        .window-controls {
+            display: flex;
+            gap: 0.4rem;
+        }
+        .window-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            display: inline-block;
+        }
+        .dot-red { background: #ff5f56; }
+        .dot-yellow { background: #ffbd2e; }
+        .dot-green { background: #27c93f; }
+        .window-title {
+            font-size: 1.18rem;
+            font-weight: 600;
+            margin-left: 1rem;
+            color: var(--primary);
+            letter-spacing: 0.01em;
+        }
+        h1 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin: 0 0 0.5rem 0;
+            color: var(--accent);
+            letter-spacing: -0.01em;
+        }
+        .tag {
+            display: inline-block;
+            background: var(--accent);
+            color: #fff;
+            font-size: 0.85rem;
+            font-weight: 500;
+            border-radius: 8px;
+            padding: 0.2em 0.8em;
+            margin-bottom: 1.2rem;
+            letter-spacing: 0.04em;
+        }
+        .account-list, .inbox, .compose {
+            margin-bottom: 30px;
+        }
+        .email {
+            border-bottom: 1px solid #e0eafc;
+            padding: 10px 0 8px 0;
+            font-size: 1.01rem;
+        }
+        .email:last-child { border-bottom: none; }
+        label {
+            display: block;
+            margin-top: 10px;
+            font-weight: 600;
+            color: #2193b0;
+        }
+        input, textarea, select {
+            width: 100%;
+            margin-top: 5px;
+            border-radius: 8px;
+            border: 1.5px solid #e0eafc;
+            padding: 8px 10px;
+            font-size: 1rem;
+            background: #f5fafd;
+            transition: border 0.2s;
+        }
+        input:focus, textarea:focus, select:focus {
+            border: 1.5px solid #2193b0;
+            outline: none;
+        }
+        button {
+            margin-top: 12px;
+            background: #2193b0;
+            color: #fff;
+            border: none;
+            border-radius: 8px;
+            padding: 10px 0;
+            font-size: 1.08rem;
+            font-weight: 700;
+            cursor: pointer;
+            width: 100%;
+            transition: background 0.2s;
+        }
+        button:hover {
+            background: #6dd5ed;
+            color: #232946;
+        }
+        ul {
+            margin: 0 0 1.2rem 1.2rem;
+            padding: 0;
+            color: #444;
+        }
+        .sign-btn {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            background: #fff;
+            color: #2193b0;
+            border: 2px solid #2193b0;
+            border-radius: 32px;
+            padding: 7px 18px 7px 10px;
+            font-size: 1.05rem;
+            font-weight: 700;
+            box-shadow: 0 2px 12px #2193b022;
+            cursor: pointer;
+            margin-bottom: 18px;
+            margin-left: auto;
+            margin-right: auto;
+            transition: background 0.2s, color 0.2s;
+        }
+        .sign-btn img {
+            height: 22px;
+            width: 22px;
+            border-radius: 8px;
+            background: #e0eafc;
+        }
+        .sign-btn:hover {
+            background: #2193b0;
+            color: #fff;
+        }
+        /* Modal styles */
+        .modal-bg {
+            display: none;
+            position: fixed;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: rgba(33, 60, 102, 0.18);
+            z-index: 2000;
+            justify-content: center;
+            align-items: center;
+        }
+        .modal-bg.active {
+            display: flex;
+        }
+        .modal {
+            background: #fff;
+            border-radius: 18px;
+            box-shadow: 0 8px 32px #2193b044;
+            padding: 32px 28px 24px 28px;
+            min-width: 320px;
+            max-width: 90vw;
+            text-align: center;
+            position: relative;
+            animation: popIn 0.3s cubic-bezier(.4,2,.6,1) 1;
+        }
+        .modal h2 {
+            color: #2193b0;
+            margin-bottom: 18px;
+            font-size: 1.2rem;
+            font-weight: 700;
+        }
+        .modal label {
+            color: #232946;
+            font-weight: 600;
+            margin-bottom: 4px;
+            display: block;
+        }
+        .modal input[type="text"] {
+            padding: 10px 12px;
+            border: 1px solid #2193b0;
+            border-radius: 8px;
+            font-size: 1rem;
+            outline: none;
+            width: 100%;
+            margin-bottom: 12px;
+        }
+        .modal input[type="text"]:focus {
+            border: 1.5px solid #6dd5ed;
+        }
+        .modal button[type="submit"] {
+            padding: 12px 0;
+            background: #2193b0;
+            color: #fff;
+            border: none;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            font-weight: 700;
+            cursor: pointer;
+            margin-top: 8px;
+            width: 100%;
+            transition: background 0.2s;
+        }
+        .modal button[type="submit"]:hover {
+            background: #6dd5ed;
+            color: #232946;
+        }
+        .modal .close-btn {
+            position: absolute;
+            top: 10px;
+            right: 16px;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            color: #2193b0;
+            cursor: pointer;
+        }
+        .modal .error-message {
+            color: #e53935;
+            background: #ffeaea;
+            border-radius: 8px;
+            padding: 8px 0;
+            margin-bottom: 8px;
+            font-weight: 600;
+            display: none;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(24px);}
+            to { opacity: 1; transform: translateY(0);}
+        }
+        @keyframes popIn {
+            0% { transform: scale(0.8); opacity: 0; }
+            100% { transform: scale(1); opacity: 1; }
+        }
+        @media (max-width: 600px) {
+            .window {
+                padding: 1.2rem 0.7rem 1.2rem 0.7rem;
+            }
+            .window-title {
+                font-size: 1rem;
+            }
+            h1 {
+                font-size: 1.1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="window">
+        <div class="window-header">
+            <div class="window-controls">
+                <span class="window-dot dot-red"></span>
+                <span class="window-dot dot-yellow"></span>
+                <span class="window-dot dot-green"></span>
+            </div>
+            <span class="window-title">HPP Mail</span>
+        </div>
+        <span class="tag">Integrated with HPP 2.0+ Accounts</span>
+        <button class="sign-btn" id="openSignModal" style="display:none;">
+            <img src="hpp-n-l-p.png" alt="Account">
+            Sign In / Sign Up
+        </button>
+        <div class="account-list" id="accountListSection" style="display:none;">
+            <h2>Accounts</h2>
+            <ul id="accounts"></ul>
+            <label>Switch Account:</label>
+            <select id="accountSelect"></select>
+        </div>
+        <div class="compose" id="composeSection" style="display:none;">
+            <h2>Compose Email</h2>
+            <form id="composeForm">
+                <label>To:</label>
+                <select id="toSelect"></select>
+                <label>Subject:</label>
+                <input type="text" id="subject" maxlength="50" required>
+                <label>Message:</label>
+                <textarea id="message" rows="4" required></textarea>
+                <button type="submit">Send</button>
+            </form>
+        </div>
+        <div class="inbox" id="inboxSection" style="display:none;">
+            <h2>Inbox</h2>
+            <div id="inbox"></div>
+        </div>
+    </div>
+    <div class="modal-bg" id="signModalBg">
+        <div class="modal">
+            <button class="close-btn" id="closeSignModal" title="Close">&times;</button>
+            <h2>Sign in to HPP Mail</h2>
+            <div class="error-message" id="modalErrorMsg"></div>
+            <form id="modalLoginForm" autocomplete="on">
+                <label for="modalUsername">Username</label>
+                <input type="text" id="modalUsername" name="username" required autocomplete="username">
+                <label for="modalPassword">Password</label>
+                <input type="password" id="modalPassword" name="password" required autocomplete="current-password">
+                <button type="submit">Sign In</button>
+            </form>
+            <div class="links">
+                <a href="#" id="modalToRegister">Don't have an Account? Sign up!</a>
+            </div>
+        </div>
+    </div>
+    <script>
+    // --- Swoosh UI + HPP Account Integration ---
+    const MAX_ACCOUNTS = 5;
+    let accounts = [];
+    let emails = {};
+    let currentAccount = null;
+    // Try to load from localStorage (shared with index.html)
+    function getHPPAccounts() {
+        return JSON.parse(localStorage.getItem('hppAccounts') || '[]');
+    }
+    function setHPPAccounts(accs) {
+        localStorage.setItem('hppAccounts', JSON.stringify(accs));
+    }
+    function getCurrentHPPAccount() {
+        return localStorage.getItem('hppCurrentUser') || null;
+    }
+    function setCurrentHPPAccount(username) {
+        localStorage.setItem('hppCurrentUser', username);
+    }
+    function getAccountByUsername(username) {
+        return getHPPAccounts().find(acc => acc.username === username);
+    }
+    function updateAccountsUI() {
+        const accountsUl = document.getElementById('accounts');
+        accountsUl.innerHTML = '';
+        getHPPAccounts().forEach(acc => {
+            const li = document.createElement('li');
+            li.textContent = acc.username + '@hppmail.com';
+            accountsUl.appendChild(li);
+        });
+        const accountSelect = document.getElementById('accountSelect');
+        accountSelect.innerHTML = '';
+        getHPPAccounts().forEach(acc => {
+            const opt = document.createElement('option');
+            opt.value = acc.username;
+            opt.textContent = acc.username + '@hppmail.com';
+            accountSelect.appendChild(opt);
+        });
+        const toSelect = document.getElementById('toSelect');
+        toSelect.innerHTML = '';
+        getHPPAccounts().forEach(acc => {
+            if (acc.username !== currentAccount) {
+                const opt = document.createElement('option');
+                opt.value = acc.username;
+                opt.textContent = acc.username + '@hppmail.com';
+                toSelect.appendChild(opt);
+            }
+        });
+        if (!currentAccount && getHPPAccounts().length > 0) {
+            currentAccount = getCurrentHPPAccount() || getHPPAccounts()[0].username;
+            accountSelect.value = currentAccount;
+        }
+    }
+    function updateInboxUI() {
+        const inboxDiv = document.getElementById('inbox');
+        inboxDiv.innerHTML = '';
+        if (!currentAccount) return;
+        const inbox = emails[currentAccount] || [];
+        if (inbox.length === 0) {
+            inboxDiv.textContent = 'No emails.';
+            return;
+        }
+        inbox.slice().reverse().forEach(email => {
+            const div = document.createElement('div');
+            div.className = 'email';
+            div.innerHTML = `<b>From:</b> ${email.from}@hppmail.com<br>
+                             <b>Subject:</b> ${email.subject}<br>
+                             <b>Message:</b> ${email.message}`;
+            inboxDiv.appendChild(div);
+        });
+    }
+    function showSections(loggedIn) {
+        document.getElementById('accountListSection').style.display = loggedIn ? '' : 'none';
+        document.getElementById('composeSection').style.display = loggedIn ? '' : 'none';
+        document.getElementById('inboxSection').style.display = loggedIn ? '' : 'none';
+        document.getElementById('openSignModal').style.display = loggedIn ? 'none' : 'flex';
+    }
+    function updateSignBtn() {
+        const openBtn = document.getElementById('openSignModal');
+        const currentAcc = getAccountByUsername(getCurrentHPPAccount());
+        let pfp = currentAcc && currentAcc.pfp ? currentAcc.pfp : 'hpp-n-l-p.png';
+        if (openBtn) openBtn.querySelector('img').src = pfp;
+    }
+    // Modal logic
+    document.getElementById('openSignModal').onclick = function() {
+        document.getElementById('signModalBg').classList.add('active');
+    };
+    document.getElementById('closeSignModal').onclick = function() {
+        document.getElementById('signModalBg').classList.remove('active');
+    };
+    document.getElementById('signModalBg').onclick = function(e) {
+        if (e.target === this) this.classList.remove('active');
+    };
+    // Modal login/signup logic
+    document.getElementById('modalToRegister').onclick = function(e) {
+        e.preventDefault();
+        showRegisterModal();
+    };
+    document.getElementById('modalLoginForm').onsubmit = function(e) {
+        e.preventDefault();
+        const username = document.getElementById('modalUsername').value.trim();
+        const password = document.getElementById('modalPassword').value.trim();
+        let acc = getHPPAccounts().find(a => a.username === username);
+        if (acc && acc.password === password) {
+            setCurrentHPPAccount(username);
+            currentAccount = username;
+            showSections(true);
+            updateAccountsUI();
+            updateInboxUI();
+            updateSignBtn();
+            document.getElementById('signModalBg').classList.remove('active');
+        } else {
+            document.getElementById('modalErrorMsg').textContent = "Invalid username or password.";
+            document.getElementById('modalErrorMsg').style.display = "block";
+        }
+    };
+    function showRegisterModal() {
+        let modal = document.querySelector('.modal');
+        modal.innerHTML = `<button class="close-btn" id="closeSignModal" title="Close">&times;</button>
+        <h2>Sign up for HPP Mail</h2>
+        <div class="error-message" id="modalErrorMsg"></div>
+        <form id="modalRegisterForm" autocomplete="on">
+            <label for="regUsername">Username</label>
+            <input type="text" id="regUsername" name="username" required autocomplete="username">
+            <label for="regPassword">Password</label>
+            <input type="password" id="regPassword" name="password" required autocomplete="new-password">
+            <button type="submit">Sign Up</button>
+        </form>
+        <div class="links"><a href="#" id="modalToLogin">Already have an account? Sign in!</a></div>`;
+        document.getElementById('closeSignModal').onclick = () => { document.getElementById('signModalBg').classList.remove('active'); };
+        document.getElementById('modalToLogin').onclick = (e) => {
+            e.preventDefault();
+            window.location.reload();
+        };
+        document.getElementById('modalRegisterForm').onsubmit = function(e) {
+            e.preventDefault();
+            let username = document.getElementById('regUsername').value.trim();
+            let password = document.getElementById('regPassword').value.trim();
+            let accs = getHPPAccounts();
+            if (accs.length >= MAX_ACCOUNTS) {
+                document.getElementById('modalErrorMsg').textContent = 'Maximum 5 accounts allowed.';
+                document.getElementById('modalErrorMsg').style.display = 'block';
+                return;
+            }
+            if (accs.find(a => a.username === username)) {
+                document.getElementById('modalErrorMsg').textContent = 'Username already exists.';
+                document.getElementById('modalErrorMsg').style.display = 'block';
+                return;
+            }
+            accs.push({ username, password, pfp: '', email: username + '@hppmail.com' });
+            setHPPAccounts(accs);
+            setCurrentHPPAccount(username);
+            currentAccount = username;
+            showSections(true);
+            updateAccountsUI();
+            updateInboxUI();
+            updateSignBtn();
+            document.getElementById('signModalBg').classList.remove('active');
+        };
+    }
+    document.getElementById('accountSelect').onchange = function() {
+        currentAccount = this.value;
+        setCurrentHPPAccount(currentAccount);
+        updateAccountsUI();
+        updateInboxUI();
+        updateSignBtn();
+    };
+    document.getElementById('composeForm').onsubmit = function(e) {
+        e.preventDefault();
+        if (!currentAccount) return;
+        const to = document.getElementById('toSelect').value;
+        const subject = document.getElementById('subject').value.trim();
+        const message = document.getElementById('message').value.trim();
+        if (!to || !subject || !message) return;
+        if (!emails[to]) emails[to] = [];
+        emails[to].push({
+            from: currentAccount,
+            to,
+            subject,
+            message
+        });
+        document.getElementById('subject').value = '';
+        document.getElementById('message').value = '';
+        alert('Email sent!');
+        if (to === currentAccount) updateInboxUI();
+    };
+    // On load
+    window.onload = function() {
+        // Load HPP accounts
+        if (getHPPAccounts().length === 0) {
+            showSections(false);
+        } else {
+            currentAccount = getCurrentHPPAccount() || getHPPAccounts()[0].username;
+            showSections(!!currentAccount);
+            updateAccountsUI();
+            updateInboxUI();
+            updateSignBtn();
+        }
+    };
+    </script>
+</body>
+</html>
