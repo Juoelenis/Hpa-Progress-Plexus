@@ -48,6 +48,7 @@ describe('RedirectResponse', () => {
         port: 0,
       };
 
+      
       const response = new RedirectResponse(destination);
       expect(response).toEqual({
         fqdn: '127.0.0.1',
