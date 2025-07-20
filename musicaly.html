@@ -357,11 +357,16 @@
     authModal.onclick = e => {
         if (e.target === authModal) authModal.style.display = 'none';
     };
-    authForm.onsubmit = e => {
+
+    authForm.onsubmit = function(e) {
         e.preventDefault();
         const username = authUsername.value.trim();
         const password = authPassword.value;
-        if (!username || !password) return;
+        if (!username || !password) {
+            authError.textContent = 'Please enter username and password.';
+            authError.style.display = 'block';
+            return;
+        }
         let users = getUsers();
         if (users[username]) {
             // Sign in
