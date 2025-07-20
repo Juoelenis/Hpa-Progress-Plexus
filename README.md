@@ -99,7 +99,7 @@ We welcome contributions from the community!
 ## 🧠 Use Cases
 
 * **Schools:** Host a School Internet that keeps za tiktok brainrotted aah Kidz on a Good diet of Web Tech (sorry kidz)
-* **Homes:** Share media and files between devices with no internet
+* **Homes:** Browse an Decentralized networks via LAN with no internet
 * **Hobby Projects:** Build local-only tools, games, or test dashboards
 
 ---
