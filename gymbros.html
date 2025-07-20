@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>GymBros Fitness Center</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            /* Gradient background animation */
+            min-height: 100vh;
+            background: linear-gradient(180deg, #ff9800, #fff176, #ff9800);
+            background-size: 100% 300%;
+            animation: gradientMove 8s ease-in-out infinite;
+        }
+        @keyframes gradientMove {
+            0% {
+                background-position: 0% 0%;
+            }
+            50% {
+                background-position: 0% 100%;
+            }
+            100% {
+                background-position: 0% 0%;
+            }
+        }
+        nav {
+            background: #222;
+            color: #fff;
+            padding: 1em;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .nav-left {
+            font-size: 1.5em;
+            font-weight: bold;
+        }
+        .nav-right a, .nav-right button {
+            color: #fff;
+            background: none;
+            border: none;
+            margin-left: 1em;
+            font-size: 1em;
+            cursor: pointer;
+            text-decoration: none;
+        }
+        .container {
+            max-width: 800px;
+            margin: 2em auto;
+            background: #fff;
+            padding: 2em;
+            border-radius: 8px;
+        }
+        h1 {
+            color: #222;
+        }
+        .services, .membership-plans {
+            margin-top: 2em;
+        }
+        .services ul {
+            list-style: disc inside;
+            padding-left: 1em;
+        }
+        .membership-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 1em;
+        }
+        .membership-table th, .membership-table td {
+            border: 1px solid #ddd;
+            padding: 0.75em;
+            text-align: left;
+        }
+        .membership-table th {
+            background: #ff9800;
+            color: #fff;
+        }
+        .membership-table tr:nth-child(even) {
+            background: #f9f9f9;
+        }
+        footer {
+            text-align: center;
+            padding: 1em;
+            background: #222;
+            color: #fff;
+            position: relative;
+            bottom: 0;
+            width: 100%;
+        }
+        footer a {
+            color: #ff9800;
+            text-decoration: none;
+        }
+        footer a:hover {
+            text-decoration: underline;
+        }
+
+        @media (max-width: 600px) {
+            nav {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            .nav-right {
+                margin-top: 1em;
+            }
+            .container {
+                padding: 1em;
+            }
+        }>
+</style>
+
+</head>
+<body>
+    <nav>
+        <div class="nav-left">GymBros Fitness Center</div>
+        <div class="nav-right">
+            <a href="#services">Services</a>
+            <a href="#membership">Membership</a>
+            <a href="#contact">Contact</a>
+        </div>
+    </nav>
+    <div class="container">
+        <h1>Welcome to GymBros Fitness Center</h1>
+        <p>
+            <strong>Location:</strong> 123 Muscle Lane, Downtown City, 45678<br>
+            <strong>Phone:</strong> (123) 456-7890<br>
+            <strong>Email:</strong> info@gymbrosfitness.com<br>
+            <strong>Hours:</strong> Mon-Fri: 5am - 11pm, Sat-Sun: 7am - 9pm
+        </p>
+        <div class="services" id="services">
+            <h2>Our Services</h2>
+            <ul>
+                <li>State-of-the-art gym equipment</li>
+                <li>Personal training sessions</li>
+                <li>Group fitness classes (Yoga, HIIT, Zumba, and more)</li>
+                <li>Nutrition and wellness coaching</li>
+                <li>Locker rooms and showers</li>
+            </ul>
+        </div>
+        <div class="membership-plans" id="membership">
+            <h2>Membership Plans</h2>
+            <table class="membership-table">
+                <tr>
+                    <th>Plan</th>
+                    <th>Price</th>
+                    <th>Benefits</th>
+                </tr>
+                <tr>
+                    <td>Basic</td>
+                    <td>$30/month</td>
+                    <td>Gym access, locker room</td>
+                </tr>
+                <tr>
+                    <td>Premium</td>
+                    <td>$50/month</td>
+                    <td>All Basic benefits, group classes, 1 personal training session/month</td>
+                </tr>
+                <tr>
+                    <td>Elite</td>
+                    <td>$80/month</td>
+                    <td>All Premium benefits, unlimited classes, nutrition coaching</td>
+                </tr>
+            </table>
+        </div>
+        <div class="contact" id="contact" style="margin-top:2em;">
+            <h2>Contact Us</h2>
+            <p>
+                Have questions? Reach out to us at <a href="mailto:info@gymbrosfitness.com">info@gymbrosfitness.com</a> or call (123) 456-7890.
+            </p>
+        </div>
+    </div>
+    <footer>
+        &copy; 2024 GymBros Fitness Center. All rights reserved. | <a href="#contact">Contact</a>
+    </footer>
+</body>
+</html>

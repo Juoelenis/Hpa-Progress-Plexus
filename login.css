@@ -1,0 +1,12 @@
+body {
+    background-image: linear-gradient(red,green); height: 1000px; width: 1000px;
+}
+h1 {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    text-shadow: lightgreen;
+    text-align :left ;
+}
+h2 {
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    text-align: left;
+}
