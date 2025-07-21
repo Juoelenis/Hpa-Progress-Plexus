@@ -29,27 +29,32 @@
             box-shadow: 0 4px 24px rgba(33,147,176,0.10);
             padding: 36px 28px;
             text-align: center;
+            animation: fadeInUp 1s cubic-bezier(.23,1.01,.32,1) 0s 1;
         }
         h1 {
             color: #e53935;
             font-size: 2.2rem;
             margin-bottom: 12px;
+            animation: fadeInDown 1.1s 0.1s both;
         }
         h2 {
             color: #2193b0;
             font-size: 1.15rem;
             margin-bottom: 18px;
             font-weight: 400;
+            animation: fadeIn 1.2s 0.3s both;
         }
         h3 {
             color: #888;
             font-size: 1.05rem;
             margin-bottom: 18px;
             font-weight: 600;
+            animation: fadeIn 1.2s 0.3s both;
         }
         h5 {
             color: #b8c1ec;
             margin-top: 24px;
+            animation: fadeIn 1.2s 0.3s both;
         }
         .about-imgs {
             display: flex;
@@ -63,6 +68,7 @@
             box-shadow: 0 2px 8px rgba(33,147,176,0.08);
             max-width: 100%;
             height: auto;
+            animation: popIn 1.1s cubic-bezier(.23,1.01,.32,1) 0.2s 1;
         }
         .note {
             color: #e53935;
@@ -73,6 +79,34 @@
             font-weight: 600;
             font-size: 1rem;
             box-shadow: 0 2px 8px #e5393522;
+            animation: fadeInNote 1.1s 0.4s both;
+        }
+        #checkUpdateBtn {
+            animation: fadeInUp 1.1s 0.5s both;
+        }
+        #updateModal > div {
+            animation: popIn 0.5s cubic-bezier(.23,1.01,.32,1) 0s 1;
+        }
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(40px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes fadeInDown {
+            from { opacity: 0; transform: translateY(-40px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        @keyframes popIn {
+            0% { opacity: 0; transform: scale(0.7); }
+            80% { opacity: 1; transform: scale(1.08); }
+            100% { opacity: 1; transform: scale(1); }
+        }
+        @keyframes fadeInNote {
+            from { opacity: 0; transform: scale(0.95); }
+            to { opacity: 1; transform: scale(1); }
         }
         @media (max-width: 700px) {
             .container {
@@ -107,6 +141,38 @@
         </div>
         <h3>Open Source Initiatived Since 2024. HPP Inc.</h3>
         <h5>ver.2.0.8 (Beta Testing Channel)</h5>
+        <button id="checkUpdateBtn" style="margin-top:22px;padding:10px 22px;font-size:1rem;border-radius:8px;background:#2193b0;color:#fff;border:none;box-shadow:0 2px 8px #2193b022;cursor:pointer;transition:background 0.2s;">Check for Updates</button>
+        <div id="updateModal" style="display:none;position:fixed;top:0;left:0;width:100vw;height:100vh;background:rgba(33,60,102,0.18);z-index:9999;align-items:center;justify-content:center;">
+          <div style="background:#fff;padding:32px 24px;border-radius:14px;box-shadow:0 8px 32px #2193b044;max-width:340px;text-align:center;">
+            <div id="updateStatus" style="font-size:1.1rem;color:#2193b0;margin-bottom:18px;">Checking for updates...</div>
+            <button onclick="document.getElementById('updateModal').style.display='none'" style="padding:7px 18px;border-radius:6px;background:#e53935;color:#fff;border:none;font-weight:600;cursor:pointer;">Close</button>
+          </div>
+        </div>
     </div>
+    <script>
+    const CURRENT_VERSION = "2.1.5";
+    const GITHUB_REPO = "Juoelenis/Hpa-progress-plexus";
+    document.getElementById('checkUpdateBtn').onclick = function() {
+        document.getElementById('updateModal').style.display = 'flex';
+        document.getElementById('updateStatus').textContent = "Checking for updates...";
+        fetch(`https://api.github.com/repos/${GITHUB_REPO}/releases/latest`)
+            .then(r => r.json())
+            .then(data => {
+                if (data.tag_name) {
+                    let latest = data.tag_name.replace(/^v/i, "");
+                    if (latest === CURRENT_VERSION) {
+                        document.getElementById('updateStatus').innerHTML = `✅ You are up to date!<br>Current version: <b>${CURRENT_VERSION}</b>`;
+                    } else {
+                        document.getElementById('updateStatus').innerHTML = `🚀 New version available: <b>${latest}</b><br><a href="${data.html_url}" target="_blank" style="color:#2193b0;text-decoration:underline;">View on GitHub</a>`;
+                    }
+                } else {
+                    document.getElementById('updateStatus').textContent = "Could not check for updates.";
+                }
+            })
+            .catch(() => {
+                document.getElementById('updateStatus').textContent = "Could not connect to GitHub.";
+            });
+    };
+    </script>
 </body>
 </html>
