@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Old Browser Detected</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            background: #fff3cd;
+            color: #856404;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+        .warning-container {
+            background: #fffbe6;
+            border: 1px solid #ffeeba;
+            border-radius: 8px;
+            padding: 2em 2.5em;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+            text-align: center;
+            max-width: 400px;
+        }
+        .warning-container h1 {
+            font-size: 1.6em;
+            margin-bottom: 0.5em;
+        }
+        .warning-container a {
+            color: #155724;
+            text-decoration: underline;
+            font-weight: bold;
+        }
+    </style>
+    <script>
+        // Simple IE detection
+        var ua = window.navigator.userAgent;
+        var isIE = ua.indexOf('MSIE ') > -1 || ua.indexOf('Trident/') > -1;
+
+        if (!isIE) {
+            // Not IE, redirect to home or main app page
+            window.location.href = '/';
+        }
+        // If IE, stay on this page and show warning
+    </script>
+</head>
+<body>
+    <div class="warning-container">
+        <h1>Unsupported Browser Detected</h1>
+        <p>
+            It looks like you are using <strong>Internet Explorer</strong>, which is no longer supported.<br>
+            Please switch to a modern browser such as <b>Microsoft Edge</b>, <b>Google Chrome</b>, or <b>Mozilla Firefox</b> for the best experience.
+        </p>
+        <p>
+            If you need the legacy version, you can download <br>
+            <a href="https://github.com/Progressbar/HPA-Progress-Plexus/releases/tag/v1.9" target="_blank" rel="noopener">HPP 1.9 Release on GitHub</a>
+        </p>
+    </div>
+</body>
+</html>
