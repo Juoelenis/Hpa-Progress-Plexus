@@ -4,7 +4,7 @@
 
 **HPP (HPA Progress Plexus)** is a self-hostable, decentralized web-based platform designed as an alternative to the traditional internet. Built for the **Intarenet** (local/offline networks), HPP is especially useful in **homes**, **schools**, and for **individuals** seeking reliable, local-first digital communication and collaboration.
 
-# HPP has been Nominated as the "best Internet alternative" by the Dogland Tech Comitee (DTC) in 2024. Dogland is a Fictional country in the Juo Universe, for more info please visit the Juoverse Wiki (coming soon)
+ HPP has been Nominated as the "best Internet alternative" by the Dogland Tech Comitee (DTC) in 2024. Dogland is a Fictional country in the Juo Universe, for more info please visit the Juoverse Wiki (coming soon)
 
 ---
 
