@@ -8,6 +8,104 @@
     <link rel="icon" href="hpp-n-l-p.png">
     <!-- Modern Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <!-- Dropdown Menu Styles -->
+    <style>
+        .main-dropdown-btn {
+            display: none;
+            position: fixed;
+            top: 18px;
+            left: 24px;
+            z-index: 1200;
+            background: #fff;
+            border: 2px solid #2193b0;
+            border-radius: 12px;
+            padding: 8px 12px;
+            box-shadow: 0 2px 12px #2193b022;
+            cursor: pointer;
+            transition: background 0.2s, color 0.2s;
+            outline: none;
+        }
+        .main-dropdown-btn:hover {
+            background: #2193b0;
+            color: #fff;
+        }
+        .main-dropdown-btn span {
+            display: block;
+            width: 24px;
+            height: 3px;
+            background: #2193b0;
+            margin: 4px 0;
+            border-radius: 2px;
+            transition: all 0.35s cubic-bezier(.4,2,.6,1);
+        }
+        .main-dropdown-btn.active span:nth-child(1) {
+            transform: translateY(7px) rotate(45deg);
+            background: #e53935;
+        }
+        .main-dropdown-btn.active span:nth-child(2) {
+            opacity: 0;
+            transform: scaleX(0.5);
+        }
+        .main-dropdown-btn.active span:nth-child(3) {
+            transform: translateY(-7px) rotate(-45deg);
+            background: #e53935;
+        }
+        .main-dropdown-bg {
+            display: none;
+            position: fixed;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: rgba(33, 60, 102, 0.18);
+            z-index: 1199;
+            justify-content: flex-start;
+            align-items: flex-start;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.35s cubic-bezier(.4,2,.6,1);
+        }
+        .main-dropdown-bg.active {
+            display: flex;
+            opacity: 1;
+            pointer-events: auto;
+        }
+        .main-dropdown-menu {
+            background: #fff;
+            border-radius: 18px;
+            box-shadow: 0 8px 32px #2193b044;
+            padding: 24px 0 18px 0;
+            min-width: 220px;
+            margin: 24px 0 0 24px;
+            display: flex;
+            flex-direction: column;
+            transform: translateY(-30px) scale(0.98);
+            opacity: 0;
+            transition: transform 0.38s cubic-bezier(.4,2,.6,1), opacity 0.38s cubic-bezier(.4,2,.6,1);
+        }
+        .main-dropdown-bg.active .main-dropdown-menu {
+            transform: translateY(0) scale(1);
+            opacity: 1;
+        }
+        .main-dropdown-menu a {
+            color: #2193b0;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1.08rem;
+            padding: 12px 32px;
+            border-radius: 8px;
+            transition: background 0.18s, color 0.18s;
+            margin: 0 8px;
+        }
+        .main-dropdown-menu a:hover {
+            background: #e0eafc;
+            color: #0d1e4a;
+        }
+        @media (max-width: 900px) {
+            .main-dropdown-btn { display: block; }
+            .topnav { display: none !important; }
+        }
+        @media (min-width: 901px) {
+            .main-dropdown-bg, .main-dropdown-btn { display: none !important; }
+        }
+    </style>
     <style>
         body {
             font-family: 'Inter', 'Roboto', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -332,8 +430,55 @@
 
 </head>
 <body>
+    <!-- Main Dropdown Menu Button (Hamburger) -->
+    <button class="main-dropdown-btn" id="mainDropdownBtn" aria-label="Open menu">
+        <span></span>
+        <span></span>
+        <span></span>
+    </button>
+    <!-- Main Dropdown Menu Overlay -->
+    <div class="main-dropdown-bg" id="mainDropdownBg">
+        <nav class="main-dropdown-menu">
+            <a href="index.html">Home</a>
+            <a href="buba.html">VidTube</a>
+            <a href="cashaplay.html">DoglanBank</a>
+            <a href="funsta.html">Funstagram</a>
+            <a href="hppmail.html">HPP Mail</a>
+            <a href="searches.html">search</a>
+            <a href="jweeter.html">Jweeter</a>
+            <a href="musicaly.html">Musicaly</a>
+            <a href="the iframe page.html">The iFrame Page</a>
+            <a href="lists.html">HPP Page List</a>
+            <a href="about.html">about HPP</a>
+        </nav>
+    </div>
     <script src="index.js"></script>
     <script>
+    // --- Main Dropdown Menu Logic ---
+    document.addEventListener('DOMContentLoaded', function() {
+        const dropdownBtn = document.getElementById('mainDropdownBtn');
+        const dropdownBg = document.getElementById('mainDropdownBg');
+        if (dropdownBtn && dropdownBg) {
+            dropdownBtn.onclick = function(e) {
+                e.stopPropagation();
+                dropdownBg.classList.add('active');
+                dropdownBtn.classList.add('active');
+            };
+            dropdownBg.onclick = function(e) {
+                if (e.target === dropdownBg) {
+                    dropdownBg.classList.remove('active');
+                    dropdownBtn.classList.remove('active');
+                }
+            };
+            // Close on link click
+            dropdownBg.querySelectorAll('a').forEach(link => {
+                link.onclick = () => {
+                    dropdownBg.classList.remove('active');
+                    dropdownBtn.classList.remove('active');
+                };
+            });
+        }
+    });
     // --- Multi-account logic ---
     function getAccounts() {
         return JSON.parse(localStorage.getItem('hppAccounts') || '[]');
@@ -616,7 +761,7 @@
                 }
             };
         }
-        // Register modal
+        // Register modal for account management
         function showRegisterModal() {
             let modalBg = document.getElementById('accountModalBg');
             let modal = document.querySelector('.account-modal');
@@ -726,10 +871,10 @@
     <h4>HPP (Hpa Progress Plexus) is a project to make an alternative to the WWW on your local network. You can add any HTML/CSS/JS page and host it using this frontend.</h4>
 
     <!-- News Article Card -->
-    <div class="news-article">
+    <div class="news-article green-news">
       <div class="news-headline">NEWS!</div>
-      <div class="news-title">MR. Lean Steals 300 dih worth of Ketchup From a Nearby Annashan in Dupeval!</div>
-      <div class="news-meta">Dupeval • June 6, 2025 • Local Crime</div>
+      <div class="news-title">New Kubeti flavours will drop soon in Yapedor</div>
+      <div class="news-meta">Yapedor • July 21, 2025 • Foods</div>
     </div>
     <div class="newsly-link-wrap">
       <a href="newsly.html" class="newsly-link">Newsly has more news to offer!</a>
@@ -785,7 +930,10 @@
       flex-direction: column;
       align-items: flex-start;
       animation: fadeInNews 1.2s 0.5s both;
-      border-left: 6px solid #e53935;
+      border-left: 6px solid #43a047;
+    }
+    .news-article.green-news .news-headline {
+      color: #43a047;
     }
     .news-headline {
       color: #e53935;
