@@ -1,0 +1,561 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Dumb People S1E1: The Big Bathing in the Lake | VidTube</title>
+    <link rel="icon" href="VidTube-Logo.webp">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:400,500,700">
+    <style>
+        :root {
+            --bg: #181818;
+            --bg-secondary: #212121;
+            --text: #fff;
+            --text-secondary: #aaa;
+            --accent: #ff0000;
+            --border: #333;
+        }
+        body {
+            margin: 0;
+            background: var(--bg);
+            color: var(--text);
+            font-family: 'Roboto', Arial, sans-serif;
+        }
+        header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background: var(--bg-secondary);
+            padding: 10px 24px;
+            border-bottom: 1px solid var(--border);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        .logo {
+            font-size: 1.7em;
+            font-weight: bold;
+            color: var(--accent);
+            letter-spacing: -2px;
+        }
+        .search-bar {
+            flex: 1;
+            margin: 0 24px;
+            display: flex;
+            max-width: 600px;
+        }
+        .search-bar input {
+            flex: 1;
+            padding: 8px 12px;
+            border: none;
+            border-radius: 2px 0 0 2px;
+            background: #121212;
+            color: var(--text);
+            font-size: 1em;
+        }
+        .search-bar button {
+            background: #222;
+            border: none;
+            color: var(--text);
+            padding: 8px 16px;
+            border-radius: 0 2px 2px 0;
+            cursor: pointer;
+        }
+        .user-actions {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+        .user-avatar {
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            background: #444;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            color: var(--text);
+        }
+        main {
+            display: flex;
+            gap: 32px;
+            max-width: 1200px;
+            margin: 32px auto;
+            padding: 0 16px;
+        }
+        .video-section {
+            flex: 2.5;
+            min-width: 0;
+        }
+        .video-player {
+            width: 100%;
+            aspect-ratio: 16/9;
+            background: #000;
+            border-radius: 8px;
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+        .video-player iframe, .video-player video {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+        .video-title {
+            font-size: 1.5em;
+            font-weight: 500;
+            margin-bottom: 8px;
+        }
+        .video-meta {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            color: var(--text-secondary);
+            font-size: 0.95em;
+            margin-bottom: 12px;
+        }
+        .channel-info {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        .channel-avatar {
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            background: #444;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2em;
+            font-weight: bold;
+            color: var(--text);
+        }
+        .channel-details {
+            display: flex;
+            flex-direction: column;
+        }
+        .channel-name {
+            font-weight: 500;
+            color: var(--text);
+        }
+        .channel-subs {
+            font-size: 0.95em;
+            color: var(--text-secondary);
+        }
+        .subscribe-btn {
+            background: var(--accent);
+            color: #fff;
+            border: none;
+            border-radius: 2px;
+            padding: 10px 22px;
+            font-weight: 500;
+            font-size: 1em;
+            cursor: pointer;
+            margin-left: 16px;
+            transition: background 0.2s;
+        }
+        .subscribe-btn:hover {
+            background: #cc0000;
+        }
+        .video-actions {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+        .action-btn {
+            background: #232323;
+            color: var(--text);
+            border: none;
+            border-radius: 2px;
+            padding: 8px 18px;
+            font-size: 1em;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            transition: background 0.2s;
+        }
+        .action-btn:hover {
+            background: #333;
+        }
+        .video-description {
+            background: var(--bg-secondary);
+            border-radius: 6px;
+            padding: 16px;
+            margin-top: 16px;
+            color: var(--text-secondary);
+            font-size: 1.05em;
+            white-space: pre-line;
+        }
+        .comments-section {
+            margin-top: 32px;
+        }
+        .comments-header {
+            font-weight: 500;
+            margin-bottom: 16px;
+            font-size: 1.2em;
+        }
+        .comment-box {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            margin-bottom: 24px;
+        }
+        .comment-avatar {
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            background: #444;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            color: var(--text);
+        }
+        .comment-input {
+            flex: 1;
+            background: #232323;
+            border: none;
+            border-radius: 2px;
+            color: var(--text);
+            padding: 10px;
+            font-size: 1em;
+            resize: none;
+        }
+        .comment-btn {
+            background: var(--accent);
+            color: #fff;
+            border: none;
+            border-radius: 2px;
+            padding: 8px 16px;
+            font-weight: 500;
+            margin-left: 8px;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+        .comment-btn:hover {
+            background: #cc0000;
+        }
+        .comment-list {
+            display: flex;
+            flex-direction: column;
+            gap: 18px;
+        }
+        .comment {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+        }
+        .comment-content {
+            background: #232323;
+            border-radius: 4px;
+            padding: 10px 14px;
+            color: var(--text);
+            font-size: 1em;
+            flex: 1;
+        }
+        .comment-author {
+            font-weight: 500;
+            color: var(--accent);
+            margin-bottom: 4px;
+            display: block;
+        }
+        /* Sidebar */
+        .sidebar {
+            flex: 1.2;
+            min-width: 260px;
+            display: flex;
+            flex-direction: column;
+            gap: 18px;
+        }
+        .sidebar-title {
+            font-weight: 500;
+            margin-bottom: 10px;
+            font-size: 1.1em;
+            color: var(--text-secondary);
+        }
+        .sidebar-video {
+            display: flex;
+            gap: 10px;
+            background: #232323;
+            border-radius: 4px;
+            padding: 8px;
+            cursor: pointer;
+            transition: background 0.2s;
+            align-items: center;
+        }
+        .sidebar-video:hover {
+            background: #333;
+        }
+        .sidebar-thumb {
+            width: 90px;
+            height: 50px;
+            border-radius: 4px;
+            background: #111;
+            object-fit: cover;
+        }
+        .sidebar-info {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        .sidebar-title-main {
+            font-size: 1em;
+            font-weight: 500;
+            color: var(--text);
+            margin-bottom: 2px;
+        }
+        .sidebar-channel {
+            font-size: 0.95em;
+            color: var(--text-secondary);
+        }
+        /* Responsive (Mobile) */
+        @media (max-width: 900px) {
+            main {
+                flex-direction: column;
+                gap: 0;
+                max-width: 100vw;
+                margin: 0;
+                padding: 0;
+            }
+            .sidebar {
+                flex-direction: row;
+                overflow-x: auto;
+                gap: 10px;
+                min-width: 0;
+                padding: 12px 8px;
+                background: var(--bg-secondary);
+            }
+            .sidebar-video {
+                min-width: 180px;
+                flex-direction: column;
+                align-items: flex-start;
+                padding: 6px;
+            }
+            .sidebar-thumb {
+                width: 100%;
+                height: 80px;
+            }
+            .sidebar-info {
+                margin-top: 4px;
+            }
+        }
+        @media (max-width: 700px) {
+            header {
+                flex-direction: column;
+                align-items: stretch;
+                gap: 8px;
+                padding: 10px 8px;
+            }
+            .search-bar {
+                margin: 0;
+                max-width: 100%;
+            }
+            .video-title {
+                font-size: 1.1em;
+            }
+            .video-meta {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 6px;
+            }
+            .video-section {
+                padding: 0 4px;
+            }
+            .video-player {
+                border-radius: 0;
+            }
+            .video-description {
+                font-size: 0.98em;
+                padding: 10px;
+            }
+            .comments-section {
+                margin-top: 18px;
+            }
+        }
+        /* Slightly modified mobile UI */
+        @media (max-width: 500px) {
+            .video-player {
+                aspect-ratio: 16/9;
+                min-height: 180px;
+            }
+            .sidebar {
+                display: none;
+            }
+            .video-section {
+                padding: 0;
+            }
+            .comment-input {
+                font-size: 0.98em;
+            }
+            .comment-content {
+                font-size: 0.98em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo">VidTube</div>
+        <form class="search-bar" action="#" onsubmit="return false;">
+            <input type="text" placeholder="Search">
+            <button type="submit">&#128269;</button>
+        </form>
+        <div class="user-actions">
+            <span class="user-avatar">U</span>
+        </div>
+    </header>
+    <main>
+        <section class="video-section">
+            <div class="video-player">
+                <!-- Local video file -->
+                <video controls poster="https://img.youtube.com/vi/dQw4w9WgXcQ/maxresdefault.jpg">
+                    <source src="c:/Users/dell/Videos/Movie DB/Dumb People Season 1/Dumb People _Season 1 Episode 4 _ Andrew the Cliff faller _ HardBassTV.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+            </div>
+            <div class="video-title">Dumb People Season 1 Episode 1: The Big Bathing in the Lake ("hardbassTV" episode)</div>
+            <div class="video-meta">
+                <span>1,234,567 views • Jun 7, 2024</span>
+                <div class="video-actions">
+                    <button class="action-btn" onclick="likeVideo()">
+                        👍 <span id="like-count">12K</span>
+                    </button>
+                    <button class="action-btn" onclick="dislikeVideo()">
+                        👎 <span id="dislike-count">123</span>
+                    </button>
+                    <button class="action-btn">
+                        &#128257; Share
+                    </button>
+                    <button class="action-btn">
+                        &#128190; Save
+                    </button>
+                </div>
+            </div>
+            <div class="channel-info">
+                <div class="channel-avatar">DP</div>
+                <div class="channel-details">
+                    <span class="channel-name">DumbPeopleOfficial</span>
+                    <span class="channel-subs">1.2M subscribers</span>
+                </div>
+                <button class="subscribe-btn" id="subscribe-btn" onclick="toggleSubscribe()">Subscribe</button>
+            </div>
+            <div class="video-description">
+                Welcome to the first episode of Dumb People!<br>
+                In this episode, the crew takes on the challenge of bathing in the lake... with hilarious results.<br>
+                <br>
+                Enjoy the hardbass vibes and don't forget to like, comment, and subscribe for more!
+            </div>
+            <div class="comments-section">
+                <div class="comments-header">Comments <span style="color:var(--text-secondary); font-weight:400;">• 2,345</span></div>
+                <div class="comment-box">
+                    <div class="comment-avatar">U</div>
+                    <textarea class="comment-input" rows="2" placeholder="Add a public comment..."></textarea>
+                    <button class="comment-btn" onclick="addComment()">Comment</button>
+                </div>
+                <div class="comment-list" id="comment-list">
+                    <div class="comment">
+                        <div class="comment-avatar">A</div>
+                        <div class="comment-content">
+                            <span class="comment-author">Alex</span>
+                            This is the funniest thing I've seen all week 😂
+                        </div>
+                    </div>
+                    <div class="comment">
+                        <div class="comment-avatar">B</div>
+                        <div class="comment-content">
+                            <span class="comment-author">Boris</span>
+                            Hardbass + lake = instant classic!
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <aside class="sidebar">
+            <div class="sidebar-title">Up next</div>
+            <div class="sidebar-video">
+                <img class="sidebar-thumb" src="https://img.youtube.com/vi/3JZ_D3ELwOQ/hqdefault.jpg" alt="Episode 2">
+                <div class="sidebar-info">
+                    <div class="sidebar-title-main">Dumb People S1E2: The Great Shopping Cart Race</div>
+                    <div class="sidebar-channel">DumbPeopleOfficial • 1.1M views</div>
+                </div>
+            </div>
+            <div class="sidebar-video">
+                <img class="sidebar-thumb" src="https://img.youtube.com/vi/2Vv-BfVoq4g/hqdefault.jpg" alt="Episode 3">
+                <div class="sidebar-info">
+                    <div class="sidebar-title-main">Dumb People S1E3: Parkour Fails Compilation</div>
+                    <div class="sidebar-channel">DumbPeopleOfficial • 980K views</div>
+                </div>
+            </div>
+            <div class="sidebar-video">
+                <img class="sidebar-thumb" src="https://img.youtube.com/vi/l482T0yNkeo/hqdefault.jpg" alt="Episode 4">
+                <div class="sidebar-info">
+                    <div class="sidebar-title-main">Dumb People S1E4: The Ultimate Prank War</div>
+                    <div class="sidebar-channel">DumbPeopleOfficial • 1.3M views</div>
+                </div>
+            </div>
+        </aside>
+    </main>
+    <script>
+        // Like/Dislike logic (demo only)
+        let liked = false, disliked = false, likes = 12000, dislikes = 123;
+        function likeVideo() {
+            if (!liked) {
+                likes++;
+                if (disliked) { dislikes--; disliked = false; }
+                liked = true;
+            } else {
+                likes--;
+                liked = false;
+            }
+            updateLikes();
+        }
+        function dislikeVideo() {
+            if (!disliked) {
+                dislikes++;
+                if (liked) { likes--; liked = false; }
+                disliked = true;
+            } else {
+                dislikes--;
+                disliked = false;
+            }
+            updateLikes();
+        }
+        function updateLikes() {
+            document.getElementById('like-count').textContent = likes >= 1000 ? (likes/1000).toFixed(1) + 'K' : likes;
+            document.getElementById('dislike-count').textContent = dislikes;
+        }
+        // Subscribe logic (demo only)
+        let subscribed = false;
+        function toggleSubscribe() {
+            subscribed = !subscribed;
+            const btn = document.getElementById('subscribe-btn');
+            btn.textContent = subscribed ? 'Subscribed' : 'Subscribe';
+            btn.style.background = subscribed ? '#444' : 'var(--accent)';
+        }
+        // Add comment (demo only)
+        function addComment() {
+            const input = document.querySelector('.comment-input');
+            const text = input.value.trim();
+            if (!text) return;
+            const list = document.getElementById('comment-list');
+            const div = document.createElement('div');
+            div.className = 'comment';
+            div.innerHTML = `
+                <div class="comment-avatar">U</div>
+                <div class="comment-content">
+                    <span class="comment-author">You</span>
+                    ${text.replace(/</g, "&lt;")}
+                </div>
+            `;
+            list.prepend(div);
+            input.value = '';
+        }
+    </script>
+</body>
+</html></div>
