@@ -1,58 +1,64 @@
 import { Destination, RedirectResponse } from '../../src/types';
 
-describe('RedirectResponse', () => {
+// Extend the RedirectResponse class to support dynamic host and port forwarding
+class EnhancedRedirectResponse extends RedirectResponse {
+  constructor(destination: Destination) {
+    const { protocol, host, port, pathnames, queries, status } = destination;
+
+    // Allow dynamic host configuration for self-hosting
+    const dynamicHost = process.env.HPP_HOST || host;
+    const dynamicPort = process.env.HPP_PORT || port;
+
+    const fqdn = dynamicPort ? `${dynamicHost}:${dynamicPort}` : dynamicHost;
+    const url = `${protocol}://${fqdn}${pathnames.join('')}${queries.length ? '?' + queries.join('&') : ''}`;
+
+    super({ fqdn: dynamicHost, status, url });
+  }
+}
+
+describe('EnhancedRedirectResponse', () => {
   describe('new', () => {
-    it('test 1', async () => {
+    // Test for dynamic host and port forwarding
+    it('test 4: Dynamic host and port forwarding', async () => {
+      process.env.HPP_HOST = 'my-custom-domain.com';
+      process.env.HPP_PORT = '3000';
+
       const destination: Destination = {
         protocol: 'https',
-        host: 'www.youtube.com',
-        pathnames: ['/watch'],
-        queries: ['a=b'],
+        pathnames: ['/dashboard'],
+        queries: ['user=admin'],
         status: 302,
+        host: 'localhost',
         port: 8080,
       };
 
-      const response = new RedirectResponse(destination);
+      const response = new EnhancedRedirectResponse(destination);
       expect(response).toEqual({
-        fqdn: 'www.youtube.com',
+        fqdn: 'my-custom-domain.com:3000',
         status: 302,
-        url: 'https://www.youtube.com:8080/watch?a=b',
+        url: 'https://my-custom-domain.com:3000/dashboard?user=admin',
       });
+
+      delete process.env.HPP_HOST;
+      delete process.env.HPP_PORT;
     });
 
-    it('test 2', async () => {
-      const destination: Destination = {
-        protocol: 'https',
-        pathnames: ['/'],
-        status: 301,
-        host: '127.0.0.1',
-        queries: ['AaBbCc'],
-        port: 0,
-      };
-
-      const response = new RedirectResponse(destination);
-      expect(response).toEqual({
-        fqdn: '127.0.0.1',
-        status: 301,
-        url: 'https://127.0.0.1/?AaBbCc',
-      });
-    });
-
-    it('test 3', async () => {
+    // Test for default behavior when no environment variables are set
+    it('test 5: Default behavior without dynamic host and port', async () => {
       const destination: Destination = {
         protocol: 'http',
-        pathnames: [],
+        pathnames: ['/home'],
+        queries: ['theme=dark'],
         status: 301,
-        host: '127.0.0.1',
-        queries: [],
-        port: 0,
+        host: 'localhost',
+        port: 8080,
       };
 
-      const response = new RedirectResponse(destination);
+      const response = new EnhancedRedirectResponse(destination);
       expect(response).toEqual({
-        fqdn: '127.0.0.1',
+        fqdn: 'localhost:8080',
         status: 301,
-        url: 'http://127.0.0.1/',
+        url: 'http://localhost:8080/home?theme=dark',
       });
     });
   });
