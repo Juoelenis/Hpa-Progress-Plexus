@@ -1,0 +1,9 @@
+body {
+  background-image: element(white,cyan);
+}
+h1 {
+    font-family: cursive;
+    color: darkslategrey;
+    text-decoration: darkturquoise;
+    text-align: center;
+}

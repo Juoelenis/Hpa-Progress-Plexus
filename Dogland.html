@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dogland Tours – Discover the Beauty</title>
+    <link rel="icon" href="dogland-logo.png">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', Arial, sans-serif;
+            background: linear-gradient(120deg, #e0eafc 0%, #b2fefa 100%);
+            margin: 0;
+            padding: 0;
+            color: #232946;
+        }
+        .topnav {
+            background: #2193b0;
+            overflow: hidden;
+            padding: 0 10px;
+            display: flex;
+            align-items: center;
+            box-shadow: 0 2px 12px rgba(33,147,176,0.10);
+        }
+        .topnav a {
+            color: #fff;
+            text-align: center;
+            padding: 16px 18px;
+            text-decoration: none;
+            font-size: 17px;
+            transition: background 0.2s;
+        }
+        .topnav a.active, .topnav a:hover {
+            background: #6dd5ed;
+            color: #222;
+        }
+        .hero {
+            background: linear-gradient(120deg, #b2fefa 60%, #e0eafc 100%);
+            padding: 48px 0 32px 0;
+            text-align: center;
+        }
+        .hero img {
+            height: 90px;
+            border-radius: 18px;
+            box-shadow: 0 2px 12px #b2fefa44;
+            margin-bottom: 18px;
+        }
+        .hero h1 {
+            color: #e53935;
+            font-size: 2.5rem;
+            margin-bottom: 12px;
+        }
+        .hero p {
+            color: #2193b0;
+            font-size: 1.25rem;
+            margin-bottom: 0;
+            font-weight: 500;
+        }
+        .section {
+            max-width: 900px;
+            margin: 36px auto;
+            background: #fff;
+            border-radius: 16px;
+            box-shadow: 0 4px 24px rgba(33,147,176,0.10);
+            padding: 36px 28px;
+        }
+        .section h2 {
+            color: #2193b0;
+            font-size: 1.5rem;
+            margin-bottom: 18px;
+        }
+        .gallery {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 18px;
+            justify-content: center;
+            margin-bottom: 24px;
+        }
+        .gallery img {
+            border-radius: 12px;
+            width: 220px;
+            height: 140px;
+            object-fit: cover;
+            box-shadow: 0 2px 8px #b2fefa22;
+        }
+        .culture-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 18px;
+            justify-content: center;
+            margin: 24px 0;
+        }
+        .culture-card {
+            background: #f0f8ff;
+            border-radius: 10px;
+            box-shadow: 0 2px 8px #b2fefa22;
+            padding: 18px 16px;
+            min-width: 180px;
+            max-width: 260px;
+            text-align: center;
+        }
+        .culture-card h3 {
+            color: #e53935;
+            margin-bottom: 8px;
+            font-size: 1.1rem;
+        }
+        .booking-section {
+            background: linear-gradient(120deg, #e0eafc 60%, #b2fefa 100%);
+            border-radius: 14px;
+            padding: 32px 18px;
+            margin-top: 32px;
+            text-align: center;
+            box-shadow: 0 2px 12px #b2fefa22;
+        }
+        .booking-section h2 {
+            color: #e53935;
+            margin-bottom: 18px;
+        }
+        .booking-form {
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+            max-width: 340px;
+            margin: 0 auto;
+        }
+        .booking-form input, .booking-form select {
+            padding: 10px 12px;
+            border: 1px solid #2193b0;
+            border-radius: 8px;
+            font-size: 1rem;
+        }
+        .booking-form button {
+            padding: 12px 0;
+            background: #2193b0;
+            color: #fff;
+            border: none;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+        .booking-form button:hover {
+            background: #6dd5ed;
+            color: #232946;
+        }
+        @media (max-width: 900px) {
+            .section {
+                padding: 18px 2vw;
+            }
+            .gallery img {
+                width: 98vw;
+                max-width: 320px;
+                height: 120px;
+            }
+        }
+        @media (max-width: 600px) {
+            .hero h1 {
+                font-size: 1.3rem;
+            }
+            .section h2 {
+                font-size: 1.1rem;
+            }
+            .gallery img {
+                width: 90vw;
+                height: 80px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="topnav">
+        <a class="active" href="Dogland.html">Dogland</a>
+        <a href="index.html">Home</a>
+        <a href="about.html">About HPP</a>
+        <a href="lists.html">HPP Page List</a>
+    </div>
+    <div class="hero">
+        <img src="dogland tours.png" alt="Dogland Logo">
+        <h1>Welcome to Dogland Tours</h1>
+        <p>Discover breathtaking landscapes, vibrant culture, and unforgettable adventures.</p>
+    </div>
+    <div class="section">
+        <h2>Why Visit Dogland?</h2>
+        <div class="gallery">
+            <img src="dogland mountains.jpeg" alt="Dogland Mountains">
+            <img src="dogland lake.webp" alt="Dogland Lake">
+            <img src="dogland city.jpg" alt="Dogland City">
+            <img src="dogland culture.png" alt="Dogland Culture">
+        </div>
+        <p>
+            Dogland is a hidden gem, known for its stunning mountains, crystal-clear lakes, and lively cities. Whether you seek adventure or relaxation, Dogland has something for everyone.
+        </p>
+    </div>
+    <div class="section">
+        <h2>Dogland's Unique Culture</h2>
+        <div class="culture-list">
+            <div class="culture-card">
+                <h3>Festivals</h3>
+                <p>Experience colorful festivals year-round, celebrating music, food, and tradition.</p>
+            </div>
+            <div class="culture-card">
+                <h3>Cuisine</h3>
+                <p>Enjoy delicious Dogland dishes, from hearty stews to sweet pastries.</p>
+            </div>
+            <div class="culture-card">
+                <h3>Art & Music</h3>
+                <p>Discover local artists and musicians who bring Dogland's spirit to life.</p>
+            </div>
+            <div class="culture-card">
+                <h3>Friendly Locals</h3>
+                <p>Meet welcoming people who are proud to share their homeland with you.</p>
+            </div>
+        </div>
+    </div>
+    <div class="section booking-section">
+        <h2>Book Your Dogland Tour</h2>
+        <form class="booking-form">
+            <input type="text" name="name" placeholder="Your Name" required>
+            <input type="email" name="email" placeholder="Your Email" required>
+            <select name="tour" required>
+                <option value="">Select a Tour</option>
+                <option value="mountains">Mountain Adventure</option>
+                <option value="city">City Explorer</option>
+                <option value="culture">Culture & Cuisine</option>
+                <option value="lakes">Lakeside Retreat</option>
+            </select>
+            <input type="date" name="date" required>
+            <button type="submit">Book Now</button>
+        </form>
+    </div>
+</body>
+</html>
