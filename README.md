@@ -5,6 +5,9 @@
 **HPP (HPA Progress Plexus)** is a self-hostable, decentralized web-based platform designed as an alternative to the traditional internet. Built for the **Intarenet** (local/offline networks), HPP is especially useful in **homes**, **schools**, and for **individuals** seeking reliable, local-first digital communication and collaboration.
 
 ---
+# ⚠ IMPORTANT
+as of HPP v2.3 we are Phasing out the old "Pre-made" HPP Builds, we are making hPP in a more "mmodular style, add your own HPMLs, CSSs and JSs no bloat and lightweight. the old versioon will stay up for as long as possible in the "HPP-OLD" branch and will be updated in the Beta Testing Channel up until Version 2.3 launches, thanks for understanding.
+
 
 ## 🚀 Features
 
