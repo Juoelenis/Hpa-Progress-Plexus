@@ -1,111 +1,42 @@
-![hpp-n-l-p](https://github.com/user-attachments/assets/e5bfbf1f-7c1d-4739-8a0b-7c975eb5180c)
+# 🌐 Hpa-Progress-Plexus (HPP) — OG Era
 
-# 🌐 HPP – Hpa Progress Plexus
-
-**HPP (HPA Progress Plexus)** is a self-hostable, decentralized web-based platform designed as an alternative to the traditional internet. Built for the **Intarenet** (local/offline networks), HPP is especially useful in **homes**, **schools**, and for **individuals** seeking reliable, local-first digital communication and collaboration.
+Welcome to the historical archive of **HPP (Hpa-Progress-Plexus)**. Before pivoting into a modular web server architecture, HPP was built as an immersive ecosystem of pre-made, hardcoded HTML pages, custom styles, and web experiments utilizing a distinct retro-futuristic user interface layout.
 
 ---
 
-## 🚀 Features
+## 🏛️ Codebase & UI Editions
 
-- 🖧 Peer-to-peer local network communication
-- 🧠 Simple, web-based interface using HTML/CSS/JavaScript
-- 🔌 Fully self-hostable – no internet required
-- 🏠 Perfect for local environments like homes or classrooms
-- 📚 Great educational tool for learning about networks & web tech
+If you are looking for the classic versions of HPP, you can find them organized via the repository branches and releases:
 
----
+### 🎨 S.T.A.T.I.K UI Edition (The Retro-HTML Era)
+The visual identity of early HPP was driven by **Statik UI**, our custom retro-looking HTML/CSS user interface language. Characterized by vibrant gradients, classic alignment styles, marquee text, and standalone components, it was built to capture the golden era of the web.
+* 📦 **Where to find it:** Check out the `HPP-2.0-branch` or browse the historical files in the file tree under the early 2024 commits.
 
-## 📁 Project Structure
-
-```plaintext
-hpp/
-├── index.html        # Main web interface
-├── sheet.css        # Styles
-├── app.js            # Core logic (altough most of the JS is found in the HTML files)
-├── .env              # Configuration file (optional if backend needed)
-└── README.md         # This file
-````
+### 🚀 The OG HPP 1.9 Codebase
+The classic core that started the momentum. Pure, raw frontend structures, early scripts, and foundational components.
+* 🌿 **Branch:** Navigate to the `master` / `main` branch history prior to the modular server rewrite.
+* 🏷️ **Releases:** Download the official zipped packages directly from the **[GitHub Releases](../../releases)** tab for a plug-and-play local experience.
 
 ---
 
-## 📦 Getting Started
+## 🧱 What Was inside the Pre-Made HTML Ecosystem?
 
-### 1. Clone the Repository
-
-```bash
-git clone https://github.com/Juoelenis/hpp.git
-cd hpp
-```
-
-### 2. (Optional) Configure `.env` File
-
-If your version uses a lightweight backend or a build tool, you may want to set up a `.env` file. For example:
-
-```env
-# Configuration (optional)
-HPP_NODE_NAME=home-node
-HPP_PORT=8080
-```
-
-### 3. Open the App in Your Browser
-
-Just open `index.html` in your preferred browser:
-
-* Double-click it, or
-* Use a simple local server like:
-
-```bash
-# Python 3
-python -m http.server 8080
-
-# Or Node.js http-server
-npx http-server .
-```
-
-Then open: [http://localhost:8080](http://localhost:8080)
+The old ecosystem was like a sandbox of distinct web modules ("Lego pieces") that worked together right out of the box:
+* **Core Hub:** `welcome.html` (The Frontpage) & `about.html`
+* **Media & Entertainment:** `video.html` (VidTube) & `Musicaly` asset nodes.
+* **Functional Modules:** `account.html`, `register.html`, and `searches.html`.
+* **The Retro Aesthetic:** Powering custom modules with the classic standalone `statikUI.webp` and custom brand headers.
 
 ---
 
-## ✍️ Contributing
+## 🛠️ Legacy Setup
 
-We welcome contributions from the community!
-
-1. Fork the repository
-2. Clone your fork:
-
-   ```bash
-   git clone https://github.com/your-username/hpp.git
-   cd hpp
-   ```
-3. Create a new branch:
-
-   ```bash
-   git checkout -b feature/your-feature-name
-   ```
-4. Make your changes and commit:
-
-   ```bash
-   git commit -am "Add your feature"
-   ```
-5. Push to your fork and open a pull request:
-
-   ```bash
-   git push origin feature/your-feature-name
-   ```
+To run the classic pre-made HTML version locally:
+1. Clone the repository or download the specific legacy branch zip.
+2. Open `welcome.html` directly in any web browser.
+3. *Note:* Works best on modern web browsers (though it structurally pays homage to classic desktop interfaces!).
 
 ---
-
-## 🧠 Use Cases
-
-* **Schools:** Host a School Internet that keeps za tiktok brainrotted aah Kidz on a Good diet of Web Tech (sorry kidz)
-* **Homes:** Share media and files between devices with no internet
-* **Hobby Projects:** Build local-only tools, games, or test dashboards
-
----
-
-## 📄 License
-
-This project is licensed under the **GPL 3.0 License**. See `LICENSE` for more info.
-
----
+<p align="center">
+  <b>Open source initiative since 2024. The HPP Project. All rights reserved.</b>
+</p>
