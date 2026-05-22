@@ -1,23 +1,111 @@
-### 📜 Hpa-Progress-Plexus (Legacy Edition)
-## ⚠️ ARCHIVE BRANCH: This is the HPP-OLD branch. It contains the final, classic version of Hpa-Progress-Plexus (v2.2.x) featuring the built-in web server and original pre-made HTML templates.
+![hpp-n-l-p](https://github.com/user-attachments/assets/e5bfbf1f-7c1d-4739-8a0b-7c975eb5180c)
 
-If you are looking for the new, lightweight, standalone server engine, please switch over to the main branch!
+# 🌐 HPP – Hpa Progress Plexus
 
-### 🤔 What is this branch?
-This branch exists to preserve the original vision of HPP. If you loved the plug-and-play nature of the original build with the hardcoded assets and built-in templates, this is where it lives forever.
+**HPP (HPA Progress Plexus)** is a self-hostable, decentralized web-based platform designed as an alternative to the traditional internet. Built for the **Intarenet** (local/offline networks), HPP is especially useful in **homes**, **schools**, and for **individuals** seeking reliable, local-first digital communication and collaboration.
 
-Status: Feature-complete / Legacy support only.
+---
 
-Size: ~12.7 MB (includes all original front-end assets).
+## 🚀 Features
 
-# Updates: This branch will receive critical bug fixes or stability tweaks up through version 2.2.9. Once version 2.3 lands on the main branch, this version is officially frozen.
+- 🖧 Peer-to-peer local network communication
+- 🧠 Simple, web-based interface using HTML/CSS/JavaScript
+- 🔌 Fully self-hostable – no internet required
+- 🏠 Perfect for local environments like homes or classrooms
+- 📚 Great educational tool for learning about networks & web tech
 
-## 🚀 How to Use This Build
-If you want to clone or download only this classic version, you can target this branch directly:
+---
 
-# Bash:
-git clone -b HPP-OLD https://github.com/Juoelenis/Hpa-Progress-Plexus.git
-Alternatively, you can select HPP-OLD from the branch dropdown menu right here on GitHub and download the repository source zip.
+## 📁 Project Structure
 
-## 🛠️ Looking for the future of HPP?
-If you want the brand new, ultra-lightweight standalone server where you can bring your own HTML and configure it entirely to your liking, head back to the main branch to grab the latest builds!
+```plaintext
+hpp/
+├── index.html        # Main web interface
+├── sheet.css        # Styles
+├── app.js            # Core logic (altough most of the JS is found in the HTML files)
+├── .env              # Configuration file (optional if backend needed)
+└── README.md         # This file
+````
+
+---
+
+## 📦 Getting Started
+
+### 1. Clone the Repository
+
+```bash
+git clone https://github.com/Juoelenis/hpp.git
+cd hpp
+```
+
+### 2. (Optional) Configure `.env` File
+
+If your version uses a lightweight backend or a build tool, you may want to set up a `.env` file. For example:
+
+```env
+# Configuration (optional)
+HPP_NODE_NAME=home-node
+HPP_PORT=8080
+```
+
+### 3. Open the App in Your Browser
+
+Just open `index.html` in your preferred browser:
+
+* Double-click it, or
+* Use a simple local server like:
+
+```bash
+# Python 3
+python -m http.server 8080
+
+# Or Node.js http-server
+npx http-server .
+```
+
+Then open: [http://localhost:8080](http://localhost:8080)
+
+---
+
+## ✍️ Contributing
+
+We welcome contributions from the community!
+
+1. Fork the repository
+2. Clone your fork:
+
+   ```bash
+   git clone https://github.com/your-username/hpp.git
+   cd hpp
+   ```
+3. Create a new branch:
+
+   ```bash
+   git checkout -b feature/your-feature-name
+   ```
+4. Make your changes and commit:
+
+   ```bash
+   git commit -am "Add your feature"
+   ```
+5. Push to your fork and open a pull request:
+
+   ```bash
+   git push origin feature/your-feature-name
+   ```
+
+---
+
+## 🧠 Use Cases
+
+* **Schools:** Host a School Internet that keeps za tiktok brainrotted aah Kidz on a Good diet of Web Tech (sorry kidz)
+* **Homes:** Share media and files between devices with no internet
+* **Hobby Projects:** Build local-only tools, games, or test dashboards
+
+---
+
+## 📄 License
+
+This project is licensed under the **GPL 3.0 License**. See `LICENSE` for more info.
+
+---
