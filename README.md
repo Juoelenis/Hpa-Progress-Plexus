@@ -6,7 +6,7 @@
 
 ---
 # ⚠ IMPORTANT
-as of HPP v2.3 we are Phasing out the old "Pre-made" HPP Builds, we are making hPP in a more "mmodular style, add your own HPMLs, CSSs and JSs no bloat and lightweight. the old versioon will stay up for as long as possible in the "HPP-OLD" branch and will be updated in the Beta Testing Channel up until Version 2.3 launches, thanks for understanding.
+as of HPP v2.3 we are Phasing out the old "Pre-made" HPP Builds, we are making hPP in a more "mmodular style", add your own HPMLs, CSSs and JSs no bloat and lightweight. the old versioon will stay up for as long as possible in the "HPP-OLD" branch and will be updated in the Beta Testing Channel up until Version 2.3 launches, thanks for understanding.
 
 
 ## 🚀 Features
