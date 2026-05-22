@@ -1,13 +1,14 @@
-body{
-    background-image: radial-gradient(rgb(244, 247, 221),rgb(117, 255, 4)); height: 1000px; width: 1000px;
+body {
+
+    /* Example: gradient from light blue to light red */
+    background-image: linear-gradient(to right, #ace6f4, #be250d);
+    background-image: -webkit-linear-gradient(to right, #ace6f4, #be250d);
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
 }
-h1{
+h4 {
     text-align: center;
-    color: rgb(4, 136, 70);
-}
-.center {
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-    width: 40%;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: #8e0974;
 }

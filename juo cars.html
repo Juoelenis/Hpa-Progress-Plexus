@@ -5,9 +5,84 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Juo Cars - VidTube</title>
     <link rel="stylesheet" href="juocars.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@600&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', Arial, sans-serif;
+            background: linear-gradient(120deg, #f9f9f9, #e0eafc 80%);
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            max-width: 800px;
+            margin: 40px auto;
+            background: #fff;
+            border-radius: 14px;
+            box-shadow: 0 4px 24px rgba(33,147,176,0.10);
+            padding: 32px 24px;
+            text-align: center;
+        }
+        .logo-bar {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 24px;
+        }
+        .logo-bar img {
+            height: 48px;
+            margin-right: 14px;
+        }
+        .logo-bar h1 {
+            font-size: 2rem;
+            color: #e53935;
+            margin: 0;
+            font-weight: 700;
+            letter-spacing: 1px;
+        }
+        .video-title {
+            font-size: 1.3rem;
+            color: #222;
+            margin: 18px 0 10px 0;
+            font-weight: 600;
+        }
+        video {
+            width: 100%;
+            max-width: 720px;
+            border-radius: 10px;
+            box-shadow: 0 2px 12px rgba(33,147,176,0.08);
+            margin-bottom: 18px;
+            background: #000;
+        }
+        .meta {
+            color: #888;
+            font-size: 1rem;
+            margin-bottom: 10px;
+        }
+        .back-link {
+            display: inline-block;
+            margin-top: 18px;
+            color: #2193b0;
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.2s;
+        }
+        .back-link:hover {
+            color: #e53935;
+        }
+    </style>
 </head>
 <body>
-    <h1>VidTube</h1>
-      <video src="juo cars ep 1.mp4" height="720px" width="650px" controls co
+    <div class="container">
+        <div class="logo-bar">
+            <img src="juo adventures 005.png" alt="VidTube Logo">
+            <h1>VidTube</h1>
+        </div>
+        <div class="video-title">Juo Cars Ep1</div>
+        <div class="meta">By Juo | 2024</div>
+        <video src="juo cars ep 1.mp4" controls poster="cool.jpg"></video>
+        <div>
+            <a class="back-link" href="buba.html">&larr; Back to VidTube</a>
+        </div>
+    </div>
 </body>
 </html>

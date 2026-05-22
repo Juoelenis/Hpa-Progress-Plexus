@@ -6,22 +6,184 @@
     <title>Login Page</title>
     <script src="login.js" defer></script>
     <link rel="stylesheet" href="login.css">
-    <link rel="icon" href="hpp logo.png">
+    <link rel="icon" href="hpp-n-l-p.png">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        html, body {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+        body {
+            font-family: 'Inter', Arial, sans-serif;
+            min-height: 100vh;
+            min-width: 100vw;
+            background: linear-gradient(120deg, #e0eafc 0%, #b2fefa 100%);
+            background-size: 100% 200%;
+            animation: gradientMove 6s ease-in-out infinite alternate;
+            color: #232946;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        @keyframes gradientMove {
+            0% { background-position: 0% 0%; }
+            100% { background-position: 0% 100%; }
+        }
+        .login-container {
+            background: #fff;
+            border-radius: 22px;
+            box-shadow: 0 8px 32px #2193b022, 0 1.5px 8px #b2fefa33;
+            padding: 44px 36px 32px 36px;
+            max-width: 370px;
+            width: 100%;
+            text-align: center;
+            animation: fadeInUp 0.7s cubic-bezier(.23,1.01,.32,1) 0s 1;
+        }
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(40px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .login-container img {
+            height: 64px;
+            margin-bottom: 18px;
+            border-radius: 14px;
+            box-shadow: 0 2px 12px #b2fefa44;
+            animation: popIn 0.7s cubic-bezier(.23,1.01,.32,1) 0.1s 1;
+        }
+        @keyframes popIn {
+            0% { opacity: 0; transform: scale(0.7); }
+            80% { opacity: 1; transform: scale(1.08); }
+            100% { opacity: 1; transform: scale(1); }
+        }
+        h2 {
+            color: #2193b0;
+            margin-bottom: 10px;
+            font-size: 1.35rem;
+            font-weight: 800;
+            letter-spacing: 0.01em;
+        }
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+            margin-top: 8px;
+        }
+        label {
+            text-align: left;
+            color: #2193b0;
+            font-weight: 700;
+            margin-bottom: 4px;
+            font-size: 1.01rem;
+        }
+        input[type="text"], input[type="password"] {
+            padding: 12px 14px;
+            border: 1.5px solid #e0eafc;
+            border-radius: 10px;
+            font-size: 1.05rem;
+            outline: none;
+            background: #f5fafd;
+            transition: border 0.2s, box-shadow 0.2s;
+        }
+        input[type="text"]:focus, input[type="password"]:focus {
+            border: 1.5px solid #2193b0;
+            box-shadow: 0 0 0 2px #2193b033;
+        }
+        button[type="submit"] {
+            padding: 14px 0;
+            background: linear-gradient(90deg, #2193b0 60%, #6dd5ed 100%);
+            color: #fff;
+            border: none;
+            border-radius: 10px;
+            font-size: 1.13rem;
+            font-weight: 800;
+            cursor: pointer;
+            margin-top: 8px;
+            box-shadow: 0 2px 8px #2193b022;
+            transition: background 0.2s, color 0.2s, box-shadow 0.2s;
+        }
+        button[type="submit"]:hover {
+            background: linear-gradient(90deg, #6dd5ed 60%, #2193b0 100%);
+            color: #232946;
+            box-shadow: 0 4px 16px #2193b044;
+        }
+        .links {
+            margin-top: 22px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+        .links a {
+            color: #2193b0;
+            text-decoration: none;
+            font-weight: 700;
+            transition: color 0.2s;
+            font-size: 1.04rem;
+        }
+        .links a:hover {
+            color: #e53935;
+            text-decoration: underline;
+        }
+        .error-message {
+            color: #e53935;
+            background: #ffeaea;
+            border-radius: 8px;
+            padding: 8px 0;
+            margin-bottom: 8px;
+            font-weight: 700;
+            display: none;
+            animation: fadeIn 0.5s;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        @media (max-width: 500px) {
+            .login-container {
+                padding: 18px 4vw;
+            }
+        }
+    </style>
 </head>
 <body>
-    <h2>Loginto HPP</h2>
-    <h2>DA!, Best www alternative!</h2>
-    <form id="loginForm">
-        <label for="username">Username:</label>
-        <input type="text" id="username" name="username" required>
-        <br><br>
-        <label for="password">Password:</label>
-        <input type="password" id="password" name="password" required>
-        <br><br>
-        <button type="submit">Login</button>
-        <a href="register.html">Dont Have an Account? Make one!</a>
-        <a href="index.html">Or use without account</a>
-    </form>
+    <div class="login-container">
+        <img src="hpp-n-l-p.png" alt="HPP Logo">
+        <h2>Login to HPP</h2>
+        <div class="error-message" id="errorMsg"></div>
+        <form id="loginForm" autocomplete="on">
+            <label for="username">Username</label>
+            <input type="text" id="username" name="username" required autocomplete="username">
+            <label for="password">Password</label>
+            <input type="password" id="password" name="password" required autocomplete="current-password">
+            <button type="submit">Login</button>
+        </form>
+        <div class="links">
+            <a href="register.html">Don't have an account? Make one!</a>
+            <a href="index.html">Or use without account</a>
+        </div>
+    </div>
+    <script>
+    // Save current user on login (login.html)
+    document.addEventListener('DOMContentLoaded', function() {
+        const loginForm = document.getElementById('loginForm');
+        if (loginForm) {
+            loginForm.onsubmit = function(e) {
+                e.preventDefault();
+                const username = document.getElementById('username').value.trim();
+                const password = document.getElementById('password').value.trim();
+                const errorMsg = document.getElementById('errorMsg');
+                let users = JSON.parse(localStorage.getItem('hppUsers') || '{}');
+                if ((users[username] && users[username] === password) || (username === "user" && password === "hpp")) {
+                    errorMsg.style.display = "none";
+                    localStorage.setItem('hppCurrentUser', username);
+                    window.location.href = "account.html";
+                } else {
+                    errorMsg.textContent = "Invalid username or password.";
+                    errorMsg.style.display = "block";
+                }
+            };
+        }
+    });
+    </script>
 </body>
 </html>
-
