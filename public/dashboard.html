@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>HPP - Dashboard</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: white; }
+    .dashboard-container { background: white; min-height: 100vh; }
+    .dashboard-header { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 30px 20px; box-shadow: 0 2px 8px rgba(0,0,0,0.1); }
+    .header-content { max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; }
+    .dashboard-header h1 { font-size: 28px; }
+    .header-info { display: flex; align-items: center; gap: 20px; }
+    .dashboard-main { max-width: 1200px; margin: 0 auto; padding: 40px 20px; }
+    .dashboard-section { margin-bottom: 40px; }
+    .dashboard-section h2 { margin-bottom: 20px; color: #333; font-size: 22px; }
+    .upload-box { background: #f8f9fa; border: 2px dashed #667eea; border-radius: 8px; padding: 30px; text-align: center; cursor: pointer; }
+    .upload-box:hover { border-color: #764ba2; background: #f0f0ff; }
+    .upload-box input { display: none; }
+    .upload-status { margin-top: 15px; padding: 12px; border-radius: 6px; font-size: 14px; }
+    .upload-status.uploading { background: #e3f2fd; color: #1976d2; }
+    .upload-status.success { background: #e8f5e9; color: #388e3c; }
+    .upload-status.error { background: #fee; color: #c33; }
+    .files-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 20px; }
+    .file-card { background: #f8f9fa; border: 1px solid #e0e0e0; border-radius: 8px; padding: 20px; transition: all 0.3s; }
+    .file-card:hover { box-shadow: 0 4px 12px rgba(102,126,234,0.15); transform: translateY(-2px); }
+    .file-name { font-weight: 600; color: #333; margin-bottom: 8px; word-break: break-word; font-size: 14px; }
+    .file-size { color: #999; font-size: 12px; margin-bottom: 5px; }
+    .file-date { color: #999; font-size: 12px; margin-bottom: 15px; }
+    .file-actions { display: flex; gap: 8px; }
+    .empty-state { text-align: center; color: #999; padding: 40px 20px; font-style: italic; }
+    .loading { text-align: center; color: #999; padding: 40px 20px; }
+    .file-link { display: inline-block; padding: 12px 16px; background: #f0f0f0; text-decoration: none; color: #667eea; border-radius: 6px; margin-bottom: 10px; transition: all 0.3s; }
+    .file-link:hover { background: #667eea; color: white; transform: translateX(4px); }
+    .btn { padding: 10px 20px; border: none; border-radius: 6px; cursor: pointer; font-size: 14px; font-weight: 500; transition: all 0.3s; text-decoration: none; display: inline-block; }
+    .btn-primary { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; }
+    .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 4px 12px rgba(102,126,234,0.4); }
+    .btn-secondary { background: #e0e0e0; color: #333; }
+    .btn-secondary:hover { background: #d0d0d0; }
+    .btn-small { padding: 6px 12px; font-size: 12px; margin: 2px; }
+    .btn-danger { background: #ff5252; color: white; }
+    .btn-danger:hover { background: #ff1744; }
+    @media (max-width: 768px) { .header-content { flex-direction: column; gap: 15px; align-items: flex-start; } .header-info { width: 100%; justify-content: space-between; } .files-grid { grid-template-columns: 1fr; } }
+  </style>
+</head>
+<body>
+  <div class="dashboard-container">
+    <header class="dashboard-header">
+      <div class="header-content">
+        <h1>🌐 HPP Server</h1>
+        <div class="header-info">
+          <span id="userDisplay">User</span>
+          <button onclick="handleLogout()" class="btn btn-secondary">Logout</button>
+        </div>
+      </div>
+    </header>
+
+    <main class="dashboard-main">
+      <div class="dashboard-section">
+        <h2>📤 Upload HTML File</h2>
+        <div class="upload-box">
+          <input type="file" id="fileInput" accept=".html" />
+          <button onclick="document.getElementById('fileInput').click()" class="btn btn-primary">Choose File</button>
+        </div>
+        <div id="uploadStatus" class="upload-status" style="display:none;"></div>
+      </div>
+
+      <div class="dashboard-section">
+        <h2>📁 Your Uploaded Files</h2>
+        <div id="filesList" class="files-grid">
+          <p class="loading">Loading files...</p>
+        </div>
+      </div>
+
+      <div class="dashboard-section">
+        <h2>🔗 Browse All Files</h2>
+        <p><a href="/files" class="btn btn-secondary" target="_blank">View Public Directory →</a></p>
+      </div>
+    </main>
+  </div>
+
+  <script>
+    const API_BASE = '/api';
+
+    async function checkAuth() {
+      try {
+        const token = localStorage.getItem('token');
+        if (!token) throw new Error('No token');
+
+        const res = await fetch(`${API_BASE}/auth/verify`, {
+          headers: { 'Authorization': `Bearer ${token}` }
+        });
+
+        if (!res.ok) throw new Error('Invalid token');
+
+        const user = await res.json();
+        document.getElementById('userDisplay').textContent = `👤 ${user.username}`;
+      } catch (err) {
+        window.location.href = '/login.html';
+      }
+    }
+
+    async function loadFiles() {
+      try {
+        const token = localStorage.getItem('token');
+        const res = await fetch(`${API_BASE}/files`, {
+          headers: { 'Authorization': `Bearer ${token}` }
+        });
+
+        const files = await res.json();
+        const listEl = document.getElementById('filesList');
+
+        if (!files || files.length === 0) {
+          listEl.innerHTML = '<p class="empty-state">No files uploaded yet</p>';
+          return;
+        }
+
+        listEl.innerHTML = files.map(f => `
+          <div class="file-card">
+            <div class="file-name">📄 ${f.original_name}</div>
+            <div class="file-size">${(f.file_size / 1024).toFixed(2)} KB</div>
+            <div class="file-date">${new Date(f.created_at).toLocaleDateString()}</div>
+            <div class="file-actions">
+              <a href="/uploads/${f.filename}" target="_blank" class="btn btn-small btn-primary">View</a>
+              <button onclick="deleteFile(${f.id})" class="btn btn-small btn-danger">Delete</button>
+            </div>
+          </div>
+        `).join('');
+      } catch (err) {
+        console.error('Error loading files:', err);
+      }
+    }
+
+    document.getElementById('fileInput').addEventListener('change', handleUpload);
+
+    async function handleUpload() {
+      const fileInput = document.getElementById('fileInput');
+      const file = fileInput.files[0];
+      const statusEl = document.getElementById('uploadStatus');
+
+      if (!file) return;
+
+      const formData = new FormData();
+      formData.append('file', file);
+
+      try {
+        statusEl.textContent = '⏳ Uploading...';
+        statusEl.style.display = 'block';
+        statusEl.className = 'upload-status uploading';
+
+        const token = localStorage.getItem('token');
+        const res = await fetch(`${API_BASE}/files/upload`, {
+          method: 'POST',
+          headers: { 'Authorization': `Bearer ${token}` },
+          body: formData
+        });
+
+        const data = await res.json();
+
+        if (!res.ok) throw new Error(data.error || 'Upload failed');
+
+        statusEl.innerHTML = `✅ File uploaded! 🎉 <br><a href="/uploads/${data.filename}" target="_blank">/uploads/${data.filename}</a>`;
+        statusEl.className = 'upload-status success';
+        fileInput.value = '';
+
+        loadFiles();
+      } catch (err) {
+        statusEl.textContent = `❌ ${err.message}`;
+        statusEl.className = 'upload-status error';
+      }
+    }
+
+    async function deleteFile(fileId) {
+      if (!confirm('Delete this file?')) return;
+
+      try {
+        const token = localStorage.getItem('token');
+        const res = await fetch(`${API_BASE}/files/${fileId}`, {
+          method: 'DELETE',
+          headers: { 'Authorization': `Bearer ${token}` }
+        });
+
+        if (!res.ok) throw new Error('Delete failed');
+
+        loadFiles();
+      } catch (err) {
+        alert('Error deleting file: ' + err.message);
+      }
+    }
+
+    function handleLogout() {
+      localStorage.clear();
+      window.location.href = '/login.html';
+    }
+
+    window.addEventListener('load', () => {
+      checkAuth();
+      loadFiles();
+    });
+  </script>
+</body>
+</html>
+  <div class="dashboard-container">
+    <header class="dashboard-header">
+      <div class="header-content">
+        <h1>🌐 HPP Server</h1>
+        <div class="header-info">
+          <span id="userDisplay">User</span>
+          <button onclick="handleLogout()" class="btn btn-secondary">Logout</button>
+        </div>
+      </div>
+    </header>
+
+    <main class="dashboard-main">
+      <div class="dashboard-section">
+        <h2>📤 Upload HTML File</h2>
+        <div class="upload-box">
+          <input type="file" id="fileInput" accept=".html" />
+          <button onclick="handleUpload()" class="btn btn-primary">Upload File</button>
+        </div>
+        <div id="uploadStatus" class="upload-status" style="display:none;"></div>
+      </div>
+
+      <div class="dashboard-section">
+        <h2>📁 Your Uploaded Files</h2>
+        <div id="filesList" class="files-grid">
+          <p class="loading">Loading files...</p>
+        </div>
+      </div>
+
+      <div class="dashboard-section">
+        <h2>🔗 Browse All Files</h2>
+        <p><a href="/files" class="btn btn-secondary" target="_blank">View Public Directory →</a></p>
+      </div>
+    </main>
+  </div>
+
+  <script>
+    const API_BASE = '/api';
+
+    async function checkAuth() {
+      try {
+        const token = localStorage.getItem('token');
+        if (!token) throw new Error('No token');
+
+        const res = await fetch(`${API_BASE}/auth/verify`, {
+          headers: { 'Authorization': `Bearer ${token}` }
+        });
+
+        if (!res.ok) throw new Error('Invalid token');
+
+        const user = await res.json();
+        document.getElementById('userDisplay').textContent = `👤 ${user.username}`;
+      } catch (err) {
+        window.location.href = '/login.html';
+      }
+    }
+
+    async function loadFiles() {
+      try {
+        const token = localStorage.getItem('token');
+        const res = await fetch(`${API_BASE}/files`, {
+          headers: { 'Authorization': `Bearer ${token}` }
+        });
+
+        const files = await res.json();
+        const listEl = document.getElementById('filesList');
+
+        if (!files || files.length === 0) {
+          listEl.innerHTML = '<p class="empty-state">No files uploaded yet</p>';
+          return;
+        }
+
+        listEl.innerHTML = files.map(f => `
+          <div class="file-card">
+            <div class="file-name">📄 ${f.original_name}</div>
+            <div class="file-size">${(f.file_size / 1024).toFixed(2)} KB</div>
+            <div class="file-date">${new Date(f.created_at).toLocaleDateString()}</div>
+            <div class="file-actions">
+              <a href="/uploads/${f.filename}" target="_blank" class="btn btn-small">View</a>
+              <button onclick="deleteFile(${f.id})" class="btn btn-small btn-danger">Delete</button>
+            </div>
+          </div>
+        `).join('');
+      } catch (err) {
+        console.error('Error loading files:', err);
+      }
+    }
+
+    async function handleUpload() {
+      const fileInput = document.getElementById('fileInput');
+      const file = fileInput.files[0];
+      const statusEl = document.getElementById('uploadStatus');
+
+      if (!file) {
+        statusEl.textContent = '❌ Please select a file';
+        statusEl.style.display = 'block';
+        return;
+      }
+
+      const formData = new FormData();
+      formData.append('file', file);
+
+      try {
+        statusEl.textContent = '⏳ Uploading...';
+        statusEl.style.display = 'block';
+        statusEl.className = 'upload-status uploading';
+
+        const token = localStorage.getItem('token');
+        const res = await fetch(`${API_BASE}/files/upload`, {
+          method: 'POST',
+          headers: { 'Authorization': `Bearer ${token}` },
+          body: formData
+        });
+
+        const data = await res.json();
+
+        if (!res.ok) throw new Error(data.error || 'Upload failed');
+
+        statusEl.textContent = `✅ File uploaded! 🎉 Access it at: <a href="/uploads/${data.filename}" target="_blank">/uploads/${data.filename}</a>`;
+        statusEl.className = 'upload-status success';
+        fileInput.value = '';
+
+        loadFiles();
+      } catch (err) {
+        statusEl.textContent = `❌ ${err.message}`;
+        statusEl.className = 'upload-status error';
+      }
+    }
+
+    async function deleteFile(fileId) {
+      if (!confirm('Delete this file?')) return;
+
+      try {
+        const token = localStorage.getItem('token');
+        const res = await fetch(`${API_BASE}/files/${fileId}`, {
+          method: 'DELETE',
+          headers: { 'Authorization': `Bearer ${token}` }
+        });
+
+        if (!res.ok) throw new Error('Delete failed');
+
+        loadFiles();
+      } catch (err) {
+        alert('Error deleting file: ' + err.message);
+      }
+    }
+
+    function handleLogout() {
+      localStorage.clear();
+      window.location.href = '/login.html';
+    }
+
+    // Initialize
+    window.addEventListener('load', () => {
+      checkAuth();
+      loadFiles();
+    });
+  </script>
+</body>
+</html>

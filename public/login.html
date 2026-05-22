@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>HPP - Login</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); min-height: 100vh; color: #333; }
+    .auth-container { display: flex; justify-content: center; align-items: center; min-height: 100vh; padding: 20px; }
+    .auth-box { background: white; border-radius: 12px; padding: 40px; width: 100%; max-width: 400px; box-shadow: 0 10px 40px rgba(0,0,0,0.2); }
+    .auth-box h1 { text-align: center; color: #667eea; margin-bottom: 10px; font-size: 28px; }
+    .auth-box .subtitle { text-align: center; color: #888; margin-bottom: 30px; font-size: 14px; }
+    .auth-box h2 { margin-bottom: 20px; font-size: 20px; color: #333; }
+    .form-group { margin-bottom: 15px; }
+    .form-group label { display: block; margin-bottom: 5px; font-weight: 500; color: #555; font-size: 14px; }
+    .form-group input { width: 100%; padding: 10px 12px; border: 1px solid #ddd; border-radius: 6px; font-size: 14px; }
+    .form-group input:focus { outline: none; border-color: #667eea; box-shadow: 0 0 0 3px rgba(102,126,234,0.1); }
+    .toggle-text { text-align: center; margin-top: 20px; font-size: 14px; color: #666; }
+    .toggle-text a { color: #667eea; text-decoration: none; font-weight: 600; }
+    .error-box { background: #fee; color: #c33; padding: 12px; border-radius: 6px; margin-top: 20px; border-left: 4px solid #c33; font-size: 14px; }
+    .btn { width: 100%; padding: 12px; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; border: none; border-radius: 6px; font-weight: 500; cursor: pointer; font-size: 16px; margin-top: 10px; transition: all 0.3s; }
+    .btn:hover { transform: translateY(-2px); box-shadow: 0 4px 12px rgba(102,126,234,0.4); }
+  </style>
+</head>
+<body>
+  <div class="auth-container">
+    <div class="auth-box">
+      <h1>🌐 HPP Server</h1>
+      <p class="subtitle">HTML File Hosting Platform</p>
+
+      <form id="authForm">
+        <div id="loginForm">
+          <h2>Login</h2>
+          <div class="form-group">
+            <label>Username</label>
+            <input type="text" id="username" placeholder="Enter username" required>
+          </div>
+          <div class="form-group">
+            <label>Password</label>
+            <input type="password" id="password" placeholder="Enter password" required>
+          </div>
+          <button type="button" onclick="handleLogin()" class="btn">Login</button>
+          <p class="toggle-text">Don't have an account? <a href="#" onclick="toggleForms(); return false;">Register</a></p>
+        </div>
+
+        <div id="registerForm" style="display:none;">
+          <h2>Create Account</h2>
+          <div class="form-group">
+            <label>Username</label>
+            <input type="text" id="regUsername" placeholder="Choose username" required>
+          </div>
+          <div class="form-group">
+            <label>Email</label>
+            <input type="email" id="regEmail" placeholder="Enter email" required>
+          </div>
+          <div class="form-group">
+            <label>Password</label>
+            <input type="password" id="regPassword" placeholder="Choose password" required>
+          </div>
+          <button type="button" onclick="handleRegister()" class="btn">Register</button>
+          <p class="toggle-text">Already have an account? <a href="#" onclick="toggleForms(); return false;">Login</a></p>
+        </div>
+      </form>
+
+      <div id="errorBox" class="error-box" style="display:none;"></div>
+    </div>
+  </div>
+
+  <script>
+    function toggleForms() {
+      const loginForm = document.getElementById('loginForm');
+      const registerForm = document.getElementById('registerForm');
+      loginForm.style.display = loginForm.style.display === 'none' ? 'block' : 'none';
+      registerForm.style.display = registerForm.style.display === 'none' ? 'block' : 'none';
+      clearError();
+    }
+
+    function showError(msg) {
+      const box = document.getElementById('errorBox');
+      box.textContent = msg;
+      box.style.display = 'block';
+    }
+
+    function clearError() {
+      document.getElementById('errorBox').style.display = 'none';
+    }
+
+    async function handleLogin() {
+      const username = document.getElementById('username').value;
+      const password = document.getElementById('password').value;
+
+      try {
+        const res = await fetch('/api/auth/login', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ username, password })
+        });
+
+        const data = await res.json();
+
+        if (!res.ok) throw new Error(data.error || 'Login failed');
+
+        localStorage.setItem('token', data.token);
+        localStorage.setItem('userId', data.userId);
+        localStorage.setItem('username', data.username);
+        window.location.href = '/dashboard.html';
+      } catch (err) {
+        showError(err.message);
+      }
+    }
+
+    async function handleRegister() {
+      const username = document.getElementById('regUsername').value;
+      const email = document.getElementById('regEmail').value;
+      const password = document.getElementById('regPassword').value;
+
+      try {
+        const res = await fetch('/api/auth/register', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ username, email, password })
+        });
+
+        const data = await res.json();
+
+        if (!res.ok) throw new Error(data.error || 'Registration failed');
+
+        localStorage.setItem('token', data.token);
+        localStorage.setItem('userId', data.userId);
+        localStorage.setItem('username', data.username);
+        window.location.href = '/dashboard.html';
+      } catch (err) {
+        showError(err.message);
+      }
+    }
+
+    window.addEventListener('load', () => {
+      if (localStorage.getItem('token')) {
+        window.location.href = '/dashboard.html';
+      }
+    });
+  </script>
+</body>
+</html>
+  <div class="auth-container">
+    <div class="auth-box">
+      <h1>🌐 HPP Server</h1>
+      <p class="subtitle">HTML File Hosting Platform</p>
+
+      <form id="authForm">
+        <div id="loginForm">
+          <h2>Login</h2>
+          <div class="form-group">
+            <label>Username</label>
+            <input type="text" id="username" placeholder="Enter username" required>
+          </div>
+          <div class="form-group">
+            <label>Password</label>
+            <input type="password" id="password" placeholder="Enter password" required>
+          </div>
+          <button type="button" onclick="handleLogin()" class="btn btn-primary">Login</button>
+          <p class="toggle-text">Don't have an account? <a href="#" onclick="toggleForms(); return false;">Register</a></p>
+        </div>
+
+        <div id="registerForm" style="display:none;">
+          <h2>Create Account</h2>
+          <div class="form-group">
+            <label>Username</label>
+            <input type="text" id="regUsername" placeholder="Choose username" required>
+          </div>
+          <div class="form-group">
+            <label>Email</label>
+            <input type="email" id="regEmail" placeholder="Enter email" required>
+          </div>
+          <div class="form-group">
+            <label>Password</label>
+            <input type="password" id="regPassword" placeholder="Choose password" required>
+          </div>
+          <button type="button" onclick="handleRegister()" class="btn btn-primary">Register</button>
+          <p class="toggle-text">Already have an account? <a href="#" onclick="toggleForms(); return false;">Login</a></p>
+        </div>
+      </form>
+
+      <div id="errorBox" class="error-box" style="display:none;"></div>
+    </div>
+  </div>
+
+  <script>
+    function toggleForms() {
+      const loginForm = document.getElementById('loginForm');
+      const registerForm = document.getElementById('registerForm');
+      loginForm.style.display = loginForm.style.display === 'none' ? 'block' : 'none';
+      registerForm.style.display = registerForm.style.display === 'none' ? 'block' : 'none';
+      clearError();
+    }
+
+    function showError(msg) {
+      const box = document.getElementById('errorBox');
+      box.textContent = msg;
+      box.style.display = 'block';
+    }
+
+    function clearError() {
+      document.getElementById('errorBox').style.display = 'none';
+    }
+
+    async function handleLogin() {
+      const username = document.getElementById('username').value;
+      const password = document.getElementById('password').value;
+
+      try {
+        const res = await fetch('/api/auth/login', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ username, password })
+        });
+
+        const data = await res.json();
+
+        if (!res.ok) throw new Error(data.error || 'Login failed');
+
+        localStorage.setItem('token', data.token);
+        localStorage.setItem('userId', data.userId);
+        localStorage.setItem('username', data.username);
+        window.location.href = '/dashboard.html';
+      } catch (err) {
+        showError(err.message);
+      }
+    }
+
+    async function handleRegister() {
+      const username = document.getElementById('regUsername').value;
+      const email = document.getElementById('regEmail').value;
+      const password = document.getElementById('regPassword').value;
+
+      try {
+        const res = await fetch('/api/auth/register', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ username, email, password })
+        });
+
+        const data = await res.json();
+
+        if (!res.ok) throw new Error(data.error || 'Registration failed');
+
+        localStorage.setItem('token', data.token);
+        localStorage.setItem('userId', data.userId);
+        localStorage.setItem('username', data.username);
+        window.location.href = '/dashboard.html';
+      } catch (err) {
+        showError(err.message);
+      }
+    }
+
+    // Check if already logged in
+    window.addEventListener('load', () => {
+      if (localStorage.getItem('token')) {
+        window.location.href = '/dashboard.html';
+      }
+    });
+  </script>
+</body>
+</html>
