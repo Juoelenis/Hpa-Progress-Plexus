@@ -1,4 +1,5 @@
-![hpp-n-l-p](https://github.com/user-attachments/assets/e5bfbf1f-7c1d-4739-8a0b-7c975eb5180c)
+<img width="532" height="489" alt="HPPlogo" src="https://github.com/user-attachments/assets/c44342bd-6010-4c5b-9568-e10665ca50b2" />
+
 
 # 🌐Hpa Progress Plexus Server Test Branch (HPP-STB)
 
