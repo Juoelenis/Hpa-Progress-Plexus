@@ -1,6 +1,6 @@
 ![hpp-n-l-p](https://github.com/user-attachments/assets/e5bfbf1f-7c1d-4739-8a0b-7c975eb5180c)
 
-# 🌐 HPP – Hpa Progress Plexus (MOdular Server Edition)
+# 🌐 HPP – Hpa Progress Plexus (Modular Server Edition)
 
 **HPP (HPA Progress Plexus)** is a self-hostable, decentralized web-based platform designed as an alternative to the traditional internet. Built for the **Intarenet** (local/offline networks), This Version of HPP is made to host your own files via a python / rust server and put them in Yourself, kinda like having a base to build like Building BLocks!
 
